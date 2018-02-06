@@ -6,10 +6,11 @@
     "jest": true
   },
   "plugins": ["prettier"],
-  "extends": "airbnb",
+  "extends": ["airbnb","prettier"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/prefer-default-export": "off",
+    "import/no-unresolved":false,
     "no-bitwise": "off",
     "react/prop-types": "off",
     "react/prefer-stateless-function": "off",
