@@ -1,0 +1,17 @@
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 95vh;
+  line-height: 95vh;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.introBtn{
+  height: 5vh;
+  width: 100vw;
+  border-radius: initial;
+}
