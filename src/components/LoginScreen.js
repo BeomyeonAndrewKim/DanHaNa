@@ -11,9 +11,10 @@ const LoginWrap = styled.div`
 `;
 const LoginList = styled.ul`
   width: 100%;
-  list-style: none;
 `;
-const LoginListItem = styled.li``;
+const LoginListItem = styled.li`
+  text-align: center;
+`;
 const LoginButton = styled(Button)`
   margin: auto;
   display: inline-block;
