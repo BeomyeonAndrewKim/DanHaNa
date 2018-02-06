@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Carousel, Button } from 'antd';
 import './IntroScreen.css';
 
 export default class IntroScreen extends Component {
   state = {
     intropage: 1,
+    redirectToLogin: false,
   };
-  next = () => {
+  handleNextpage = () => {
     this.carousel.innerSlider.slickNext();
     this.setState(prevState => ({
       intropage: prevState.intropage + 1,
     }));
   }; // Fixme
+
+  handleRedirectLogin = () => {
+    this.setState({
+      redirectToLogin: true,
+    });
+  };
   render() {
     return (
       <div>
@@ -30,12 +38,16 @@ export default class IntroScreen extends Component {
           </div>
         </Carousel>
         <div>
-          {this.state.intropage < 4 ? (
-            <Button className="introBtn" onClick={this.next}>
+          {this.state.redirectToLogin ? (
+            <Redirect to="/login" />
+          ) : this.state.intropage < 4 ? (
+            <Button className="introBtn" onClick={this.handleNextpage}>
               Continue
             </Button>
           ) : this.state.intropage === 4 ? (
-            <Button className="introBtn">Login</Button>
+            <Button className="introBtn" onClick={this.handleRedirectLogin}>
+              Login
+            </Button>
           ) : null}
         </div>
       </div>
