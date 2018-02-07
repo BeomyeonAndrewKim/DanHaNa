@@ -5,25 +5,35 @@ import './IntroScreen.css';
 
 export default class IntroScreen extends Component {
   state = {
-    intropage: 1,
+    intropage: 0,
     redirectToLogin: false,
   };
+
+  handleAfterChange = () => {
+    this.setState({
+      intropage: this.carousel.innerSlider.state.currentSlide,
+    });
+  };
+
   handleNextpage = () => {
     this.carousel.innerSlider.slickNext();
-    this.setState(prevState => ({
-      intropage: prevState.intropage + 1,
-    }));
-  }; // Fixme
+  };
 
   handleRedirectLogin = () => {
     this.setState({
       redirectToLogin: true,
     });
   };
+
   render() {
+    const PAGE_NUM = 3;
     return (
       <div>
-        <Carousel ref={c => (this.carousel = c)}>
+        <Carousel
+          afterChange={this.handleAfterChange}
+          ref={c => (this.carousel = c)}
+          draggable
+        >
           <div>
             <h3>일주일 단 하나</h3>
           </div>
@@ -40,11 +50,11 @@ export default class IntroScreen extends Component {
         <div>
           {this.state.redirectToLogin ? (
             <Redirect to="/login" />
-          ) : this.state.intropage < 4 ? (
+          ) : this.state.intropage < PAGE_NUM ? (
             <Button className="introBtn" onClick={this.handleNextpage}>
               Continue
             </Button>
-          ) : this.state.intropage === 4 ? (
+          ) : this.state.intropage === PAGE_NUM ? (
             <Button className="introBtn" onClick={this.handleRedirectLogin}>
               Login
             </Button>
