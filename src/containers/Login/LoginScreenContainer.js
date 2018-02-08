@@ -14,6 +14,7 @@ export default class LoginScreenContainer extends Component {
     this.setState({
       redirectToMain: true,
     });
+    window.localStorage.setItem('introdone', true);
   };
   handleFacebookLogin = async () => {
     const provider = new firebase.auth.FacebookAuthProvider();
@@ -21,6 +22,7 @@ export default class LoginScreenContainer extends Component {
     this.setState({
       redirectToMain: true,
     });
+    window.localStorage.setItem('introdone', true);
   };
 
   render() {
