@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { Carousel, Button } from 'antd';
 import './IntroScreen.css';
 
+const PAGE_NUM = 3;
+
 export default class IntroScreen extends Component {
   state = {
     intropage: 0,
@@ -25,8 +27,20 @@ export default class IntroScreen extends Component {
     });
   };
 
+  renderRedirectBtn = () =>
+    this.state.redirectToLogin || window.localStorage.getItem('introdone') ? (
+      <Redirect to="/login" />
+    ) : this.state.intropage < PAGE_NUM ? (
+      <Button className="introBtn" onClick={this.handleNextpage}>
+        Continue
+      </Button>
+    ) : this.state.intropage === PAGE_NUM ? (
+      <Button className="introBtn" onClick={this.handleRedirectLogin}>
+        Login
+      </Button>
+    ) : null;
+
   render() {
-    const PAGE_NUM = 3;
     return (
       <div>
         <Carousel
@@ -49,20 +63,7 @@ export default class IntroScreen extends Component {
             <h3>그럼 시작해볼까요?</h3>
           </div>
         </Carousel>
-        <div>
-          {this.state.redirectToLogin ||
-          window.localStorage.getItem('introdone') ? (
-            <Redirect to="/login" />
-          ) : this.state.intropage < PAGE_NUM ? (
-            <Button className="introBtn" onClick={this.handleNextpage}>
-              Continue
-            </Button>
-          ) : this.state.intropage === PAGE_NUM ? (
-            <Button className="introBtn" onClick={this.handleRedirectLogin}>
-              Login
-            </Button>
-          ) : null}
-        </div>
+        <div>{this.renderRedirectBtn()}</div>
       </div>
     );
   }
