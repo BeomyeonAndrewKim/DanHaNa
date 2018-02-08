@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
-import Login from '../components/Login';
-import LoginScreenContainer from '../containers/LoginScreenContainer';
+import Login from '../containers/Login/Login';
+import LoginScreenContainer from '../containers/Login/LoginScreenContainer';
 
-import MainScreen from '../components/MainScreen';
+import MainScreen from '../components/Main/MainScreen';
 import IntroScreen from '../components/IntroScreen';
 import withAuth from '../hocs/withAuth';
 
