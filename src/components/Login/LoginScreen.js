@@ -34,7 +34,7 @@ export default class LoginScreen extends Component {
     return (
       <div style={{ height: '100vh' }}>
         {onLoading ? (
-          <div className="spin--gb">
+          <div className="spin--bg">
             <Spin tip="Loading..." size="large" />
           </div>
         ) : (

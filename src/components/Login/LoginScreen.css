@@ -1,7 +1,6 @@
-.spin--gb {
+.spin--bg {
   text-align: center;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.7);
   margin-bottom: 20px;
   padding: 30px 50px;
   height: 100%;
