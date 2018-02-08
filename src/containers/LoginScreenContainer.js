@@ -6,25 +6,25 @@ import LoginScreen from '../components/LoginScreen';
 
 export default class LoginScreenContainer extends Component {
   state = {
-    redirectToList: false,
+    redirectToMain: false,
   };
   handleGoogleLogin = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     await firebase.auth().signInWithPopup(provider);
     this.setState({
-      redirectToList: true,
+      redirectToMain: true,
     });
   };
   handleFacebookLogin = async () => {
     const provider = new firebase.auth.FacebookAuthProvider();
     await firebase.auth().signInWithPopup(provider);
     this.setState({
-      redirectToList: true,
+      redirectToMain: true,
     });
   };
 
   render() {
-    if (this.state.redirectToList) {
+    if (this.state.redirectToMain) {
       return <Redirect to="/main" />;
     }
     return (
