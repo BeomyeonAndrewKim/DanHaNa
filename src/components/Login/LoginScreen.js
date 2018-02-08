@@ -30,7 +30,7 @@ export default class LoginScreen extends Component {
   };
   render() {
     const { onLoading, onGoogleLogin, onFacebookLogin } = this.props;
-    console.log(onLoading);
+    console.log(onLoading); // 여기서 왜 콘솔이 2번 호출이 될까요..ㅠㅠ
     return (
       <div style={{ height: '100vh' }}>
         {onLoading ? (
