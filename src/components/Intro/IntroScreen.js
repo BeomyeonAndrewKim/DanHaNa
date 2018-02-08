@@ -31,7 +31,9 @@ export default class IntroScreen extends Component {
       <div>
         <Carousel
           afterChange={this.handleAfterChange}
-          ref={c => (this.carousel = c)}
+          ref={c => {
+            this.carousel = c;
+          }}
           draggable
         >
           <div>
@@ -48,7 +50,8 @@ export default class IntroScreen extends Component {
           </div>
         </Carousel>
         <div>
-          {this.state.redirectToLogin ? (
+          {this.state.redirectToLogin ||
+          window.localStorage.getItem('introdone') ? (
             <Redirect to="/login" />
           ) : this.state.intropage < PAGE_NUM ? (
             <Button className="introBtn" onClick={this.handleNextpage}>

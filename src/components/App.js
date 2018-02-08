@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 import LoginScreenContainer from '../containers/LoginScreenContainer';
 import MainScreen from '../components/MainScreen';
-import IntroScreen from '../components/IntroScreen';
+import IntroScreen from '../components/Intro/IntroScreen';
 
 export default class extends Component {
   render() {
