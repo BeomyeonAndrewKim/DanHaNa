@@ -1,0 +1,8 @@
+.spin--gb {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  height: 100%;
+}

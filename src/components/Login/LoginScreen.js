@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Icon } from 'antd';
+import { Button, Icon, Spin } from 'antd';
 import styled from 'styled-components';
+import './LoginScreen.css';
 
 const LoginWrap = styled.div`
   position: relative;
@@ -23,28 +24,36 @@ const LoginButton = styled(Button)`
 
 export default class LoginScreen extends Component {
   static defaultProp = {
+    onLoading: '',
     onFacebookLogin: () => {},
     onGoogleLogin: () => {},
   };
   render() {
-    const { onGoogleLogin, onFacebookLogin } = this.props;
+    const { onLoading, onGoogleLogin, onFacebookLogin } = this.props;
+    console.log(onLoading);
     return (
       <div style={{ height: '100vh' }}>
-        <LoginWrap>
-          <LoginList>
-            <LoginListItem>
-              <LoginButton onClick={onFacebookLogin}>
-                <Icon type="facebook" />
-                Facebook
-              </LoginButton>
-            </LoginListItem>
-            <LoginListItem>
-              <LoginButton onClick={onGoogleLogin}>
-                <Icon type="google" /> Google
-              </LoginButton>
-            </LoginListItem>
-          </LoginList>
-        </LoginWrap>
+        {onLoading ? (
+          <div className="spin--gb">
+            <Spin tip="Loading..." size="large" />
+          </div>
+        ) : (
+          <LoginWrap>
+            <LoginList>
+              <LoginListItem>
+                <LoginButton onClick={onFacebookLogin}>
+                  <Icon type="facebook" />
+                  Facebook
+                </LoginButton>
+              </LoginListItem>
+              <LoginListItem>
+                <LoginButton onClick={onGoogleLogin}>
+                  <Icon type="google" /> Google
+                </LoginButton>
+              </LoginListItem>
+            </LoginList>
+          </LoginWrap>
+        )}
       </div>
     );
   }
