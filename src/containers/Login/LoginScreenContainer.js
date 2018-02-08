@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import * as firebase from 'firebase';
 
-import LoginScreen from '../components/LoginScreen';
+import LoginScreen from '../../components/Login/LoginScreen';
 
 export default class LoginScreenContainer extends Component {
   state = {
