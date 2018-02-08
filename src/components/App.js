@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 import Login from '../containers/Login/Login';
-import LoginScreenContainer from '../containers/Login/LoginScreenContainer';
 
 import MainScreen from '../components/Main/MainScreen';
 import IntroScreen from '../components/IntroScreen';
-import withAuth from '../hocs/withAuth';
 
 export default class extends Component {
   render() {
@@ -15,7 +13,7 @@ export default class extends Component {
         <BrowserRouter>
           <div>
             <Route path="/" exact component={IntroScreen} />
-            <Route path="/login" component={withAuth(LoginScreenContainer)} />
+            <Route path="/login" component={Login} />
             <Route path="/main" component={MainScreen} />
           </div>
         </BrowserRouter>
