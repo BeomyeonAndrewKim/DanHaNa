@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Icon, Spin } from 'antd';
+import { Button, Icon } from 'antd';
 import styled from 'styled-components';
 import './LoginScreen.css';
+
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 
 const LoginWrap = styled.div`
   position: relative;
@@ -34,9 +36,7 @@ export default class LoginScreen extends Component {
     return (
       <div style={{ height: '100vh' }}>
         {onLoading ? (
-          <div className="spin--bg">
-            <Spin tip="Loading..." size="large" />
-          </div>
+          <LoadingIndicator />
         ) : (
           <LoginWrap>
             <LoginList>
