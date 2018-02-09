@@ -23,7 +23,11 @@ export default class IntroScreen extends Component {
   render() {
     return (
       <div>
-        <Carousel ref={c => (this.carousel = c)}>
+        <Carousel
+          ref={c => {
+            this.carousel = c;
+          }}
+        >
           <div>
             <h3>일주일 단 하나</h3>
           </div>
@@ -38,7 +42,8 @@ export default class IntroScreen extends Component {
           </div>
         </Carousel>
         <div>
-          {this.state.redirectToLogin ? (
+          {this.state.redirectToLogin ||
+          window.localStorage.getItem('introdone') ? (
             <Redirect to="/login" />
           ) : this.state.intropage < 4 ? (
             <Button className="introBtn" onClick={this.handleNextpage}>
