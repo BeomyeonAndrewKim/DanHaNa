@@ -6,20 +6,23 @@
     "jest": true
   },
   "plugins": ["prettier"],
-  "extends": ["airbnb","prettier"],
+  "extends": ["airbnb", "prettier"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/prefer-default-export": "off",
-    "import/no-unresolved":false,
+    "import/no-unresolved": false,
     "no-bitwise": "off",
     "react/prop-types": "off",
     "react/prefer-stateless-function": "off",
     "linebreak-style": "off",
     "import/no-extraneous-dependencies": "off",
     "no-nested-ternary": 0,
-    "prettier/prettier": ["error",{
-      "singleQuote":true,
-      "trailingComma":"all"
-    }]
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
+    ]
   }
 }
