@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Spin, Alert } from 'antd';
+
+import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator';
 
 export default function withLoadingIndicator(WrappedComponent) {
   return class extends Component {
@@ -11,7 +12,7 @@ export default function withLoadingIndicator(WrappedComponent) {
       if (loading) {
         return (
           <div>
-            <Spin />;
+            <LoadingIndicator />;
           </div>
         );
       }
