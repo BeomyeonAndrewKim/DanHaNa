@@ -3,30 +3,52 @@ import { Redirect } from 'react-router-dom';
 import { Carousel, Button } from 'antd';
 import './IntroScreen.css';
 
+const PAGE_NUM = 3;
+
 export default class IntroScreen extends Component {
   state = {
-    intropage: 1,
+    intropage: 0,
     redirectToLogin: false,
   };
+
+  handleAfterChange = () => {
+    this.setState({
+      intropage: this.carousel.innerSlider.state.currentSlide,
+    });
+  };
+
   handleNextpage = () => {
     this.carousel.innerSlider.slickNext();
-    this.setState(prevState => ({
-      intropage: prevState.intropage + 1,
-    }));
-  }; // Fixme
+  };
 
   handleRedirectLogin = () => {
     this.setState({
       redirectToLogin: true,
     });
   };
+
+  renderRedirectBtn = () =>
+    this.state.redirectToLogin || window.localStorage.getItem('introdone') ? (
+      <Redirect to="/login" />
+    ) : this.state.intropage < PAGE_NUM ? (
+      <Button className="introBtn" onClick={this.handleNextpage}>
+        Continue
+      </Button>
+    ) : this.state.intropage === PAGE_NUM ? (
+      <Button className="introBtn" onClick={this.handleRedirectLogin}>
+        Login
+      </Button>
+    ) : null;
+
   render() {
     return (
       <div>
         <Carousel
+          afterChange={this.handleAfterChange}
           ref={c => {
             this.carousel = c;
           }}
+          draggable
         >
           <div>
             <h3>일주일 단 하나</h3>
@@ -41,20 +63,7 @@ export default class IntroScreen extends Component {
             <h3>그럼 시작해볼까요?</h3>
           </div>
         </Carousel>
-        <div>
-          {this.state.redirectToLogin ||
-          window.localStorage.getItem('introdone') ? (
-            <Redirect to="/login" />
-          ) : this.state.intropage < 4 ? (
-            <Button className="introBtn" onClick={this.handleNextpage}>
-              Continue
-            </Button>
-          ) : this.state.intropage === 4 ? (
-            <Button className="introBtn" onClick={this.handleRedirectLogin}>
-              Login
-            </Button>
-          ) : null}
-        </div>
+        <div>{this.renderRedirectBtn()}</div>
       </div>
     );
   }

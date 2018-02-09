@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 import Login from '../containers/Login/Login';
-
 import MainScreen from '../components/Main/MainScreen';
-import IntroScreen from '../components/IntroScreen';
+import IntroScreen from '../components/Intro/IntroScreen';
 
 export default class extends Component {
   render() {
