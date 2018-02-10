@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import * as firebase from 'firebase';
+
 import 'antd/dist/antd.css';
 import './index.css';
+import reducers from './ducks/index';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
+
+const store = createStore(reducers);
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -16,5 +22,10 @@ const config = {
 };
 firebase.initializeApp(config);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
 registerServiceWorker();
