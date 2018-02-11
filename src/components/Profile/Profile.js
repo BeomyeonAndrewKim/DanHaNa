@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Icon, Form, Input, Upload, message } from 'antd';
+import { Form, Input } from 'antd';
 
 import ProfileHeader from './ProfileHeader';
 import ProfilePhoto from './ProfilePhoto';
