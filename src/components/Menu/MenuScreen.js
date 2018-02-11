@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import './MenuScreen.css';
-import MenuProfile from './MenuProfile';
+import MenuProfileContainer from '../../containers/Menu/MenuProfileContainer';
 
 export default class MenuScreen extends Component {
+  static defaultProps = {
+    collapsed: false,
+  };
   render() {
     return (
       <div className="menu-screen">
@@ -13,7 +16,7 @@ export default class MenuScreen extends Component {
           inlineCollapsed={!this.props.collapsed}
         >
           <Menu.Item className="menu-avatar" key="1">
-            <MenuProfile />
+            <MenuProfileContainer />
           </Menu.Item>
           <Menu.Item key="2">
             <Icon type="user" />
