@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import Login from '../containers/Login/Login';
 import MainScreen from '../components/Main/MainScreen';
 import IntroScreen from '../components/Intro/IntroScreen';
+import Profile from '../components/Profile/Profile';
 
 export default class extends Component {
   render() {
@@ -14,11 +15,10 @@ export default class extends Component {
             <Route path="/" exact component={IntroScreen} />
             <Route path="/login" component={Login} />
             <Route path="/main" component={MainScreen} />
+            <Route path="/profile" component={Profile} />
           </div>
         </BrowserRouter>
       </div>
     );
   }
 }
-// 질문 1. 고차컴포넌트를 render에서 사용할 수 없기때문에 LoginScreenContainer.js에서 바로 withAuth를 사용할 수 없었다?
-// 질문 2. withAuth.js에서 unsubscribe를 사용한 이유를 한번 더 듣고싶다.
