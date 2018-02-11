@@ -12,7 +12,7 @@ const ProfileWrap = styled.div`
 
 const FormItem = Form.Item;
 
-export default class Profile extends Component {
+export default class ProfileScreen extends Component {
   render() {
     return (
       <div style={{ height: '100vh' }}>

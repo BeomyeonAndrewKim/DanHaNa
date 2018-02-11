@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import Login from '../containers/Login/Login';
 import MainScreen from '../components/Main/MainScreen';
 import IntroScreen from '../components/Intro/IntroScreen';
-import Profile from '../components/Profile/Profile';
+import Profile from '../components/Profile/ProfileScreen';
 
 export default class extends Component {
   render() {
