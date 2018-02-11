@@ -11,21 +11,21 @@ const ProfilePhotoWrap = styled.div`
 
 export default class ProfilePhoto extends Component {
   state = {
-    fileURL: '',
+    fileUrl: '',
   };
   componentWillMount() {
-    this.onLoadProfileIMGURL();
+    this.onLoadProfileImgUrl();
   }
 
-  onLoadProfileIMGURL = async () => {
+  onLoadProfileImgUrl = async () => {
     const snapshot = await firebase
       .database()
-      .ref(`user/profileIMG/`)
+      .ref(`user/profileImg/`)
       .once('value');
     const repo = snapshot.val();
     if (repo) {
       this.setState({
-        fileURL: Object.values(snapshot.val()),
+        fileUrl: Object.values(snapshot.val()),
       });
     }
   };
@@ -57,26 +57,27 @@ export default class ProfilePhoto extends Component {
     // firebase storage에 이미지 정보 저장
     const snapshot = await firebase
       .storage()
-      .ref(`/profileIMG/IMG`)
+      .ref(`/profileImg/`)
       .put(file);
-    // firebase database에 다운로드 URL 저장
+    // firebase database에 다운로드 Url 저장
     await firebase
       .database()
-      .ref(`user/profileIMG/`)
+      .ref(`user/profileImg/`)
       .set({
-        downloadURL: snapshot.downloadURL,
+        downloadUrl: snapshot.downloadURL,
       });
 
-    this.refreshProfileIMG();
+    this.refreshProfileImg();
   };
 
-  refreshProfileIMG = async () => {
+  refreshProfileImg = async () => {
     const snapshot = await firebase
       .database()
-      .ref(`user/profileIMG`)
+      .ref(`user/profileImg`)
       .once('value');
+    console.log(Object.values(snapshot.val()));
     this.setState({
-      fileURL: Object.values(snapshot.val()),
+      fileUrl: Object.values(snapshot.val()),
     });
   };
 
@@ -85,10 +86,10 @@ export default class ProfilePhoto extends Component {
       <ProfilePhotoWrap>
         <figure>
           <div className="profilePhoto">
-            {this.state.fileURL ? (
+            {this.state.fileUrl ? (
               <img
                 style={{ width: '200px' }}
-                src={this.state.fileURL}
+                src={this.state.fileUrl}
                 alt="profile"
               />
             ) : (
@@ -98,7 +99,7 @@ export default class ProfilePhoto extends Component {
               type="file"
               onChange={this.onUploadFile}
               accept=".jpg, .jpeg, .png"
-              className="fileUploadBTN"
+              className="fileUploadBtn"
             />
           </div>
           <figcaption>별명</figcaption>
