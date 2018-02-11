@@ -19,6 +19,10 @@ const MenuCloseEl = styled.div`
 `;
 
 export default class MenuButton extends Component {
+  static defaultProps = {
+    onToggle: () => {},
+    collapsed: false,
+  };
   handleCloseMenuLayout = e => {
     if (e.target.className.includes('menu-close')) {
       this.props.onToggle();

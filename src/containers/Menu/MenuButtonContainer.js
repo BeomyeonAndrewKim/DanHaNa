@@ -4,6 +4,10 @@ import MenuButton from '../../components/Menu/MenuButton';
 import { toggleMenu } from '../../ducks/menu';
 
 class MenuButtonContainer extends Component {
+  static defaultProps = {
+    collapsed: '',
+    onToggle: () => {},
+  };
   render() {
     const { ...rest } = this.props;
     return <MenuButton {...rest} />;
