@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 export default class MenuProfile extends Component {
   static defaultProps = {
-    nickName: '',
-    photoUrl: '',
+    profileInfo: {},
   };
   render() {
     return (
@@ -11,10 +10,10 @@ export default class MenuProfile extends Component {
         <figure>
           <img
             className="profileImg"
-            alt="profilimg"
-            src={this.props.photoUrl}
+            alt="프로필 사진"
+            src={this.props.profileInfo.photoUrl}
           />
-          <figcaption>{this.props.nickName}</figcaption>
+          <figcaption>{this.props.profileInfo.nickName}</figcaption>
         </figure>
       </div>
     );
