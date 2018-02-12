@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MenuScreen from '../../components/Menu/MenuScreen';
+import { toggleMenu } from '../../ducks/menu';
 
-class MenuButtonContainer extends Component {
+class MenuScreenContainer extends Component {
   static defaultProps = {
     collapsed: false,
+    onToggle: () => {},
   };
   render() {
     const { ...rest } = this.props;
@@ -12,6 +14,13 @@ class MenuButtonContainer extends Component {
   }
 }
 
-export default connect(state => ({
-  collapsed: state.menu.collapsed,
-}))(MenuButtonContainer);
+export default connect(
+  state => ({
+    collapsed: state.menu.collapsed,
+  }),
+  dispatch => ({
+    onToggle: () => {
+      dispatch(toggleMenu());
+    },
+  }),
+)(MenuScreenContainer);
