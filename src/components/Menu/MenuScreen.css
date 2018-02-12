@@ -26,3 +26,12 @@
   top: 32px;
   left: 0;
 }
+.close-btn{
+  overflow:visible !important;
+  position: absolute;
+  display: inline-block;
+  height: 20px !important;
+  width: 20px !important;  
+  padding:0 !important;
+  transform: translateX(225px)
+}

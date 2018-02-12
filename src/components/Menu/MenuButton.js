@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import { Button, Icon } from 'antd';
 import styled from 'styled-components';
 
-const CloseBtn = styled(Button)`
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateY(-32px);
-`;
-
 const MenuCloseEl = styled.div`
   position: absolute;
   width: 100vw;
@@ -39,11 +31,7 @@ export default class MenuButton extends Component {
           <MenuCloseEl
             className="menu-close"
             onClick={this.handleCloseMenuLayout}
-          >
-            <CloseBtn type="primary" onClick={this.props.onToggle}>
-              <Icon type="close" />
-            </CloseBtn>
-          </MenuCloseEl>
+          />
         ) : null}
       </div>
     );
