@@ -5,8 +5,12 @@ import { Spin } from 'antd';
 const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(50, 50, 50, 0.9);
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 `;
 const Spined = styled(Spin)`
   position: relative;
