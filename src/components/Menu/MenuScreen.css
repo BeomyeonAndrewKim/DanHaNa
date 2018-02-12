@@ -3,6 +3,9 @@
   overflow: hidden;
   height: 100vh;
 }
+.ant-menu-inline-collapsed-tooltip{
+  display: none;
+}
 .ant-menu-light{
   height: 100vh;
   z-index:2;
@@ -33,5 +36,9 @@
   height: 20px !important;
   width: 20px !important;  
   padding:0 !important;
-  transform: translateX(225px)
+  transform: translateX(225px);
+  background-color:#ffffff !important; 
+}
+.close-btn::after{
+  border: none !important;
 }
