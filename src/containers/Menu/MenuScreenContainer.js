@@ -6,7 +6,7 @@ import { toggleMenu } from '../../ducks/menu';
 class MenuScreenContainer extends Component {
   static defaultProps = {
     collapsed: false,
-    onToggle: () => {},
+    profileInfo: {},
   };
   render() {
     const { ...rest } = this.props;
@@ -17,6 +17,7 @@ class MenuScreenContainer extends Component {
 export default connect(
   state => ({
     collapsed: state.menu.collapsed,
+    profileInfo: state.menu.profileInfo,
   }),
   dispatch => ({
     onToggle: () => {
