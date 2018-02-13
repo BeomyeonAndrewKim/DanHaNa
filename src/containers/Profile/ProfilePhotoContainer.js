@@ -18,11 +18,15 @@ export default class ProfilePhotoContainer extends Component {
       .ref(`user/profileImg/`)
       .once('value');
     const repo = snapshot.val();
-    const [repos] = Object.values(repo);
-    console.dir(repos);
-    if (repos) {
+    if (repo) {
+      const [repos] = Object.values(repo);
       this.setState({
         fileUrl: repos,
+        loading: false,
+      });
+    } else {
+      this.setState({
+        fileUrl: repo,
         loading: false,
       });
     }
@@ -79,10 +83,13 @@ export default class ProfilePhotoContainer extends Component {
     const repo = snapshot.val();
     const [repos] = Object.values(repo);
     console.log(repos);
-    this.setState({
-      fileUrl: repos,
-      loading: false,
-    });
+    if (repos) {
+      console.log(repos);
+      this.setState({
+        fileUrl: repos,
+        loading: false,
+      });
+    }
   };
   render() {
     return (

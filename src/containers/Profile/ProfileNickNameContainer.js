@@ -18,12 +18,14 @@ export default class ProfileNickNameContainer extends Component {
       .ref(`user/nickName`)
       .once('value');
     const repo = snapshot.val();
-    console.dir(repo);
-    const [repos] = Object.values(repo);
-    console.dir(repos);
-    if (repos) {
+    if (repo) {
+      const [repos] = Object.values(repo);
       this.setState({
         nickName: repos,
+      });
+    } else {
+      this.setState({
+        nickName: repo,
       });
     }
   };
