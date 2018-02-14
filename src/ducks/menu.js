@@ -1,14 +1,7 @@
 import * as firebase from 'firebase';
 
-export const TOGGLE = 'menu/TOGGLE';
 export const LOADING = 'menu/LOADING';
 export const LOADED = 'menu/LOADED';
-
-export function toggleMenu() {
-  return {
-    type: TOGGLE,
-  };
-}
 
 export function loadingMenu() {
   return {
@@ -24,18 +17,12 @@ export function loadedMenu(profileInfo) {
 }
 
 const initialState = {
-  collapsed: false,
   loading: false,
   profileInfo: {},
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE:
-      return {
-        ...state,
-        collapsed: !state.collapsed,
-      };
     case LOADING:
       return {
         ...state,

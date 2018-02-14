@@ -13,23 +13,30 @@ const MenuCloseEl = styled.div`
 
 export default class MenuScreen extends Component {
   static defaultProps = {
+    profileInfo: {},
+  };
+  state = {
     collapsed: false,
-    onToggle: () => {},
+  };
+  handleToggleMenu = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
   };
   handleCloseMenuLayout = e => {
     if (e.target.className.includes('menu-close')) {
-      this.props.onToggle();
+      this.handleToggleMenu();
     }
     return null;
   };
   handleCloseBtn = info => {
     if (info.key === '1') {
-      this.props.onToggle();
+      this.handleToggleMenu();
     }
     return null;
   };
   makeCloseMenuLayout = () => {
-    if (this.props.collapsed) {
+    if (this.state.collapsed) {
       return (
         <MenuCloseEl
           className="menu-close"
@@ -42,15 +49,15 @@ export default class MenuScreen extends Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.props.onToggle}>
-          <Icon type={this.props.collapsed ? 'menu-fold' : 'menu-unfold'} />
+        <Button type="primary" onClick={this.handleToggleMenu}>
+          <Icon type={this.state.collapsed ? 'menu-fold' : 'menu-unfold'} />
         </Button>
         {this.makeCloseMenuLayout()}
         <div className="menu-screen">
           <Menu
             mode="inline"
             theme="light"
-            inlineCollapsed={!this.props.collapsed}
+            inlineCollapsed={!this.state.collapsed}
             onClick={this.handleCloseBtn}
           >
             <Menu.Item className="close-btn" key="1">
