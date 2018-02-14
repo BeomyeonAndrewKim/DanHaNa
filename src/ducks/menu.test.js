@@ -17,7 +17,6 @@ describe('article', () => {
   it('loadingMenu Reducer Test', () => {
     const state = reducer(undefined, loadingMenu());
     expect(state).toEqual({
-      collapsed: false,
       loading: true,
       profileInfo: {},
     });
@@ -25,7 +24,6 @@ describe('article', () => {
   it('loadedMenu Reducer Test', () => {
     const state = reducer(undefined, loadedMenu({ a: '111' }));
     expect(state).toEqual({
-      collapsed: false,
       loading: false,
       profileInfo: { a: '111' },
     });
