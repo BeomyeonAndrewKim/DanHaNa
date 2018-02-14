@@ -1,19 +1,6 @@
-import reducer, {
-  TOGGLE,
-  LOADING,
-  LOADED,
-  toggleMenu,
-  loadingMenu,
-  loadedMenu,
-} from './menu';
+import reducer, { LOADING, LOADED, loadingMenu, loadedMenu } from './menu';
 
 describe('article', () => {
-  it('toggleMenu Action Test', () => {
-    const action = toggleMenu();
-    expect(action).toEqual({
-      type: TOGGLE,
-    });
-  });
   it('loadingMenu Action Test', () => {
     const action = loadingMenu();
     expect(action).toEqual({
@@ -25,14 +12,6 @@ describe('article', () => {
     expect(action).toEqual({
       type: LOADED,
       profileInfo: { a: '111' },
-    });
-  });
-  it('toggleMenu Reducer Test', () => {
-    const state = reducer(undefined, toggleMenu());
-    expect(state).toEqual({
-      collapsed: true,
-      loading: false,
-      profileInfo: {},
     });
   });
   it('loadingMenu Reducer Test', () => {
