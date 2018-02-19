@@ -5,10 +5,10 @@ import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator';
 export default function withLoadingIndicator(WrappedComponent) {
   return class extends Component {
     static defaultProp = {
-      loading: '',
+      loading: false,
     };
     render() {
-      const { loading } = this.props;
+      const { loading, ...rest } = this.props;
       if (loading) {
         return (
           <div>
@@ -16,7 +16,7 @@ export default function withLoadingIndicator(WrappedComponent) {
           </div>
         );
       }
-      return <WrappedComponent />;
+      return <WrappedComponent {...rest} />;
     }
   };
 }
