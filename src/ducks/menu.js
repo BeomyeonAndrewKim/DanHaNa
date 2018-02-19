@@ -40,12 +40,20 @@ export default function(state = initialState, action) {
 }
 
 export const fetchMenuList = () => async dispatch => {
+  const { currentUser } = firebase.auth();
+  if (!currentUser) {
+    return;
+  }
   dispatch(loadingMenu());
-  const uid = 'user1'; // 데이터베이스 구축 후 재설정
+
+  console.log(currentUser);
+
+  const { uid } = currentUser.providerData[0];
   const snapshot = await firebase
     .database()
     .ref(`users/${uid}`)
     .once('value');
   const profileObj = snapshot.val();
-  dispatch(loadedMenu(profileObj));
+  const { profileInfo } = profileObj;
+  dispatch(loadedMenu(profileInfo));
 };

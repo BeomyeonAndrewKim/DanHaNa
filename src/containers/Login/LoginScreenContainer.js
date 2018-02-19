@@ -16,24 +16,58 @@ export default class LoginScreenContainer extends Component {
   handleGoogleLogin = async () => {
     this.handleLoginClick();
     const provider = new firebase.auth.GoogleAuthProvider();
-    await firebase.auth().signInWithPopup(provider);
-    this.setState({
-      loading: false,
-      redirectToMain: true,
-    });
-    window.localStorage.setItem('introdone', true);
+    try {
+      await firebase.auth().signInWithPopup(provider);
+      await this.SubmitProfileInfo();
+      this.setState({
+        loading: false,
+        redirectToMain: true,
+      });
+      window.localStorage.setItem('introdone', true);
+    } catch (e) {
+      console.log(e);
+      this.setState({
+        loading: false,
+      });
+    }
   };
   handleFacebookLogin = async () => {
     this.handleLoginClick();
     const provider = new firebase.auth.FacebookAuthProvider();
-    await firebase.auth().signInWithPopup(provider);
-    this.setState({
-      loading: false,
-      redirectToMain: true,
-    });
-    window.localStorage.setItem('introdone', true);
+    try {
+      await firebase.auth().signInWithPopup(provider);
+      await this.SubmitProfileInfo();
+      this.setState({
+        loading: false,
+        redirectToMain: true,
+      });
+      window.localStorage.setItem('introdone', true);
+    } catch (e) {
+      console.log(e);
+      this.setState({
+        loading: false,
+      });
+    }
   };
-
+  SubmitProfileInfo = async () => {
+    const user = firebase.auth();
+    const {
+      displayName,
+      photoURL,
+      providerId,
+      uid,
+    } = user.currentUser.providerData[0];
+    await firebase
+      .database()
+      .ref(`users/${uid}`)
+      .set({
+        profileInfo: {
+          displayName,
+          photoURL,
+          providerId,
+        },
+      });
+  };
   render() {
     if (this.state.redirectToMain) {
       return <Redirect to="/main" />;

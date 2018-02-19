@@ -5,6 +5,7 @@ export default class MainScreen extends Component {
   render() {
     return (
       <div>
+        {/* <div>z</div> */}
         <MenuScreenContainer />
       </div>
     );
