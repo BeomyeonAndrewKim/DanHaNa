@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Icon, Button } from 'antd';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import './MenuScreen.css';
 
@@ -64,6 +65,7 @@ export default class MenuScreen extends Component {
               <Icon className="close-btn-icon" type="close" />
             </Menu.Item>
             <Menu.Item className="menu-avatar" key="2">
+              <Link to="/profile" />
               <figure>
                 <img
                   className="profileImg"
@@ -74,6 +76,7 @@ export default class MenuScreen extends Component {
               </figure>
             </Menu.Item>
             <Menu.Item key="3">
+              <Link to="/profile" />
               <Icon type="user" />
               <span>프로필</span>
             </Menu.Item>

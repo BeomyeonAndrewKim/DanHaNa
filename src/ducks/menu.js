@@ -47,5 +47,6 @@ export const fetchMenuList = () => async dispatch => {
     .ref(`users/${uid}`)
     .once('value');
   const profileObj = snapshot.val();
-  dispatch(loadedMenu(profileObj));
+  const userInfo = profileObj.profileInfo;
+  dispatch(loadedMenu(userInfo));
 };

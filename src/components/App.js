@@ -19,7 +19,6 @@ export default class extends Component {
           <div>
             <Route path="/" exact component={IntroScreen} />
             <Route path="/login" component={Login} />
-            <Route path="/main" component={MainScreen} />
             <Route path="/profile" component={Profile} />
             <Route path="/main" component={MainScreenContainer} />
           </div>
