@@ -3,3 +3,4 @@ import './LoginScreen';
 import './MainScreen';
 import './IntroScreen';
 import './Profile';
+import './MenuScreen';
