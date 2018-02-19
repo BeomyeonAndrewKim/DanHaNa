@@ -6,6 +6,7 @@ class MenuScreenContainer extends Component {
   static defaultProps = {
     profileInfo: {},
   };
+
   render() {
     const { ...rest } = this.props;
     return <MenuScreen {...rest} />;
