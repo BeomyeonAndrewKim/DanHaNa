@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MainScreen from '../../components/Main/MainScreen';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 import { fetchMenuList } from '../../ducks/menu';
+import MenuScreenContainer from '../Menu/MenuScreenContainer';
 
 const MainScreenWithLoading = withLoadingIndicator(MainScreen);
 
@@ -19,7 +20,10 @@ class MainScreenContainer extends Component {
     const { onMount, ...rest } = this.props;
     return (
       <div>
-        <MainScreenWithLoading {...rest} />
+        <MainScreenWithLoading
+          {...rest}
+          render={() => <MenuScreenContainer />}
+        />
       </div>
     );
   }
