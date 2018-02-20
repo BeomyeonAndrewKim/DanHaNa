@@ -3,6 +3,6 @@ import React from 'react';
 import LoginScreenContainer from './LoginScreenContainer';
 import withAuth from '../../hocs/withAuth';
 
-const Login = (...props) => <LoginScreenContainer {...props} />;
+const Login = () => <LoginScreenContainer />;
 
-export default withAuth(Login);
+export default Login;

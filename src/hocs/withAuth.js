@@ -24,36 +24,30 @@ export default function withAuth(WrappedComponent) {
         this.setState({
           loading: true,
         });
+        const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+          unsubscribe();
+          if (user) {
+            this.setState({
+              currentUser: true,
+              loading: false,
+            });
+          } else {
+            this.setState({
+              currentUser: false,
+              loading: false,
+            });
+          }
+        });
       }
-
-      const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-        unsubscribe();
-        if (user) {
-          const provider = user.providerData[0];
-          const { displayName, photoURL, providerId } = provider;
-          this.setState({
-            currentUser: true,
-            loading: false,
-            displayName,
-            photoURL,
-            providerId,
-          });
-        } else {
-          this.setState({
-            currentUser: false,
-            loading: false,
-          });
-        }
-      });
     }
     render() {
       const { ...rest } = this.state;
       if (this.state.currentUser) {
-        return <Redirect to="/main" />;
+        return <WrappedComponent {...rest} />;
       } else if (this.state.loading) {
         return <LoadingIndicator />;
       }
-      return <WrappedComponent {...rest} />;
+      return <Redirect to="/login" />;
     }
   };
 }

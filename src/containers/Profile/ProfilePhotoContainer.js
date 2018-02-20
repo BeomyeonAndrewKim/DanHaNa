@@ -1,36 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import * as firebase from 'firebase';
 import ProfilePhoto from '../../components/Profile/ProfilePhoto';
+import { fetchProfileInfo } from '../../ducks/profile';
 
-export default class ProfilePhotoContainer extends Component {
-  state = {
-    fileUrl: '',
-    loading: true,
+class ProfilePhotoContainer extends Component {
+  static defaultProps = {
+    onMount: () => {},
+    profileInfo: {},
+    loading: '',
   };
   componentWillMount() {
-    this.onLoadProfileImgUrl();
+    this.props.onMount();
   }
 
-  onLoadProfileImgUrl = async () => {
-    const snapshot = await firebase
-      .database()
-      .ref(`user/profileImg/`)
-      .once('value');
-    const repo = snapshot.val();
-    if (repo) {
-      const [repos] = Object.values(repo);
-      this.setState({
-        fileUrl: repos,
-        loading: false,
-      });
-    } else {
-      this.setState({
-        fileUrl: repo,
-        loading: false,
-      });
-    }
-  };
   onUploadFile = e => {
     const file = e.target.files[0];
     this.returnFileSize(file, file.size);
@@ -44,7 +28,7 @@ export default class ProfilePhotoContainer extends Component {
     } else if (fileSize > 1048576 && fileSize < 3145728) {
       console.log(`${(fileSize / 1048576).toFixed(1)}MB`);
     } else if (fileSize > 3145728) {
-      console.log(
+      alert(
         `3MB를 초과하였습니다. 현재 파일의 크기는 ${(
           fileSize / 1048576
         ).toFixed(1)}MB 입니다.`,
@@ -56,46 +40,44 @@ export default class ProfilePhotoContainer extends Component {
 
   fileInputFBStorage = async file => {
     console.log('이 콘솔이 보이면 파이어베이스 저장소에 파일 업로드가 됩니다!');
+
+    const { profileInfo } = this.props;
+    const { uid } = profileInfo;
+
     // firebase storage에 이미지 정보 저장
-    this.setState({
-      loading: true,
-    });
     const snapshot = await firebase
       .storage()
-      .ref(`/profileImg/`)
+      .ref(`users/${uid}/photoURL/`)
       .put(file);
+
     // firebase database에 다운로드 Url 저장
     await firebase
       .database()
-      .ref(`user/profileImg/`)
-      .set({
-        downloadUrl: snapshot.downloadURL,
+      .ref(`users/${uid}/profileInfo`)
+      .update({
+        photoURL: snapshot.downloadURL,
       });
-    this.refreshProfileImg();
+    this.props.onMount();
   };
 
-  refreshProfileImg = async () => {
-    const snapshot = await firebase
-      .database()
-      .ref(`user/profileImg`)
-      .once('value');
-
-    const repo = snapshot.val();
-    const [repos] = Object.values(repo);
-    console.log(repos);
-    if (repos) {
-      console.log(repos);
-      this.setState({
-        fileUrl: repos,
-        loading: false,
-      });
-    }
-  };
   render() {
     return (
       <div>
-        <ProfilePhoto {...this.state} onUploadFile={this.onUploadFile} />
+        <ProfilePhoto {...this.props} onUploadFile={this.onUploadFile} />
       </div>
     );
   }
 }
+export default connect(
+  // mapStateToProps
+  state => ({
+    loading: state.profile.loading,
+    profileInfo: state.profile.profileInfo,
+  }),
+  // mapDispatchToprops
+  dispatch => ({
+    onMount: () => {
+      dispatch(fetchProfileInfo());
+    },
+  }),
+)(ProfilePhotoContainer);

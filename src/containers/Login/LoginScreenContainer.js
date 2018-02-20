@@ -18,7 +18,7 @@ export default class LoginScreenContainer extends Component {
     const provider = new firebase.auth.GoogleAuthProvider();
     try {
       await firebase.auth().signInWithPopup(provider);
-      await this.SubmitProfileInfo();
+      await this.submitProfileInfo();
       this.setState({
         loading: false,
         redirectToMain: true,
@@ -36,7 +36,7 @@ export default class LoginScreenContainer extends Component {
     const provider = new firebase.auth.FacebookAuthProvider();
     try {
       await firebase.auth().signInWithPopup(provider);
-      await this.SubmitProfileInfo();
+      await this.submitProfileInfo();
       this.setState({
         loading: false,
         redirectToMain: true,
@@ -49,22 +49,25 @@ export default class LoginScreenContainer extends Component {
       });
     }
   };
-  SubmitProfileInfo = async () => {
-    const user = firebase.auth();
-    const {
-      displayName,
-      photoURL,
-      providerId,
-      uid,
-    } = user.currentUser.providerData[0];
+  submitProfileInfo = async () => {
+    const user = firebase.auth().currentUser;
+
+    // currentUser에 있는 정보를 사용함
+    const { displayName, photoURL, uid } = user;
+    // 제공업체 정보는 providerDat에 있어서 따로 지정함
+    const { providerId } = user.providerData[0];
+    console.log(providerId);
+
+    console.log(providerId.search('com'));
     await firebase
       .database()
       .ref(`users/${uid}`)
-      .set({
+      .update({
         profileInfo: {
-          displayName,
+          nickName: displayName,
           photoURL,
           providerId,
+          uid,
         },
       });
   };
