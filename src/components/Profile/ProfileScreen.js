@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ProfileHeader from './ProfileHeader';
 import ProfilePhotoContainer from '../../containers/Profile/ProfilePhotoContainer';
 import ProfileNickNameContainer from '../../containers/Profile/ProfileNickNameContainer';
+import ProfileProviderContainer from '../../containers/Profile/ProfileProviderContainer';
 
 import './ProfileScreen.css';
 
@@ -19,6 +20,7 @@ export default class ProfileScreen extends Component {
         <ProfileHeader />
         <ProfilePhotoContainer />
         <ProfileNickNameContainer />
+        <ProfileProviderContainer />
       </ProfileWrap>
     );
   }

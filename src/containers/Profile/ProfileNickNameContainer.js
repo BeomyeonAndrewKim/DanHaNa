@@ -1,67 +1,44 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import * as firebase from 'firebase';
 
 import ProfileNickName from '../../components/Profile/ProfileNickName';
 
-export default class ProfileNickNameContainer extends Component {
+import { fetchProfileInfo } from '../../ducks/profile';
+
+class ProfileNickNameContainer extends Component {
   state = {
     nickName: '',
-    newNickName: '',
   };
-  componentWillMount() {
+  componentDidMount() {
     // 파이어베이스에 닉네임이 있다면 받아오기
-    this.onLoadProfileNickName();
+    this.props.onMount();
   }
-  onLoadProfileNickName = async () => {
-    const snapshot = await firebase
-      .database()
-      .ref(`user/nickName`)
-      .once('value');
-    const repo = snapshot.val();
-    if (repo) {
-      const [repos] = Object.values(repo);
-      this.setState({
-        nickName: repos,
-      });
-    } else {
-      this.setState({
-        nickName: repo,
-      });
-    }
-  };
+
   handleNickNameChange = e => {
-    /* 정규표현식
-    const str = '가나다abc123';
-    const pattern = /^[a-zA-Zㄱ-힣0-9]*$/;
-
-    if (str.match(pattern).length > 0) {
-      // 패턴이 일치함, 코드는 여기
-    } else {
-      // 패턴이 일치하지 않음
-    }
-    */
-    const newNickName = e.target.value;
-
     this.setState({
-      newNickName,
+      nickName: e.target.value,
     });
   };
 
   handleNickNameEditSave = async () => {
+    const { profileInfo } = this.props;
+    const { uid } = profileInfo;
     await firebase
       .database()
-      .ref(`user/nickName`)
-      .set({
-        nickName: this.state.newNickName,
+      .ref(`users/${uid}/profileInfo/`)
+      .update({
+        nickName: this.state.nickName,
       });
-    this.onLoadProfileNickName();
+    this.props.onMount();
   };
-  refreshNickName = () => {};
   render() {
+    console.log(this.props);
+    const { onMount, ...rest } = this.props;
     return (
       <div>
         <ProfileNickName
-          {...this.state}
+          {...rest}
           handleNickNameChange={this.handleNickNameChange}
           handleNickNameEditSave={this.handleNickNameEditSave}
           refreshNickName={this.refreshNickName}
@@ -70,3 +47,17 @@ export default class ProfileNickNameContainer extends Component {
     );
   }
 }
+
+export default connect(
+  // mapStateToProps
+  state => ({
+    loading: state.profile.loading,
+    profileInfo: state.profile.profileInfo,
+  }),
+  // mapDispatchToprops
+  dispatch => ({
+    onMount: () => {
+      dispatch(fetchProfileInfo());
+    },
+  }),
+)(ProfileNickNameContainer);

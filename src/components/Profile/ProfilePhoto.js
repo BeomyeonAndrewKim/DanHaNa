@@ -11,25 +11,25 @@ const ProfilePhotoWrap = styled.div`
 
 export default class ProfilePhoto extends Component {
   static defaultProps = {
-    fileUrl: '',
     loading: '',
     onUploadFile: () => {},
+    profileInfo: {},
   };
   render() {
-    console.log(this.props);
-    const { loading, fileUrl, onUploadFile } = this.props;
+    // console.log(this.props);
+    const { loading, onUploadFile, profileInfo } = this.props;
     return (
       <ProfilePhotoWrap>
         <div className="profilePhoto">
           {loading ? (
             <LoadingIndicator />
-          ) : fileUrl ? (
+          ) : profileInfo ? (
             <div
               style={{
                 width: '200px',
                 height: '200px',
                 borderRadius: '50%',
-                backgroundImage: `url(${fileUrl})`,
+                backgroundImage: `url(${profileInfo.photoURL})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 resizeMode: 'cover',
