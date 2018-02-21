@@ -8,6 +8,9 @@ export default class LoginScreenContainer extends Component {
     loading: false,
     redirectToMain: false,
   };
+  componentWillMount() {
+    console.log();
+  }
   handleLoginClick = () => {
     this.setState({
       loading: true,
@@ -49,6 +52,9 @@ export default class LoginScreenContainer extends Component {
       });
     }
   };
+  checkExistUser = async () => {
+    firebase.database().ref(`users/`);
+  };
   submitProfileInfo = async () => {
     const user = firebase.auth().currentUser;
 
@@ -56,23 +62,27 @@ export default class LoginScreenContainer extends Component {
     const { displayName, photoURL, uid } = user;
     // 제공업체 정보는 providerDat에 있어서 따로 지정함
     const { providerId } = user.providerData[0];
-    console.log(providerId);
-
-    console.log(providerId.search('com'));
-    await firebase
+    const snapshot = await firebase
       .database()
-      .ref(`users/${uid}`)
-      .update({
-        profileInfo: {
-          nickName: displayName,
-          photoURL,
-          providerId,
-          uid,
-        },
-      });
+      .ref(`users/${uid}/profileInfo`)
+      .once('value');
+    const profileInfo = snapshot.val();
+    if (!profileInfo) {
+      await firebase
+        .database()
+        .ref(`users/${uid}`)
+        .update({
+          profileInfo: {
+            nickName: displayName,
+            photoURL,
+            providerId,
+            uid,
+          },
+        });
+    }
   };
   render() {
-    if (this.state.redirectToMain) {
+    if (window.localStorage.getItem('introdone') || this.state.redirectToMain) {
       return <Redirect to="/main" />;
     }
     return (
