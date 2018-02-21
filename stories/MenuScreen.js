@@ -5,4 +5,5 @@ import MenuScreen from '../src/components/Menu/MenuScreen';
 
 storiesOf('MenuScreen', module)
   .addDecorator(StoryRouter())
-  .add('default', () => <MenuScreen />);
+  .add('default', () => <MenuScreen />)
+  .add('opend', () => <MenuScreen collapsed />);
