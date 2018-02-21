@@ -45,7 +45,7 @@ export default class MenuScreen extends Component {
 
   render() {
     return (
-      <divs>
+      <div>
         {this.props.collapsed && (
           <MenuCloseEl
             className="menu-close"
@@ -100,7 +100,7 @@ export default class MenuScreen extends Component {
             </Menu.Item>
           </Menu>
         </div>
-      </divs>
+      </div>
     );
   }
 }
