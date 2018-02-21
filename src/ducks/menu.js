@@ -41,18 +41,15 @@ export default function(state = initialState, action) {
 
 export const fetchMenuList = () => async dispatch => {
   const { currentUser } = firebase.auth();
-  if (!currentUser) {
+  if (currentUser) {
+    dispatch(loadingMenu());
+    const { uid } = currentUser;
+    const snapshot = await firebase
+      .database()
+      .ref(`users/${uid}`)
+      .once('value');
+    const profileObj = snapshot.val();
+    const { profileInfo } = profileObj;
+    dispatch(loadedMenu(profileInfo));
   }
-  // dispatch(loadingMenu());
-
-  // // console.log(currentUser);
-
-  // const { uid } = currentUser.providerData[0];
-  // const snapshot = await firebase
-  //   .database()
-  //   .ref(`users/${uid}`)
-  //   .once('value');
-  // const profileObj = snapshot.val();
-  // const { profileInfo } = profileObj;
-  // dispatch(loadedMenu(profileInfo));
 };
