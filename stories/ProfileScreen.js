@@ -13,7 +13,7 @@ const dummyProfileInfo = {
     'https://localmarketingplus.ca/wp-content/uploads/2015/02/blue-head.jpg',
 };
 
-storiesOf('Profile', module)
+storiesOf('ProfileScreen', module)
   .addDecorator(StoryRouter())
   .add('default', () => (
     <div>
