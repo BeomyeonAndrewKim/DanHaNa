@@ -9,9 +9,6 @@ export default function withAuth(WrappedComponent) {
     state = {
       currentUser: false,
       loading: false,
-      displayName: '',
-      photoURL: '',
-      providerId: '',
     };
 
     componentWillMount() {
@@ -41,9 +38,8 @@ export default function withAuth(WrappedComponent) {
       }
     }
     render() {
-      const { ...rest } = this.state;
       if (this.state.currentUser) {
-        return <WrappedComponent {...rest} />;
+        return <WrappedComponent />;
       } else if (this.state.loading) {
         return <LoadingIndicator />;
       }
