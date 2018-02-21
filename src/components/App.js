@@ -9,6 +9,7 @@ import LoginScreenContainer from '../containers/Login/LoginScreenContainer';
 import IntroScreen from '../components/Intro/IntroScreen';
 import Profile from '../components/Profile/ProfileScreen';
 import MainScreenContainer from '../containers/Main/MainScreenContainer';
+import MissionScreeenContainer from '../containers/Mission/MissionScreenContainer';
 import withAuth from '../hocs/withAuth';
 
 /* eslint-disable no-underscore-dangle */
@@ -26,6 +27,10 @@ export default class extends Component {
             <Route path="/login" component={LoginScreenContainer} />
             <Route path="/profile" component={withAuth(Profile)} />
             <Route path="/main" component={withAuth(MainScreenContainer)} />
+            <Route
+              path="/mission"
+              component={withAuth(MissionScreeenContainer)}
+            />
           </div>
         </BrowserRouter>
       </Provider>
