@@ -25,7 +25,7 @@ export default class extends Component {
             <Route path="/" exact component={IntroScreen} />
             <Route path="/login" component={LoginScreenContainer} />
             <Route path="/profile" component={withAuth(Profile)} />
-            <Route path="/main" component={MainScreenContainer} />
+            <Route path="/main" component={withAuth(MainScreenContainer)} />
           </div>
         </BrowserRouter>
       </Provider>
