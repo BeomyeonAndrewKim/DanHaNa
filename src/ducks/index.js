@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import menu from './menu';
+import main from './main';
 import profile from './profile';
 
 const reducers = combineReducers({
-  menu,
+  main,
   profile,
 });
 

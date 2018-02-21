@@ -1,0 +1,63 @@
+.MainScreen {
+  width: 100vw;
+  height: 100vh;
+  display: blcok;
+  position: relative;
+}
+
+.MainScreen__todo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 30vh;
+  border: 1px solid black;
+}
+
+.MainScreen__todo__add {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  font-size: 50px;
+}
+
+.MainScreen__todo__check {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  top: 70%;
+  font-size: 50px;
+}
+
+.MainScreen__todo__req {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin-top: 170px;
+  text-align: center;
+}
+
+.MainScreen__todo__title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin-top: 70px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.MainScreen__curstep {
+  display: inline-block;
+  font-size: 2.5rem;
+}
+
+.MainScreen__steps {
+  font-size: 1rem;
+}
+/*# sourceMappingURL=MainScreen.css.map */
