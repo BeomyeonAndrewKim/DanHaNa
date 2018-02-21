@@ -1,0 +1,59 @@
+@mixin title(){
+  font-size:20px;
+  padding: 20px 0;
+}
+@mixin body(){
+  padding:20px 0;
+}
+
+.MissionScreen{
+  &__header{
+    text-align: center;
+    height: 50px;
+    background-color: #E0E0E0;
+    display: block;
+    font-size: 20px;
+    line-height: 50px;
+    &__icon{
+      position: absolute;
+      left: 5px;
+      font-size:25px;
+      line-height:50px
+    }
+  }
+  &__main{
+    margin: 0 auto;
+    margin-top: 30px;
+    width:70vw;
+    &__todo{
+      margin-bottom: 40px;
+      &__title{
+        @include title()
+      }
+      &__body{
+        @include body()
+      }
+    }
+    &__memo{
+      margin-bottom:40px;
+      &__title{
+        @include title()
+      }
+      &__body{
+        @include body()
+      }
+    }
+    &__steps{
+      margin-bottom:40px;
+      &__title{
+        @include title()
+      }
+      &__body{
+        @include body()
+      }
+    }
+    &__fixcount{
+      text-align: center;
+    }
+  }
+}
