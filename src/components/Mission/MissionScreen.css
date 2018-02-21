@@ -1,0 +1,65 @@
+.MissionScreen__header {
+  text-align: center;
+  height: 50px;
+  background-color: #E0E0E0;
+  display: block;
+  font-size: 20px;
+  line-height: 50px;
+}
+
+.MissionScreen__header__icon {
+  position: absolute;
+  left: 5px;
+  font-size: 25px;
+  line-height: 50px;
+}
+
+.MissionScreen__main {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 70vw;
+}
+
+.MissionScreen__main__todo {
+  margin-bottom: 40px;
+}
+
+.MissionScreen__main__todo__title {
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.MissionScreen__main__todo__body {
+  padding: 20px 0;
+}
+
+.MissionScreen__main__memo {
+  margin-bottom: 40px;
+}
+
+.MissionScreen__main__memo__title {
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.MissionScreen__main__memo__body {
+  padding: 20px 0;
+}
+
+.MissionScreen__main__steps {
+  margin-bottom: 40px;
+}
+
+.MissionScreen__main__steps__title {
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.MissionScreen__main__steps__body {
+  padding: 20px 0;
+}
+
+.MissionScreen__main__fixcount {
+  text-align: center;
+}
+/*# sourceMappingURL=MissionScreen.css.map */
