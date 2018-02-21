@@ -4,15 +4,32 @@ import MenuScreen from '../../components/Menu/MenuScreen';
 
 class MenuScreenContainer extends Component {
   static defaultProps = {
-    profileInfo: {},
+    userInfo: {},
+    todoInfo: {},
+  };
+
+  state = {
+    collapsed: false,
+  };
+
+  handleToggleMenu = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
   };
 
   render() {
-    const { ...rest } = this.props;
-    return <MenuScreen {...rest} />;
+    return (
+      <MenuScreen
+        {...this.state}
+        {...this.props}
+        handleToggleMenu={this.handleToggleMenu}
+      />
+    );
   }
 }
 
 export default connect(state => ({
-  profileInfo: state.menu.profileInfo,
+  todoInfo: state.main.todoInfo,
+  userInfo: state.main.userInfo,
 }))(MenuScreenContainer);

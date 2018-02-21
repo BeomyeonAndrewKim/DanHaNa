@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Icon, Button } from 'antd';
+import { Menu, Icon, Button, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import './MenuScreen.css';
@@ -14,52 +14,53 @@ const MenuCloseEl = styled.div`
 
 export default class MenuScreen extends Component {
   static defaultProps = {
-    profileInfo: {},
-  };
-  state = {
+    userInfo: {},
+    todoInfo: {},
+    pageToMission: false,
     collapsed: false,
   };
-  handleToggleMenu = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
+
   handleCloseMenuLayout = e => {
     if (e.target.className.includes('menu-close')) {
-      this.handleToggleMenu();
+      this.props.handleToggleMenu();
     }
-    return null;
   };
-  handleCloseBtn = info => {
-    if (info.key === '1') {
-      this.handleToggleMenu();
+
+  handleMenuList = info => {
+    switch (info.key) {
+      case '1':
+        this.props.handleToggleMenu();
+        break;
+      case '4':
+        if (!this.props.todoInfo.fixcount) {
+          Modal.error({
+            title: '더 이상 수정이 불가합니다.',
+            content: '신중하게 목표를 설정해주세요.',
+          });
+        }
+        break;
+      default:
     }
-    return null;
   };
-  makeCloseMenuLayout = () => {
-    if (this.state.collapsed) {
-      return (
-        <MenuCloseEl
-          className="menu-close"
-          onClick={this.handleCloseMenuLayout}
-        />
-      );
-    }
-    return null;
-  };
+
   render() {
     return (
-      <div>
-        <Button type="primary" onClick={this.handleToggleMenu}>
-          <Icon type={this.state.collapsed ? 'menu-fold' : 'menu-unfold'} />
+      <divs>
+        {this.props.collapsed && (
+          <MenuCloseEl
+            className="menu-close"
+            onClick={this.handleCloseMenuLayout}
+          />
+        )}
+        <Button type="primary" onClick={this.props.handleToggleMenu}>
+          <Icon type={this.props.collapsed ? 'menu-fold' : 'menu-unfold'} />
         </Button>
-        {this.makeCloseMenuLayout()}
         <div className="menu-screen">
           <Menu
             mode="inline"
             theme="light"
-            inlineCollapsed={!this.state.collapsed}
-            onClick={this.handleCloseBtn}
+            inlineCollapsed={!this.props.collapsed}
+            onClick={this.handleMenuList}
           >
             <Menu.Item className="close-btn" key="1">
               <Icon className="close-btn-icon" type="close" />
@@ -70,9 +71,9 @@ export default class MenuScreen extends Component {
                 <img
                   className="profileImg"
                   alt="프로필 사진"
-                  src={this.props.profileInfo.photoURL}
+                  src={this.props.userInfo.photoURL}
                 />
-                <figcaption>{this.props.profileInfo.nickName}</figcaption>
+                <figcaption>{this.props.userInfo.nickName}</figcaption>
               </figure>
             </Menu.Item>
             <Menu.Item key="3">
@@ -81,8 +82,9 @@ export default class MenuScreen extends Component {
               <span>프로필</span>
             </Menu.Item>
             <Menu.Item key="4">
+              {this.props.todoInfo.fixcount ? <Link to="/mission" /> : null}
               <Icon type="edit" />
-              <span>미션</span>
+              <span>미션 설정</span>
             </Menu.Item>
             <Menu.Item key="5">
               <Icon type="calendar" />
@@ -98,7 +100,7 @@ export default class MenuScreen extends Component {
             </Menu.Item>
           </Menu>
         </div>
-      </div>
+      </divs>
     );
   }
 }
