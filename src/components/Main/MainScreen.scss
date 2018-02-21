@@ -1,0 +1,58 @@
+$translateCenter:translate(-50%, -50%);
+
+@mixin center(){
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: $translateCenter;
+}
+@mixin horizonalCenter(){
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.MainScreen {
+  width: 100vw;
+  height: 100vh;
+  display: blcok;
+  position: relative;
+  &__todo{
+    @include center();
+    width: 80vw;
+    height: 30vh;
+    border: 1px solid black;
+    &__add{
+      @include center();
+      display: inline-block;
+      font-size: 50px; 
+    }
+    &__check{
+      @include horizonalCenter();
+      display: inline-block;
+      top: 70%;
+      font-size: 50px;
+    }
+    &__req{
+      @include horizonalCenter();
+      display: block;
+      margin-top: 170px;
+      text-align: center;
+    }
+    &__title{
+      @include horizonalCenter();
+      display: block;
+      margin-top: 70px;
+      text-align: center;
+      font-size:2rem
+    }
+  }
+  &__curstep{
+    display: inline-block;
+    font-size: 2.5rem;
+  }
+  &__steps{
+    font-size: 1rem;
+  }
+}
+
