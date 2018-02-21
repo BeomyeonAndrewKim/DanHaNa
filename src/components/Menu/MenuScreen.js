@@ -72,7 +72,7 @@ export default class MenuScreen extends Component {
                   alt="프로필 사진"
                   src={this.props.profileInfo.photoURL}
                 />
-                <figcaption>{this.props.profileInfo.displayName}</figcaption>
+                <figcaption>{this.props.profileInfo.nickName}</figcaption>
               </figure>
             </Menu.Item>
             <Menu.Item key="3">
