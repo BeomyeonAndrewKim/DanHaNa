@@ -8,7 +8,9 @@ import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 import { fetchBothInfo, fetchTodoInfo } from '../../ducks/main';
 import MenuScreenContainer from '../Menu/MenuScreenContainer';
 
-const THIS_WEEK = moment().format('YYYY-[W]ww');
+const THIS_WEEK = moment()
+  .isoWeekday(1)
+  .format('YYYY-[W]ww-D');
 
 const MainScreenWithLoading = withLoadingIndicator(MainScreen);
 
@@ -34,7 +36,7 @@ class MainScreenContainer extends Component {
     else if (this.props.todoInfo.curstep + 1 === this.props.todoInfo.steps) {
       await firebase
         .database()
-        .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
+        .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .update(
           {
             complete: true,
@@ -47,7 +49,7 @@ class MainScreenContainer extends Component {
     } else {
       await firebase
         .database()
-        .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
+        .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .update(
           {
             curstep: this.props.todoInfo.curstep + 1,
