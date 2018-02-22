@@ -34,7 +34,6 @@ class MissionScreenContainer extends Component {
       newTodo: nextProps.todoInfo.todo,
       newMemo: nextProps.todoInfo.memo,
       newSteps: nextProps.todoInfo.steps,
-      loading: nextProps.loading,
     });
   }
 
@@ -68,6 +67,12 @@ class MissionScreenContainer extends Component {
   handleStepsChange = value => {
     const regNumber = /^[0-9]*$/;
     if (regNumber.test(value)) {
+      if (value > 20) {
+        Modal.warning({
+          title: '20회 이상 설정 할 수 없습니다.',
+          content: '횟수를 다시 입력해주세요.',
+        });
+      }
       this.setState({
         newSteps: value,
       });
@@ -75,44 +80,58 @@ class MissionScreenContainer extends Component {
   };
 
   handleSetTodo = async () => {
-    await firebase
-      .database()
-      .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
-      .set(
-        {
-          todo: this.state.newTodo,
-          memo: this.state.newMemo,
-          steps: this.state.newSteps,
-          curstep: 0,
-          complete: false,
-          fixcount: 5,
-        },
-        () => {
-          this.props.onLoadTodo();
-        },
-      );
+    if (this.state.newSteps && this.state.newMemo && this.state.newTodo) {
+      await firebase
+        .database()
+        .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
+        .set(
+          {
+            todo: this.state.newTodo,
+            memo: this.state.newMemo,
+            steps: this.state.newSteps,
+            curstep: 0,
+            complete: false,
+            fixcount: 5,
+          },
+          () => {
+            this.props.onLoadTodo();
+          },
+        );
+    } else {
+      Modal.error({
+        title: '빈 칸을 모두 채워주세요.',
+        content: '다시 입력해주세요.',
+      });
+    }
   };
 
   handleUpdateTodo = async () => {
-    await firebase
-      .database()
-      .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
-      .update(
-        {
-          todo: this.state.newTodo,
-          memo: this.state.newMemo,
-          steps: this.state.newSteps,
-          complete: false,
-          curstep: 0,
-          fixcount: this.props.todoInfo.fixcount - 1,
-        },
-        () => {
-          this.props.onLoadTodo();
-          this.setState({
-            editTodo: false,
-          });
-        },
-      );
+    if (this.state.newSteps && this.state.newMemo && this.state.newTodo) {
+      await firebase
+        .database()
+        .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
+        .update(
+          {
+            todo: this.state.newTodo,
+            memo: this.state.newMemo,
+            steps: this.state.newSteps,
+            complete: false,
+            curstep: 0,
+            fixcount: this.props.todoInfo.fixcount - 1,
+          },
+          () => {
+            this.props.onLoadTodo();
+            this.setState({
+              editTodo: false,
+            });
+          },
+        );
+    } else {
+      Modal.error({
+        title: '빈 칸을 모두 채워주세요.',
+        content: '다시 입력해주세요.',
+      });
+    }
   };
 
   render() {
