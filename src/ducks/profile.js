@@ -39,7 +39,6 @@ export default function(state = initialState, action) {
 
 export const fetchProfileInfo = () => async dispath => {
   const { currentUser } = firebase.auth();
-
   if (currentUser) {
     const { uid } = currentUser;
     dispath(getProfileInfoRequest());

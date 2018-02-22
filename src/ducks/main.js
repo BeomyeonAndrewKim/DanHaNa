@@ -6,7 +6,9 @@ const LOADED_BOTH = 'main/LOADEDBOTH';
 const LOADED_USER = 'main/LOADEDUSER';
 const LOADED_TODO = 'main/LOADEDTODO';
 
-const THIS_WEEK = moment().format('YYYY-[W]ww');
+const THIS_WEEK = moment()
+  .isoWeekday(1)
+  .format('YYYY-[W]ww-D');
 
 export function loading() {
   return {
@@ -86,24 +88,12 @@ export const fetchBothInfo = () => async dispatch => {
     .once('value');
   const userObj = snapshot.val();
   const userInfo = userObj.profileInfo;
-  const todoInfo = userObj[THIS_WEEK];
-  dispatch(loadedBothInfo(userInfo, todoInfo));
-};
-
-export const fetchUserInfo = () => async dispatch => {
-  const { currentUser } = firebase.auth();
-  if (!currentUser) {
-    return;
+  if (userObj.todos) {
+    const todoInfo = userObj.todos[THIS_WEEK];
+    dispatch(loadedBothInfo(userInfo, todoInfo));
+  } else {
+    dispatch(loadedBothInfo(userInfo, {}));
   }
-  const { uid } = currentUser;
-  dispatch(loading());
-  const snapshot = await firebase
-    .database()
-    .ref(`users/${uid}`)
-    .once('value');
-  const userObj = snapshot.val();
-  const userInfo = userObj.profileInfo;
-  dispatch(loadedUserInfo(userInfo));
 };
 
 export const fetchTodoInfo = () => async dispatch => {
@@ -118,6 +108,10 @@ export const fetchTodoInfo = () => async dispatch => {
     .ref(`users/${uid}`)
     .once('value');
   const userObj = snapshot.val();
-  const todoInfo = userObj[THIS_WEEK];
-  dispatch(loadedTodoInfo(todoInfo));
+  if (userObj.todos) {
+    const todoInfo = userObj.todos[THIS_WEEK];
+    dispatch(loadedTodoInfo(todoInfo));
+  } else {
+    dispatch(loadedTodoInfo({}));
+  }
 };

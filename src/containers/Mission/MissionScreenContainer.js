@@ -7,7 +7,9 @@ import MissionScreen from '../../components/Mission/MissionScreen';
 import { fetchBothInfo, fetchTodoInfo } from '../../ducks/main';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 
-const THIS_WEEK = moment().format('YYYY-[W]ww');
+const THIS_WEEK = moment()
+  .isoWeekday(1)
+  .format('YYYY-[W]ww-D');
 
 const WithLoadingMissionScreen = withLoadingIndicator(MissionScreen);
 
@@ -83,7 +85,7 @@ class MissionScreenContainer extends Component {
     if (this.state.newSteps && this.state.newMemo && this.state.newTodo) {
       await firebase
         .database()
-        .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
+        .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .set(
           {
             todo: this.state.newTodo,
@@ -109,7 +111,7 @@ class MissionScreenContainer extends Component {
     if (this.state.newSteps && this.state.newMemo && this.state.newTodo) {
       await firebase
         .database()
-        .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
+        .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .update(
           {
             todo: this.state.newTodo,
