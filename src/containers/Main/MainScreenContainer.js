@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal } from 'antd';
 import * as firebase from 'firebase';
-import * as moment from 'moment';
+import moment from 'moment';
 import MainScreen from '../../components/Main/MainScreen';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 import { fetchBothInfo, fetchTodoInfo } from '../../ducks/main';
@@ -70,7 +70,7 @@ class MainScreenContainer extends Component {
     else if (this.props.todoInfo.complete) {
       await firebase
         .database()
-        .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
+        .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .update(
           {
             complete: false,
@@ -83,7 +83,7 @@ class MainScreenContainer extends Component {
     } else {
       await firebase
         .database()
-        .ref(`users/${this.props.userInfo.uid}/${THIS_WEEK}`)
+        .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .update(
           {
             curstep: this.props.todoInfo.curstep - 1,
