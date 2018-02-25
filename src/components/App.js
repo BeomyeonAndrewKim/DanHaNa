@@ -11,6 +11,7 @@ import Profile from '../components/Profile/ProfileScreen';
 import MainScreenContainer from '../containers/Main/MainScreenContainer';
 import MissionScreeenContainer from '../containers/Mission/MissionScreenContainer';
 import withAuth from '../hocs/withAuth';
+import AlarmScreenContainer from '../containers/Alarm/AlarmScreenContainer';
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -31,6 +32,7 @@ export default class extends Component {
               path="/mission"
               component={withAuth(MissionScreeenContainer)}
             />
+            <Route path="/alarm" component={withAuth(AlarmScreenContainer)} />
           </div>
         </BrowserRouter>
       </Provider>

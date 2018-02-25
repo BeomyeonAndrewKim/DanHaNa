@@ -1,0 +1,82 @@
+.ant-calendar-picker-icon {
+  transform: translateY(-12px);
+}
+
+.ant-time-picker-icon {
+  transform: translateY(-12px);
+}
+
+.underline {
+  border-bottom: 1px solid #C4D0D9;
+  display: block;
+  margin: 0 -100vw;
+  margin-bottom: 40px;
+}
+
+.AlarmScreen__header {
+  text-align: center;
+  height: 50px;
+  background-color: #E0E0E0;
+  display: block;
+  font-size: 20px;
+  line-height: 50px;
+}
+
+.AlarmScreen__header__icon {
+  position: absolute;
+  left: 5px;
+  font-size: 25px;
+  line-height: 50px;
+}
+
+.AlarmScreen__main {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 70vw;
+}
+
+.AlarmScreen__main__switch {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.AlarmScreen__main__switch__title {
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.AlarmScreen__main__switch__body {
+  transform: translateY(12px);
+}
+
+.AlarmScreen__main__datepick {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.AlarmScreen__main__datepick__title {
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.AlarmScreen__main__datepick__body {
+  transform: translateY(12px);
+}
+
+.AlarmScreen__main__timepick {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.AlarmScreen__main__timepick__title {
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.AlarmScreen__main__timepick__body {
+  transform: translateY(12px);
+}
+/*# sourceMappingURL=AlarmScreen.css.map */
