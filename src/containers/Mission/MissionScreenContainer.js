@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal } from 'antd';
 import * as firebase from 'firebase';
-import * as moment from 'moment';
+import moment from 'moment';
 import MissionScreen from '../../components/Mission/MissionScreen';
 import { fetchBothInfo, fetchTodoInfo } from '../../ducks/main';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
