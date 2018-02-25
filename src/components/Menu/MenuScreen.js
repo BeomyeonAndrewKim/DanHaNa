@@ -91,6 +91,7 @@ export default class MenuScreen extends Component {
               <span>캘린더</span>
             </Menu.Item>
             <Menu.Item key="6">
+              <Link to="alarm" />
               <Icon type="bell" />
               <span>알람</span>
             </Menu.Item>
