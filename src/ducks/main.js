@@ -1,10 +1,10 @@
 import * as firebase from 'firebase';
-import * as moment from 'moment';
+import moment from 'moment';
 
-const LOADING = 'main/LOADING';
-const LOADED_BOTH = 'main/LOADEDBOTH';
-const LOADED_USER = 'main/LOADEDUSER';
-const LOADED_TODO = 'main/LOADEDTODO';
+export const LOADING = 'main/LOADING';
+export const LOADED_BOTH = 'main/LOADEDBOTH';
+export const LOADED_USER = 'main/LOADEDUSER';
+export const LOADED_TODO = 'main/LOADEDTODO';
 
 const THIS_WEEK = moment()
   .isoWeekday(1)

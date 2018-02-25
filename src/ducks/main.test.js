@@ -6,11 +6,12 @@ import reducer, {
   loadedUserInfo,
   loadedTodoInfo,
   loadedBothInfo,
+  loading,
 } from './main';
 
 describe('article', () => {
   it('LOADING Action Test', () => {
-    const action = loadedUserInfo();
+    const action = loading();
     expect(action).toEqual({
       type: LOADING,
     });
@@ -18,14 +19,14 @@ describe('article', () => {
   it('LOADED_USER Action Test', () => {
     const action = loadedUserInfo({ a: '111' });
     expect(action).toEqual({
-      type: LOADED_TODO,
-      userInfㅁo: { a: '111' },
+      type: LOADED_USER,
+      userInfo: { a: '111' },
     });
   });
   it('LOADED_TODO Action Test', () => {
     const action = loadedTodoInfo({ b: '222' });
     expect(action).toEqual({
-      type: LOADED_USER,
+      type: LOADED_TODO,
       todoInfo: { b: '222' },
     });
   });
@@ -38,18 +39,19 @@ describe('article', () => {
     });
   });
   it('loadedUserInfo Reducer Test', () => {
-    const state = reducer(undefined, loadedUserInfo());
+    const state = reducer(undefined, loadedUserInfo({ b: 222 }));
     expect(state).toEqual({
-      loading: true,
-      userInfo: {},
+      loading: false,
       todoInfo: {},
+      userInfo: { b: 222 },
     });
   });
   it('loadedTodoInfo Reducer Test', () => {
     const state = reducer(undefined, loadedTodoInfo({ a: '111' }));
     expect(state).toEqual({
       loading: false,
-      userInfo: { a: '111' },
+      userInfo: {},
+      todoInfo: { a: '111' },
     });
   });
   it('loadedBothInfo Reducer Test', () => {
