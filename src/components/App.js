@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-
+import { Helmet } from 'react-helmet';
 import reducers from '../ducks/index';
 import LoginScreenContainer from '../containers/Login/LoginScreenContainer';
 import IntroScreen from '../components/Intro/IntroScreen';
