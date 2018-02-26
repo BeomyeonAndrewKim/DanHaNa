@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Modal } from 'antd';
 import * as firebase from 'firebase';
 import moment from 'moment';
+import html2canvas from 'html2canvas';
 import MainScreen from '../../components/Main/MainScreen';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 import { fetchBothInfo, fetchTodoInfo } from '../../ducks/main';
@@ -21,6 +22,10 @@ class MainScreenContainer extends Component {
     todoInfo: {},
     onMount: () => {},
     onLoadTodo: () => {},
+  };
+
+  state = {
+    showModal: false,
   };
 
   componentWillMount() {
@@ -95,14 +100,53 @@ class MainScreenContainer extends Component {
     }
   };
 
+  handleCameraIcon = async () => {
+    this.setState({
+      showModal: true,
+    });
+
+    await html2canvas(document.querySelector('.MainScreen__showtodo')).then(
+      canvas => {
+        document
+          .querySelector('.ant-modal-body')
+          .appendChild(canvas)
+          .classList.add('screenshotCanvas');
+        const ScreenshotUrl = document
+          .querySelector('.screenshotCanvas')
+          .toDataURL();
+        const downloadA = document.createElement('a');
+        downloadA.classList.add('downloadLink');
+        downloadA.textContent = '저장';
+        const downloadLink = document
+          .querySelector('.ant-modal-body')
+          .appendChild(downloadA);
+        downloadLink.href = ScreenshotUrl;
+        downloadLink.download = `${this.props.todoInfo.todo}.png`;
+      },
+    );
+  };
+
+  handleCloseScreenShot = () => {
+    this.setState({
+      showModal: false,
+    });
+    document.querySelector('.screenshotCanvas').remove();
+    document.querySelector('.downloadLink').remove();
+  };
+
   render() {
     return (
       <div>
         <MainScreenWithLoading
           {...this.props}
+          {...this.state}
           handleAddToDo={this.handleAddToDo}
           checkTodo={this.checkTodo}
           rollbackTodo={this.rollbackTodo}
+          handleCameraIcon={this.handleCameraIcon}
+          handleCloseScreenShot={this.handleCloseScreenShot}
+          handleSaveScreenShot={this.handleSaveScreenShot}
+          handleModalContiner={this.handleModalContiner}
           render={() => <MenuScreenContainer />}
         />
       </div>

@@ -1,13 +1,13 @@
 .ant-menu-inline-collapsed{
   width: 0;
   overflow: hidden;
-  height: 100vh;
+  height: calc(100vh - 32px);
 }
 .ant-menu-inline-collapsed-tooltip{
   display: none;
 }
 .ant-menu-light{
-  height: 100vh;
+  height: calc(100vh - 32px);
   z-index:2;
   position: relative;
 }

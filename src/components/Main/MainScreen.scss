@@ -11,12 +11,20 @@ $translateCenter:translate(-50%, -50%);
   left: 50%;
   transform: translateX(-50%);
 }
+@mixin max(){
+  height:100vh;
+  width:100vw;
+}
 
 .MainScreen {
   width: 100vw;
   height: 100vh;
   display: blcok;
   position: relative;
+  &__showtodo{
+    width: 100vw;
+    height: calc(100vh - 32px);
+  }
   &__todo{
     @include center();
     width: 80vw;
@@ -54,5 +62,57 @@ $translateCenter:translate(-50%, -50%);
   &__steps{
     font-size: 1rem;
   }
+  &__camera{
+    position: absolute;
+    font-size:40px;
+    right: 10px;
+    bottom: 10px;
+  }
+}
+.ant-modal{
+  margin:0;
+  top:initial;
+  @include max();
+  padding-bottom:initial;
+  position: relative;
 }
 
+.ant-modal-header{
+  display:none;
+}
+.ant-modal-close{
+  top:10%;
+  right:10%;
+}
+.ant-modal-content{
+  @include max();
+  position: absolute;
+  margin:0 auto;
+  border-radius: 0;
+  background-color: transparent;
+  background-clip:content-box;
+}
+
+.ant-modal-body{
+  @include max();
+  position: absolute;
+  padding:0;
+}
+.ant-modal-footer{
+  display:none;
+}
+.downloadLink{
+  @include horizonalCenter();
+  top:75%;
+  background-color: #9B9B9B;
+  padding:8px 20px;
+  color: #ffffff;
+  display: inline-block;
+  border:1px solid #9B9B9B;
+}
+.screenshotCanvas{
+  margin-top: 50%;
+  margin: 0 auto;
+  position: absolute;
+  transform: scale(0.8)
+}

@@ -5,6 +5,11 @@
   position: relative;
 }
 
+.MainScreen__showtodo {
+  width: 100vw;
+  height: calc(100vh - 32px);
+}
+
 .MainScreen__todo {
   position: absolute;
   top: 50%;
@@ -59,5 +64,70 @@
 
 .MainScreen__steps {
   font-size: 1rem;
+}
+
+.MainScreen__camera {
+  position: absolute;
+  font-size: 40px;
+  right: 10px;
+  bottom: 10px;
+}
+
+.ant-modal {
+  margin: 0;
+  top: initial;
+  height: 100vh;
+  width: 100vw;
+  padding-bottom: initial;
+  position: relative;
+}
+
+.ant-modal-header {
+  display: none;
+}
+
+.ant-modal-close {
+  top: 10%;
+  right: 10%;
+}
+
+.ant-modal-content {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  margin: 0 auto;
+  border-radius: 0;
+  background-color: transparent;
+  background-clip: content-box;
+}
+
+.ant-modal-body {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  padding: 0;
+}
+
+.ant-modal-footer {
+  display: none;
+}
+
+.downloadLink {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 75%;
+  background-color: #9B9B9B;
+  padding: 8px 20px;
+  color: #ffffff;
+  display: inline-block;
+  border: 1px solid #9B9B9B;
+}
+
+.screenshotCanvas {
+  margin-top: 50%;
+  margin: 0 auto;
+  position: absolute;
+  transform: scale(0.8);
 }
 /*# sourceMappingURL=MainScreen.css.map */

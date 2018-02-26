@@ -22,7 +22,7 @@ export default class MainScreen extends Component {
   );
 
   showToDoScreen = () => (
-    <div>
+    <div className="MainScreen__showtodo">
       <span className="MainScreen__curstep">{this.props.todoInfo.curstep}</span>
       <span className="MainScreen__steps">/{this.props.todoInfo.steps}</span>
       <div className="MainScreen__todo">
@@ -61,9 +61,22 @@ export default class MainScreen extends Component {
     return (
       <div className="MainScreen">
         {this.props.render()}
-        {this.props.todoInfo.todo
-          ? this.showToDoScreen()
-          : this.AddToDoScreen()}
+        {this.props.todoInfo.todo ? (
+          <div>
+            {this.showToDoScreen()}
+            <Icon
+              type="camera-o"
+              className="MainScreen__camera"
+              onClick={this.props.handleCameraIcon}
+            />
+            <Modal
+              visible={this.props.showModal}
+              onCancel={this.props.handleCloseScreenShot}
+            />
+          </div>
+        ) : (
+          this.AddToDoScreen()
+        )}
       </div>
     );
   }
