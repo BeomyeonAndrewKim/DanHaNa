@@ -24,18 +24,25 @@ export default class SNSShareScreen extends Component {
     return (
       <div>
         <Helmet>
-          <title>My Title</title>
-          <meta property="fb:app_id" content="APP_ID" />
-          <meta property="og:type" content="website" />
-          <meta property="og:title" content="웹 페이지 제목" />
-          <meta property="og:url" content="웹 페이지 URL" />
-          <meta property="og:description" content="웹 페이지 내용" />
-          <meta property="og:image" content="웹 페이지 대표 이미지" />
+          <meta
+            property="og:url"
+            content="https://Danhana.netlify.com.netlify.com/snsshare"
+          />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content="단 하나" />
+          <meta
+            property="og:description"
+            content="일주일에 단 하나의 목표를 설정하고 완료해보세요"
+          />
+          <meta
+            property="og:image"
+            content="https://firebasestorage.googleapis.com/v0/b/test-368e1.appspot.com/o/users%2FKerCHi8BRYeESR01zicIEPVtMDv1%2FphotoURL?alt=media&token=49c47130-a7ac-4e02-b7d8-f4df585fb8ce"
+          />
         </Helmet>
         <div id="fb-root">dd</div>
         <div
           className="fb-share-button"
-          data-href=""
+          data-href="https://Danhana.netlify.com.netlify.com/snsshare"
           data-layout="button"
           data-size="small"
           data-mobile-iframe="true"
