@@ -10,6 +10,7 @@ import IntroScreen from '../components/Intro/IntroScreen';
 import Profile from '../components/Profile/ProfileScreen';
 import MainScreenContainer from '../containers/Main/MainScreenContainer';
 import MissionScreeenContainer from '../containers/Mission/MissionScreenContainer';
+import SNSShareScreen from '../components/SNSShare/SNSShareScreen';
 import withAuth from '../hocs/withAuth';
 
 /* eslint-disable no-underscore-dangle */
@@ -31,6 +32,7 @@ export default class extends Component {
               path="/mission"
               component={withAuth(MissionScreeenContainer)}
             />
+            <Route path="/snsshare" component={SNSShareScreen} />
           </div>
         </BrowserRouter>
       </Provider>
