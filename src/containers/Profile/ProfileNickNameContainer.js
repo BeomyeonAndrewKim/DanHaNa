@@ -21,6 +21,10 @@ class ProfileNickNameContainer extends Component {
     });
   };
 
+  handleCancelClicked = () => {
+    this.props.onMount();
+  };
+
   handleNickNameEditSave = async () => {
     const { profileInfo } = this.props;
     const { uid } = profileInfo;
@@ -42,6 +46,7 @@ class ProfileNickNameContainer extends Component {
           handleNickNameChange={this.handleNickNameChange}
           handleNickNameEditSave={this.handleNickNameEditSave}
           refreshNickName={this.refreshNickName}
+          handleCancelClicked={this.handleCancelClicked}
         />
       </div>
     );
