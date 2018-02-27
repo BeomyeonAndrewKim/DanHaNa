@@ -25,6 +25,7 @@ export default class ProfileNickName extends Component {
     });
   };
   handleCancel = e => {
+    this.props.handleCancelClicked();
     console.log(e);
     this.setState({
       visible: false,
