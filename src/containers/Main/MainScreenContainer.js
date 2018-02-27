@@ -104,7 +104,6 @@ class MainScreenContainer extends Component {
     this.setState({
       showModal: true,
     });
-
     await html2canvas(document.querySelector('.MainScreen__showtodo')).then(
       canvas => {
         document
@@ -124,6 +123,16 @@ class MainScreenContainer extends Component {
         downloadLink.download = `${this.props.todoInfo.todo}.png`;
       },
     );
+    document.querySelector('.ant-modal').classList.add('screenshot-modal');
+    document
+      .querySelector('.ant-modal-close')
+      .classList.add('screenshot-modal-close');
+    document
+      .querySelector('.ant-modal-content')
+      .classList.add('screenshot-modal-content');
+    document
+      .querySelector('.ant-modal-body')
+      .classList.add('screenshot-modal-body');
   };
 
   handleCloseScreenShot = () => {
@@ -132,6 +141,16 @@ class MainScreenContainer extends Component {
     });
     document.querySelector('.screenshotCanvas').remove();
     document.querySelector('.downloadLink').remove();
+    document.querySelector('.ant-modal').classList.remove('screenshot-modal');
+    document
+      .querySelector('.ant-modal-close')
+      .classList.remove('screenshot-modal-close');
+    document
+      .querySelector('.ant-modal-content')
+      .classList.remove('screenshot-modal-content');
+    document
+      .querySelector('.ant-modal-body')
+      .classList.remove('screenshot-modal-body');
   };
 
   render() {

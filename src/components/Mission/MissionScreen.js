@@ -87,7 +87,6 @@ export default class MissionScreen extends Component {
   };
 
   render() {
-    console.log(this.props.todoInfo);
     return (
       <div className="MissionScreen">
         <div className="MissionScreen__header">

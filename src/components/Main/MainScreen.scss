@@ -69,38 +69,27 @@ $translateCenter:translate(-50%, -50%);
     bottom: 10px;
   }
 }
-.ant-modal{
+
+.screenshot-modal{
+  @include max();
   margin:0;
   top:initial;
-  @include max();
-  padding-bottom:initial;
-  position: relative;
 }
 
-.ant-modal-header{
-  display:none;
-}
-.ant-modal-close{
+.screenshot-modal-close{
   top:10%;
   right:10%;
 }
-.ant-modal-content{
+.screenshot-modal-content{
   @include max();
-  position: absolute;
-  margin:0 auto;
-  border-radius: 0;
   background-color: transparent;
-  background-clip:content-box;
 }
 
-.ant-modal-body{
+.screenshot-modal-body{
   @include max();
-  position: absolute;
   padding:0;
 }
-.ant-modal-footer{
-  display:none;
-}
+
 .downloadLink{
   @include horizonalCenter();
   top:75%;
