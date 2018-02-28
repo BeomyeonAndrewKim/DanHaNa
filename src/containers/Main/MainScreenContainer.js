@@ -133,6 +133,9 @@ class MainScreenContainer extends Component {
     document
       .querySelector('.ant-modal-body')
       .classList.add('screenshot-modal-body');
+    document
+      .querySelector('.ant-modal-footer')
+      .classList.add('screenshot-modal-footer');
   };
 
   handleCloseScreenShot = () => {
@@ -151,6 +154,9 @@ class MainScreenContainer extends Component {
     document
       .querySelector('.ant-modal-body')
       .classList.remove('screenshot-modal-body');
+    document
+      .querySelector('.ant-modal-footer')
+      .classList.remove('screenshot-modal-footer');
   };
 
   render() {

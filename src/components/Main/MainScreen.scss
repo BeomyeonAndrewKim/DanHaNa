@@ -71,7 +71,7 @@ $red: #d00;
   }
   &--stamp{
     position: relative;
-    top:35%;
+    top:20%;
     margin: 0 auto;
     height:70px;
     width:230px;
@@ -107,6 +107,10 @@ $red: #d00;
 .screenshot-modal-body{
   @include max();
   padding:0;
+}
+
+.screenshot-modal-footer{
+  display: none;
 }
 
 .downloadLink{

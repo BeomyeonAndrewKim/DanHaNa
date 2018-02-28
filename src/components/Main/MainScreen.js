@@ -53,10 +53,10 @@ export default class MainScreen extends Component {
         <span className="MainScreen__fixcount">
           {this.props.todoInfo.fixcount}
         </span>
+        {this.props.todoInfo.complete && (
+          <div className="MainScreen--stamp">미션 성공!</div>
+        )}
       </div>
-      {this.props.todoInfo.complete && (
-        <div className="MainScreen--stamp">미션 성공!</div>
-      )}
     </div>
   );
 
