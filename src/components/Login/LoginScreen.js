@@ -29,9 +29,15 @@ export default class LoginScreen extends Component {
     onLoading: '',
     onFacebookLogin: () => {},
     onGoogleLogin: () => {},
+    onTwitterLogin: () => {},
   };
   render() {
-    const { onLoading, onGoogleLogin, onFacebookLogin } = this.props;
+    const {
+      onLoading,
+      onGoogleLogin,
+      onFacebookLogin,
+      onTwitterLogin,
+    } = this.props;
     return (
       <div style={{ height: '100vh' }}>
         {onLoading ? (
@@ -48,6 +54,11 @@ export default class LoginScreen extends Component {
               <LoginListItem>
                 <LoginButton onClick={onGoogleLogin}>
                   <Icon type="google" /> Google
+                </LoginButton>
+              </LoginListItem>
+              <LoginListItem>
+                <LoginButton onClick={onTwitterLogin}>
+                  <Icon type="twitter" /> twitter
                 </LoginButton>
               </LoginListItem>
             </LoginList>
