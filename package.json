@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "antd": "^3.2.0",
+    "cra-append-sw": "^2.1.1",
     "firebase": "^4.9.1",
     "install-peerdeps": "^1.5.0",
     "npx": "^9.7.1",
+    "push.js": "^1.0.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -19,8 +21,8 @@
     "styled-components": "^3.1.6"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts build && cra-append-sw --mode dev ./firebase-messaging-sw.js",
+    "build": "react-scripts build && cra-append-sw --mode build ./firebase-messaging-sw.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook"
