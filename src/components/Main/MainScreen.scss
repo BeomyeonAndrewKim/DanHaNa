@@ -1,6 +1,8 @@
 $translateCenter:translate(-50%, -50%);
 $red: #d00;
 
+
+
 @mixin center(){
   position: absolute;
   top: 50%;
@@ -22,48 +24,79 @@ $red: #d00;
   height: 100vh;
   display: blcok;
   position: relative;
+  background-color: #EBEAEA;
+&__circle{
+  position: fixed;
+  background-color:red;
+  overflow: hidden;
+  border-radius: 100%;
+}
   &__showtodo{
     width: 100vw;
     height: calc(100vh - 32px);
+    &__wrapper{
+      @include center();
+      width: 80vw;
+      height:50vh;
+      margin:0 auto;
+    }
+  }
+  &__stepContainer{
+    &--curstep{
+      display: inline-block;
+      font-size: 3.5rem;
+    }
+    &--steps{
+      font-size: 1.5rem;
+    }
   }
   &__todo{
-    @include center();
     width: 80vw;
     height: 30vh;
-    border: 1px solid black;
+    border: 1px solid#979797;
+    background-color:#ffffff;
+    &__noData{
+      @include center();
+    }
     &__add{
+      cursor: pointer;
       @include center();
       display: inline-block;
       font-size: 50px; 
     }
     &__check{
+      cursor: pointer;
       @include horizonalCenter();
+      border:1px solid #c9c7c7;
+      border-radius: 50%;
+      background-color:#D8D8D8;
+      padding:5px;
       display: inline-block;
-      top: 70%;
-      font-size: 50px;
+      top: 65%;
+      font-size: 4rem;
     }
     &__req{
+      cursor: pointer;
       @include horizonalCenter();
       display: block;
       margin-top: 170px;
       text-align: center;
     }
     &__title{
-      @include horizonalCenter();
       display: block;
-      margin-top: 70px;
+      margin: 3rem; 
+      margin-top:4rem;
       text-align: center;
       font-size:2rem
     }
   }
-  &__curstep{
-    display: inline-block;
-    font-size: 2.5rem;
-  }
-  &__steps{
-    font-size: 1rem;
+  &__rollback{
+    display: block;
+    text-align: right;
+    font-size: 1.5rem;
   }
   &__camera{
+    cursor: pointer;
     position: absolute;
     font-size:40px;
     right: 10px;
@@ -71,11 +104,11 @@ $red: #d00;
   }
   &--stamp{
     position: relative;
-    top:20%;
+    top:-7rem;
     margin: 0 auto;
     height:70px;
-    width:230px;
-    font-size: 50px;
+    width:225px;
+    font-size: 3rem;
     line-height: 45px;
     font-weight: bold;
     color: red;

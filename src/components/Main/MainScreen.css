@@ -3,6 +3,14 @@
   height: 100vh;
   display: blcok;
   position: relative;
+  background-color: #EBEAEA;
+}
+
+.MainScreen__circle {
+  position: fixed;
+  background-color: red;
+  overflow: hidden;
+  border-radius: 100%;
 }
 
 .MainScreen__showtodo {
@@ -10,17 +18,41 @@
   height: calc(100vh - 32px);
 }
 
-.MainScreen__todo {
+.MainScreen__showtodo__wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
+  height: 50vh;
+  margin: 0 auto;
+}
+
+.MainScreen__stepContainer--curstep {
+  display: inline-block;
+  font-size: 3.5rem;
+}
+
+.MainScreen__stepContainer--steps {
+  font-size: 1.5rem;
+}
+
+.MainScreen__todo {
+  width: 80vw;
   height: 30vh;
-  border: 1px solid black;
+  border: 1px solid #979797;
+  background-color: #ffffff;
+}
+
+.MainScreen__todo__noData {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .MainScreen__todo__add {
+  cursor: pointer;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -30,15 +62,21 @@
 }
 
 .MainScreen__todo__check {
+  cursor: pointer;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  border: 1px solid #c9c7c7;
+  border-radius: 50%;
+  background-color: #D8D8D8;
+  padding: 5px;
   display: inline-block;
-  top: 70%;
-  font-size: 50px;
+  top: 65%;
+  font-size: 4rem;
 }
 
 .MainScreen__todo__req {
+  cursor: pointer;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -48,25 +86,21 @@
 }
 
 .MainScreen__todo__title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: block;
-  margin-top: 70px;
+  margin: 3rem;
+  margin-top: 4rem;
   text-align: center;
   font-size: 2rem;
 }
 
-.MainScreen__curstep {
-  display: inline-block;
-  font-size: 2.5rem;
-}
-
-.MainScreen__steps {
-  font-size: 1rem;
+.MainScreen__rollback {
+  display: block;
+  text-align: right;
+  font-size: 1.5rem;
 }
 
 .MainScreen__camera {
+  cursor: pointer;
   position: absolute;
   font-size: 40px;
   right: 10px;
@@ -75,11 +109,11 @@
 
 .MainScreen--stamp {
   position: relative;
-  top: 20%;
+  top: -7rem;
   margin: 0 auto;
   height: 70px;
-  width: 230px;
-  font-size: 50px;
+  width: 225px;
+  font-size: 3rem;
   line-height: 45px;
   font-weight: bold;
   color: red;

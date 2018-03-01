@@ -12,50 +12,52 @@ export default class MainScreen extends Component {
     checkTodo: () => {},
   };
 
+  componentDidMount() {
+    const circle = document.querySelector('.MainScreen__circle');
+    const size =
+      `${this.props.todoInfo.curstep}` / `${this.props.todoInfo.steps}`;
+    circle.style.width = `calc(1000px * ${size})`;
+    circle.style.height = `calc(1000px * ${size})`;
+  }
+
   AddToDoScreen = () => (
-    <div className="MainScreen__todo">
-      <Link to="/mission">
-        <Icon className="MainScreen__todo__add" type="plus" />
-      </Link>
-      <p className="MainScreen__todo__req">새로운 미션을 시작해보세요</p>
+    <div className="MainScreen__todo__noData">
+      <div className="MainScreen__todo">
+        <Link to="/mission">
+          <Icon className="MainScreen__todo__add" type="plus" />
+        </Link>
+        <p className="MainScreen__todo__req">새로운 미션을 시작해보세요</p>
+      </div>
     </div>
   );
 
   showToDoScreen = () => (
     <div className="MainScreen__showtodo">
-      <span className="MainScreen__curstep">{this.props.todoInfo.curstep}</span>
-      <span className="MainScreen__steps">/{this.props.todoInfo.steps}</span>
-      <div className="MainScreen__todo">
-        <p className="MainScreen__todo__title">{this.props.todoInfo.todo}</p>
+      <div className="MainScreen__showtodo__wrapper">
+        <div className="MainScreen__stepContainer">
+          <span className="MainScreen__stepContainer--curstep animated bounceIn">
+            {this.props.todoInfo.curstep}
+          </span>
+          <span className="MainScreen__todo__stepContainer--steps">
+            /{this.props.todoInfo.steps}
+          </span>
+        </div>
+        <div className="MainScreen__todo">
+          <p className="MainScreen__todo__title">{this.props.todoInfo.todo}</p>
+          <Icon
+            className="MainScreen__todo__check"
+            type="check"
+            onClick={this.props.checkTodo}
+          />
+          {this.props.todoInfo.complete && (
+            <div className="MainScreen--stamp">미션 성공!</div>
+          )}
+        </div>
         <Icon
-          className="MainScreen__todo__rollback"
+          className="MainScreen__rollback"
           type="rollback"
           onClick={this.props.rollbackTodo}
         />
-        <Icon
-          className="MainScreen__todo__check"
-          type="check"
-          onClick={this.props.checkTodo}
-        />
-        <Link to={this.props.todoInfo.fixcount ? '/mission' : '/main'}>
-          <Icon
-            className="MainScreen__todo__edit"
-            type="edit"
-            onClick={() =>
-              this.props.todoInfo.fixcount === 0 &&
-              Modal.error({
-                title: '더 이상 수정이 불가합니다.',
-                content: '신중하게 목표를 설정해주세요.',
-              })
-            }
-          />
-        </Link>
-        <span className="MainScreen__fixcount">
-          {this.props.todoInfo.fixcount}
-        </span>
-        {this.props.todoInfo.complete && (
-          <div className="MainScreen--stamp">미션 성공!</div>
-        )}
       </div>
     </div>
   );
@@ -63,6 +65,7 @@ export default class MainScreen extends Component {
   render() {
     return (
       <div className="MainScreen">
+        <div className="MainScreen__circle animated zoomIn" />
         {this.props.render()}
         {this.props.todoInfo.todo ? (
           <div>
