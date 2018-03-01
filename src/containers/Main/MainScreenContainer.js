@@ -47,7 +47,8 @@ class MainScreenContainer extends Component {
   }
 
   checkTodo = async () => {
-    if (this.state.curstep + 1 === this.state.steps) {
+    if (this.state.curstep === this.state.steps);
+    else if (this.state.curstep + 1 === this.state.steps) {
       await firebase
         .database()
         .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
@@ -81,12 +82,12 @@ class MainScreenContainer extends Component {
   };
 
   rollbackTodo = async () => {
-    if (this.state.curstep === 0)
+    if (this.state.curstep === 0) {
       Modal.error({
         title: '이미 스텝이 0입니다.',
         content: 'some messages...some messages...',
       });
-    else if (this.state.complete) {
+    } else if (this.state.complete) {
       await firebase
         .database()
         .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)

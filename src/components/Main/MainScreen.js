@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Icon, Modal } from 'antd';
 import { Link } from 'react-router-dom';
+import throttle from 'lodash.throttle';
 import './MainScreen.css';
 
 export default class MainScreen extends Component {
@@ -13,15 +14,20 @@ export default class MainScreen extends Component {
   };
 
   componentDidMount() {
-    const circle = document.querySelector('.MainScreen__circle');
-    const size = `${this.props.curstep}` / `${this.props.steps}`;
-    circle.style.transform = `scale(${size})`;
+    this.changeCircleSize();
   }
+
   componentDidUpdate() {
+    this.changeCircleSize();
+  }
+
+  changeCircleSize = () => {
     const circle = document.querySelector('.MainScreen__circle');
     const size = `${this.props.curstep}` / `${this.props.steps}`;
-    circle.style.transform = `scale(${size})`;
-  }
+    circle.style.width = `calc(100vh * ${size})`;
+    circle.style.height = `calc(100vh * ${size})`;
+    circle.style.transition = 'width 0.3s, height 0.3s';
+  };
 
   MissionSuccess = () => {
     Modal.success({
@@ -60,7 +66,7 @@ export default class MainScreen extends Component {
       <div className="MainScreen__showtodo">
         <div className="MainScreen__showtodo__wrapper">
           <div className="MainScreen__stepContainer">
-            <span className="MainScreen__stepContainer--curstep animated bounceIn">
+            <span className="MainScreen__stepContainer--curstep">
               {this.props.curstep}
             </span>
             <span className="MainScreen__stepContainer--steps">
@@ -70,7 +76,7 @@ export default class MainScreen extends Component {
           <Icon
             className="MainScreen__rollback"
             type="rollback"
-            onClick={this.props.rollbackTodo}
+            onClick={throttle(this.props.rollbackTodo, 2000)}
           />
           <div className="MainScreen__todo">
             <div className="MainScreen__todo__wrapper">
@@ -83,7 +89,9 @@ export default class MainScreen extends Component {
               className="MainScreen__todo__check"
               type={this.props.complete ? 'gift' : 'check'}
               onClick={
-                this.props.complete ? this.MissionSuccess : this.props.checkTodo
+                this.props.complete
+                  ? this.MissionSuccess
+                  : throttle(this.props.checkTodo, 2000)
               }
             />
           </div>

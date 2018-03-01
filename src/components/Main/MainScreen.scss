@@ -27,13 +27,9 @@ $red: #d00;
   background-color: #EBEAEA;
   overflow: hidden;
   &__circle{
-    height: 250vh;
-    width:250vh;
-    top:-125%;
-    left:-120%;
-    position: absolute;
-    background-color:violet;
+    @include center();
     border-radius: 100%;
+    background-color:violet;
   }
   &__showtodo{
     width: 100vw;
