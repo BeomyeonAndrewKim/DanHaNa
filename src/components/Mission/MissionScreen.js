@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Icon, Input, Button, InputNumber } from 'antd';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import './MissionScreen.css';
 
 const { TextArea } = Input;
@@ -33,7 +34,9 @@ export default class MissionScreen extends Component {
             placeholder="미션을 입력하세요"
             size="large"
             onChange={this.props.handleTodoChange}
-            defaultValue={this.props.todoInfo.todo}
+            defaultValue={
+              this.props.todoInfo.complete ? '' : this.props.todoInfo.todo
+            }
             maxLength={20}
             minLength={1}
           />
@@ -59,7 +62,9 @@ export default class MissionScreen extends Component {
             placeholder="메모를 입력하세요."
             rows={2}
             onChange={this.props.handleMemoChange}
-            defaultValue={this.props.todoInfo.memo}
+            defaultValue={
+              this.props.todoInfo.complete ? '' : this.props.todoInfo.memo
+            }
             maxLength={100}
             minLength={1}
           />
@@ -84,7 +89,9 @@ export default class MissionScreen extends Component {
           <InputNumber
             max={20}
             min={1}
-            defaultValue={this.props.todoInfo.steps}
+            defaultValue={
+              this.props.todoInfo.complete ? '' : this.props.todoInfo.steps
+            }
             onChange={this.props.handleStepsChange}
             formatter={value => value.replace(/[^0-9]/g, '')}
           />
@@ -99,6 +106,18 @@ export default class MissionScreen extends Component {
   };
 
   render() {
+    const THIS_WEEK_DP = `${moment()
+      .isoWeekday(1)
+      .format('YYYY-MM-DD')}~${moment()
+      .isoWeekday(7)
+      .format('YYYY-MM-DD')}`;
+    const NEXT_WEEK_DP = `${moment()
+      .add(1, 'weeks')
+      .isoWeekday(1)
+      .format('YYYY-MM-DD')}~${moment()
+      .add(1, 'weeks')
+      .isoWeekday(7)
+      .format('YYYY-MM-DD')}`;
     return (
       <div className="MissionScreen">
         <div className="MissionScreen__header">
@@ -108,6 +127,9 @@ export default class MissionScreen extends Component {
           미션
         </div>
         <div className="MissionScreen__main">
+          <div className="MissionScreen__main__week">
+            <p>{this.props.todoInfo.complete ? NEXT_WEEK_DP : THIS_WEEK_DP}</p>
+          </div>
           <div className="MissionScreen__main__todo">
             <p className="MissionScreen__main__todo__title">미션</p>
             {this.handleTodoBody()}
