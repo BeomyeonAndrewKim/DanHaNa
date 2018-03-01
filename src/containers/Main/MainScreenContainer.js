@@ -17,31 +17,50 @@ class MainScreenContainer extends Component {
   static defaultProps = {
     loading: false,
     userInfo: {},
-    todoInfo: {},
     onMount: () => {},
     onLoadTodo: () => {},
   };
 
   state = {
     showModal: false,
+    todo: '',
+    memo: '',
+    curstep: 0,
+    steps: 0,
+    fixcount: 0,
+    complete: false,
   };
 
   componentWillMount() {
     this.props.onMount();
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      todo: nextProps.todoInfo.todo,
+      memo: nextProps.todoInfo.memo,
+      curstep: nextProps.todoInfo.curstep,
+      steps: nextProps.todoInfo.steps,
+      fixcount: nextProps.todoInfo.fixcount,
+      complete: nextProps.todoInfo.complete,
+    });
+  }
+
   checkTodo = async () => {
-    if (this.props.todoInfo.curstep + 1 === this.props.todoInfo.steps) {
+    if (this.state.curstep + 1 === this.state.steps) {
       await firebase
         .database()
         .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .update(
           {
             complete: true,
-            curstep: this.props.todoInfo.curstep + 1,
+            curstep: this.state.curstep + 1,
           },
           () => {
-            this.props.onLoadTodo();
+            this.setState({
+              complete: true,
+              curstep: this.state.curstep + 1,
+            });
           },
         );
     } else {
@@ -50,32 +69,37 @@ class MainScreenContainer extends Component {
         .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .update(
           {
-            curstep: this.props.todoInfo.curstep + 1,
+            curstep: this.state.curstep + 1,
           },
           () => {
-            this.props.onLoadTodo();
+            this.setState({
+              curstep: this.state.curstep + 1,
+            });
           },
         );
     }
   };
 
   rollbackTodo = async () => {
-    if (this.props.todoInfo.curstep === 0)
+    if (this.state.curstep === 0)
       Modal.error({
         title: '이미 스텝이 0입니다.',
         content: 'some messages...some messages...',
       });
-    else if (this.props.todoInfo.complete) {
+    else if (this.state.complete) {
       await firebase
         .database()
         .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .update(
           {
             complete: false,
-            curstep: this.props.todoInfo.curstep - 1,
+            curstep: this.state.curstep - 1,
           },
           () => {
-            this.props.onLoadTodo();
+            this.setState({
+              complete: false,
+              curstep: this.state.curstep - 1,
+            });
           },
         );
     } else {
@@ -84,10 +108,12 @@ class MainScreenContainer extends Component {
         .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
         .update(
           {
-            curstep: this.props.todoInfo.curstep - 1,
+            curstep: this.state.curstep - 1,
           },
           () => {
-            this.props.onLoadTodo();
+            this.setState({
+              curstep: this.state.curstep - 1,
+            });
           },
         );
     }

@@ -120,7 +120,8 @@
 
 .MainScreen__todo__title {
   position: absolute;
-  padding: 3rem 2.5rem;
+  width: inherit;
+  padding: 3rem 0;
   display: block;
   text-align: center;
   font-size: 2rem;

@@ -14,8 +14,12 @@ export default class MainScreen extends Component {
 
   componentDidMount() {
     const circle = document.querySelector('.MainScreen__circle');
-    const size =
-      `${this.props.todoInfo.curstep}` / `${this.props.todoInfo.steps}`;
+    const size = `${this.props.curstep}` / `${this.props.steps}`;
+    circle.style.transform = `scale(${size})`;
+  }
+  componentDidUpdate() {
+    const circle = document.querySelector('.MainScreen__circle');
+    const size = `${this.props.curstep}` / `${this.props.steps}`;
     circle.style.transform = `scale(${size})`;
   }
 
@@ -57,10 +61,10 @@ export default class MainScreen extends Component {
         <div className="MainScreen__showtodo__wrapper">
           <div className="MainScreen__stepContainer">
             <span className="MainScreen__stepContainer--curstep animated bounceIn">
-              {this.props.todoInfo.curstep}
+              {this.props.curstep}
             </span>
             <span className="MainScreen__stepContainer--steps">
-              /{this.props.todoInfo.steps}
+              /{this.props.steps}
             </span>
           </div>
           <Icon
@@ -70,20 +74,16 @@ export default class MainScreen extends Component {
           />
           <div className="MainScreen__todo">
             <div className="MainScreen__todo__wrapper">
-              <p className="MainScreen__todo__title">
-                {this.props.todoInfo.todo}
-              </p>
-              {this.props.todoInfo.complete && (
+              <p className="MainScreen__todo__title">{this.props.todo}</p>
+              {this.props.complete && (
                 <div className="MainScreen__todo--stamp">미션 성공!</div>
               )}
             </div>
             <Icon
               className="MainScreen__todo__check"
-              type={this.props.todoInfo.complete ? 'gift' : 'check'}
+              type={this.props.complete ? 'gift' : 'check'}
               onClick={
-                this.props.todoInfo.complete
-                  ? this.MissionSuccess
-                  : this.props.checkTodo
+                this.props.complete ? this.MissionSuccess : this.props.checkTodo
               }
             />
           </div>
@@ -95,9 +95,9 @@ export default class MainScreen extends Component {
   render() {
     return (
       <div className="MainScreen">
-        <div className="MainScreen__circle animated zoomIn" />
+        <div className="MainScreen__circle" />
         {this.props.render()}
-        {this.props.todoInfo.todo ? (
+        {this.props.todo ? (
           <div>
             {this.showToDoScreen()}
             <Icon
