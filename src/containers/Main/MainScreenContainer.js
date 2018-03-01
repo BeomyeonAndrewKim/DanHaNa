@@ -33,12 +33,7 @@ class MainScreenContainer extends Component {
   }
 
   checkTodo = async () => {
-    if (this.props.todoInfo.complete)
-      Modal.warning({
-        title: '이미 목표를 달성했습니다.',
-        content: 'some messages...some messages...',
-      });
-    else if (this.props.todoInfo.curstep + 1 === this.props.todoInfo.steps) {
+    if (this.props.todoInfo.curstep + 1 === this.props.todoInfo.steps) {
       await firebase
         .database()
         .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)

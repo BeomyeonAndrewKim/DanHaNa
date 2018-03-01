@@ -25,38 +25,68 @@ $red: #d00;
   display: blcok;
   position: relative;
   background-color: #EBEAEA;
-&__circle{
-  position: fixed;
-  background-color:red;
   overflow: hidden;
-  border-radius: 100%;
-}
+  &__circle{
+    height: 250vh;
+    width:250vh;
+    top:-125%;
+    left:-120%;
+    position: absolute;
+    background-color:violet;
+    border-radius: 100%;
+  }
   &__showtodo{
     width: 100vw;
     height: calc(100vh - 32px);
+    background-color: #EBEAEA;
     &__wrapper{
       @include center();
       width: 80vw;
-      height:50vh;
       margin:0 auto;
     }
   }
   &__stepContainer{
+    display: inline-block;
     &--curstep{
-      display: inline-block;
       font-size: 3.5rem;
     }
     &--steps{
       font-size: 1.5rem;
     }
   }
+  &__rollback{
+    display: inline-block;
+    position: absolute;
+    right:0;
+    margin-top:1rem;
+    font-size: 1.5rem;
+  }
   &__todo{
-    width: 80vw;
-    height: 30vh;
-    border: 1px solid#979797;
-    background-color:#ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     &__noData{
       @include center();
+    }
+    &__wrapper{
+      width: 80vw;
+      height: 30vh;
+      border: 1px solid#979797;
+      background-color:#ffffff;
+    }
+    &--stamp{
+      font-size: 4rem;
+      font-weight: bold;
+      width:300px;
+      margin: 7vh auto;
+      color: red;
+      border: 7px solid red;
+      padding: 10px 7px;
+      border-radius:5px;
+      animation-name: pulse;
+      animation-duration: 0.5s;
+      opacity: 0;
+      animation-fill-mode:forwards;
     }
     &__add{
       cursor: pointer;
@@ -66,13 +96,12 @@ $red: #d00;
     }
     &__check{
       cursor: pointer;
-      @include horizonalCenter();
+      transform: translateY(-50%);
       border:1px solid #c9c7c7;
       border-radius: 50%;
       background-color:#D8D8D8;
       padding:5px;
       display: inline-block;
-      top: 65%;
       font-size: 4rem;
     }
     &__req{
@@ -83,18 +112,14 @@ $red: #d00;
       text-align: center;
     }
     &__title{
+      position: absolute;
+      padding: 3rem 2.5rem;
       display: block;
-      margin: 3rem; 
-      margin-top:4rem;
       text-align: center;
-      font-size:2rem
+      font-size:2rem;
     }
   }
-  &__rollback{
-    display: block;
-    text-align: right;
-    font-size: 1.5rem;
-  }
+  
   &__camera{
     cursor: pointer;
     position: absolute;
@@ -102,23 +127,25 @@ $red: #d00;
     right: 10px;
     bottom: 10px;
   }
-  &--stamp{
-    position: relative;
-    top:-7rem;
-    margin: 0 auto;
-    height:70px;
-    width:225px;
-    font-size: 3rem;
-    line-height: 45px;
-    font-weight: bold;
-    color: red;
-    border: 7px solid red;
-    padding: 10px 7px;
-    border-radius:5px;
-    animation-name: pulse;
-    animation-duration: 0.5s;
-    opacity: 0;
-    animation-fill-mode:forwards;
+}
+
+.SuccessModal{
+  &__sns{
+    text-align: center;
+    font-size:2rem;
+    &__facebook{
+      padding:2rem;
+    }
+    &__twitter{
+      padding:2rem;
+    }
+  }
+  &__mission{
+    font-size:2rem;
+    text-align:center;
+    &__edit{
+      padding:2rem;
+    }
   }
 }
 
