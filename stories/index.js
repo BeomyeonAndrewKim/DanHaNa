@@ -4,3 +4,4 @@ import './MainScreen';
 import './IntroScreen';
 import './ProfileScreen';
 import './MenuScreen';
+import './CalendarScreen';
