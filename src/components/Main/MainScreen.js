@@ -42,7 +42,7 @@ export default class MainScreen extends Component {
 
   AddToDoScreen = () => (
     <div className="MainScreen__todo__noData">
-      <div className="MainScreen__todo">
+      <div className="MainScreen__todo__wrapper">
         <Link to="/mission">
           <Icon className="MainScreen__todo__add" type="plus" />
         </Link>

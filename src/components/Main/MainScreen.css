@@ -114,7 +114,7 @@
   left: 50%;
   transform: translateX(-50%);
   display: block;
-  margin-top: 170px;
+  bottom: 2rem;
   text-align: center;
 }
 
