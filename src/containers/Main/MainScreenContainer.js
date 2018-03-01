@@ -11,7 +11,7 @@ import MenuScreenContainer from '../Menu/MenuScreenContainer';
 
 const THIS_WEEK = moment()
   .isoWeekday(1)
-  .format('YYYY-[W]ww-D');
+  .format('YYYY-[W]ww');
 
 const MainScreenWithLoading = withLoadingIndicator(MainScreen);
 

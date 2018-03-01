@@ -9,7 +9,7 @@ import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 
 const THIS_WEEK = moment()
   .isoWeekday(1)
-  .format('YYYY-[W]ww-D');
+  .format('YYYY-[W]ww');
 
 const WithLoadingMissionScreen = withLoadingIndicator(MissionScreen);
 
