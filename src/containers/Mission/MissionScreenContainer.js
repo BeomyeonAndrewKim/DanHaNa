@@ -108,7 +108,7 @@ class MissionScreenContainer extends Component {
   };
 
   handleUpdateTodo = async () => {
-    if (this.state.newSteps && this.state.newMemo && this.state.newTodo) {
+    if (this.state.newSteps && this.state.newTodo) {
       await firebase
         .database()
         .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
