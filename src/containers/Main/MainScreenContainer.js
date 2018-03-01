@@ -9,9 +9,7 @@ import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 import { fetchBothInfo, fetchTodoInfo } from '../../ducks/main';
 import MenuScreenContainer from '../Menu/MenuScreenContainer';
 
-const THIS_WEEK = moment()
-  .isoWeekday(1)
-  .format('YYYY-[W]ww');
+const THIS_WEEK = moment().format('YYYY-[W]ww');
 
 const MainScreenWithLoading = withLoadingIndicator(MainScreen);
 
