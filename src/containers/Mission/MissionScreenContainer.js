@@ -25,6 +25,7 @@ class MissionScreenContainer extends Component {
     newTodo: '',
     newMemo: '',
     newSteps: 1,
+    editTodo: false,
   };
 
   componentWillMount() {

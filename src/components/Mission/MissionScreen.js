@@ -20,7 +20,11 @@ export default class MissionScreen extends Component {
   };
 
   handleTodoBody = () => {
-    if (this.props.editTodo || !this.props.todoInfo.todo)
+    if (
+      this.props.editTodo ||
+      !this.props.todoInfo.todo ||
+      this.props.todoInfo.complete
+    )
       return (
         <div>
           <Input
@@ -30,10 +34,10 @@ export default class MissionScreen extends Component {
             size="large"
             onChange={this.props.handleTodoChange}
             defaultValue={this.props.todoInfo.todo}
-            maxLength={30}
+            maxLength={20}
             minLength={1}
           />
-          <p>30자까지 입력 가능합니다.</p>
+          <p>20자까지 입력 가능합니다.</p>
         </div>
       );
     return (
@@ -44,7 +48,11 @@ export default class MissionScreen extends Component {
   };
 
   handleMemoBody = () => {
-    if (this.props.editTodo || !this.props.todoInfo.memo)
+    if (
+      this.props.editTodo ||
+      !this.props.todoInfo.memo ||
+      this.props.todoInfo.complete
+    )
       return (
         <div className="MissionScreen__main__memo__body">
           <TextArea
@@ -66,7 +74,11 @@ export default class MissionScreen extends Component {
   };
 
   handleStepsBody = () => {
-    if (this.props.editTodo || !this.props.todoInfo.steps)
+    if (
+      this.props.editTodo ||
+      !this.props.todoInfo.steps ||
+      this.props.todoInfo.complete
+    )
       return (
         <div className="MissionScreen__main__steps__body">
           <InputNumber
@@ -108,7 +120,9 @@ export default class MissionScreen extends Component {
             <p className="MissionScreen__main__steps__title">횟수</p>
             {this.handleStepsBody()}
           </div>
-          {this.props.editTodo || !this.props.todoInfo.todo ? (
+          {this.props.editTodo ||
+          !this.props.todoInfo.todo ||
+          this.props.todoInfo.complete ? (
             <div>
               <Button
                 type="primary"
