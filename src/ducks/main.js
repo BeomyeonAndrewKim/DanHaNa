@@ -6,9 +6,7 @@ const LOADED_BOTH = 'main/LOADEDBOTH';
 const LOADED_USER = 'main/LOADEDUSER';
 const LOADED_TODO = 'main/LOADEDTODO';
 
-const THIS_WEEK = moment()
-  .isoWeekday(1)
-  .format('YYYY-[W]ww-D');
+const THIS_WEEK = moment().format('YYYY-[W]ww');
 
 export function loading() {
   return {

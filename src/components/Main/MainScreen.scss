@@ -1,4 +1,7 @@
 $translateCenter:translate(-50%, -50%);
+$red: #d00;
+
+
 
 @mixin center(){
   position: absolute;
@@ -21,52 +24,125 @@ $translateCenter:translate(-50%, -50%);
   height: 100vh;
   display: blcok;
   position: relative;
+  background-color: #EBEAEA;
+  overflow: hidden;
+  &__circle{
+    @include center();
+    border-radius: 100%;
+    background-color:violet;
+  }
   &__showtodo{
     width: 100vw;
     height: calc(100vh - 32px);
+    background-color: #EBEAEA;
+    &__wrapper{
+      @include center();
+      width: 80vw;
+      margin:0 auto;
+    }
+  }
+  &__stepContainer{
+    display: inline-block;
+    &--curstep{
+      font-size: 3.5rem;
+    }
+    &--steps{
+      font-size: 1.5rem;
+    }
+  }
+  &__rollback{
+    display: inline-block;
+    position: absolute;
+    right:0;
+    margin-top:1rem;
+    font-size: 1.5rem;
   }
   &__todo{
-    @include center();
-    width: 80vw;
-    height: 30vh;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__noData{
+      @include center();
+    }
+    &__wrapper{
+      width: 80vw;
+      height: 30vh;
+      border: 1px solid#979797;
+      background-color:#ffffff;
+    }
+    &--stamp{
+      font-size: 4rem;
+      font-weight: bold;
+      width:300px;
+      margin: 7vh auto;
+      color: red;
+      border: 7px solid red;
+      padding: 10px 7px;
+      border-radius:5px;
+      animation-name: pulse;
+      animation-duration: 0.5s;
+      opacity: 0;
+      animation-fill-mode:forwards;
+    }
     &__add{
+      cursor: pointer;
       @include center();
       display: inline-block;
       font-size: 50px; 
     }
     &__check{
-      @include horizonalCenter();
+      cursor: pointer;
+      transform: translateY(-50%);
+      border:1px solid #c9c7c7;
+      border-radius: 50%;
+      background-color:#D8D8D8;
+      padding:5px;
       display: inline-block;
-      top: 70%;
-      font-size: 50px;
+      font-size: 4rem;
     }
     &__req{
+      cursor: pointer;
       @include horizonalCenter();
       display: block;
-      margin-top: 170px;
+      bottom:2rem;
       text-align: center;
     }
     &__title{
-      @include horizonalCenter();
+      position: absolute;
+      width:inherit;
+      padding: 3rem 0;
       display: block;
-      margin-top: 70px;
       text-align: center;
-      font-size:2rem
+      font-size:2rem;
     }
   }
-  &__curstep{
-    display: inline-block;
-    font-size: 2.5rem;
-  }
-  &__steps{
-    font-size: 1rem;
-  }
+  
   &__camera{
+    cursor: pointer;
     position: absolute;
     font-size:40px;
     right: 10px;
     bottom: 10px;
+  }
+}
+
+.SuccessModal{
+  &__sns{
+    text-align: center;
+    font-size:2rem;
+    &__facebook{
+      padding:2rem;
+    }
+    &__twitter{
+      padding:2rem;
+    }
+  }
+  &__mission{
+    font-size:2rem;
+    text-align:center;
+    &__edit{
+      padding:2rem;
+    }
   }
 }
 
@@ -90,6 +166,10 @@ $translateCenter:translate(-50%, -50%);
   padding:0;
 }
 
+.screenshot-modal-footer{
+  display: none;
+}
+
 .downloadLink{
   @include horizonalCenter();
   top:75%;
@@ -104,4 +184,20 @@ $translateCenter:translate(-50%, -50%);
   margin: 0 auto;
   position: absolute;
   transform: scale(0.8)
+}
+
+@keyframes pulse{
+  0%{
+    opacity: 0;
+  }
+  10%{
+    opacity:.50;
+    transform-origin: 50% 50%;
+    transform: rotate(-2deg) scale(5);
+    transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  }
+  100%{
+    opacity:.70;
+    transform: rotate(-15deg) scale(1);
+  }
 }

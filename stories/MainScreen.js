@@ -10,6 +10,9 @@ storiesOf('MainScreen', module)
   .add('Mission', () => (
     <MainScreen
       render={() => {}}
-      todoInfo={{ todo: 'TEST', steps: 10, curstep: 5, fixcount: 5 }}
+      todo="TEST"
+      steps={10}
+      curstep={5}
+      fixcount={5}
     />
   ));
