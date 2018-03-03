@@ -91,6 +91,7 @@ class EditThisMissionContainer extends Component {
             this.setState({
               editTodo: false,
             });
+            window.localStorage.setItem('successdone', false);
           },
         );
     } else {

@@ -6,8 +6,7 @@ import './MainScreen.css';
 
 export default class MainScreen extends Component {
   static defaultProps = {
-    todoInfo: {},
-    userinfo: {},
+    userInfo: {},
     loading: false,
     rollbackTodo: () => {},
     checkTodo: () => {},
@@ -44,6 +43,10 @@ export default class MainScreen extends Component {
     </div>
   );
 
+  showSuccessModal = () => {
+    if (window.localStorage.getItem('successdone') === 'false')
+      this.props.MissionSuccessModal();
+  };
   showToDoScreen = () => (
     <div>
       <div className="MainScreen__showtodo">
@@ -68,7 +71,7 @@ export default class MainScreen extends Component {
               <p className="MainScreen__todo__title">{this.props.todo}</p>
               {this.props.complete && this.MissionSuccessStamp()}
               {this.props.complete &&
-                setTimeout(() => this.props.MissionSuccessModal(), 1000)}
+                setTimeout(() => this.showSuccessModal(), 1000)}
             </div>
             <Icon
               className="MainScreen__todo__check"

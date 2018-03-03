@@ -7,9 +7,9 @@ import './MissionScreen.css';
 const { TextArea } = Input;
 
 const THIS_WEEK_DP = `${moment()
-  .isoWeekday(1)
+  .day(1)
   .format('YYYY-MM-DD')}~${moment()
-  .isoWeekday(7)
+  .day(7)
   .format('YYYY-MM-DD')}`;
 
 export default class MissionScreen extends Component {

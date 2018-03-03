@@ -8,10 +8,10 @@ const { TextArea } = Input;
 
 const NEXT_WEEK_DP = `${moment()
   .add(1, 'weeks')
-  .isoWeekday(1)
+  .day(1)
   .format('YYYY-MM-DD')}~${moment()
   .add(1, 'weeks')
-  .isoWeekday(7)
+  .day(7)
   .format('YYYY-MM-DD')}`;
 export default class MissionScreen extends Component {
   static defaultProps = {

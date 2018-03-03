@@ -24,9 +24,6 @@ class ShowNextWeekMissionContainer extends Component {
   componentWillMount() {
     this.props.onLoadNextWeek();
   }
-  componentDidMount() {
-    if (!this.props.nextWeek.todo) this.askNewNextWeekMission();
-  }
 
   handleEditTodo = () => {
     if (this.props.nextWeek.fixcount === 0)
@@ -38,25 +35,6 @@ class ShowNextWeekMissionContainer extends Component {
       this.setState({
         editTodo: true,
       });
-  };
-
-  askNewNextWeekMission = () => {
-    const that = this;
-    Modal.confirm({
-      title: '다음주 미션을 설정하시겠습니까?',
-      content:
-        '이번주 미션을 완료하면 다음주 미션 설정이 가능합니다. 취소시 메인화면으로 돌아갑니다.',
-      onOk() {
-        that.setState({
-          editTodo: true,
-        });
-      },
-      onCancel() {
-        that.setState({
-          redirectToMain: true,
-        });
-      },
-    });
   };
 
   render() {

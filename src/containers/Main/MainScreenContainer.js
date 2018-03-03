@@ -6,7 +6,7 @@ import moment from 'moment';
 import html2canvas from 'html2canvas';
 import MainScreen from '../../components/Main/MainScreen';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
-import { fetchBothInfo } from '../../ducks/main';
+import { fetchBothInfo, fetchTodoInfo } from '../../ducks/main';
 import MenuScreenContainer from '../Menu/MenuScreenContainer';
 
 const THIS_WEEK = moment().format('YYYY-[W]ww');
@@ -17,6 +17,7 @@ class MainScreenContainer extends Component {
   static defaultProps = {
     loading: false,
     userInfo: {},
+    todoInfo: {},
     onMount: () => {},
   };
 
@@ -62,10 +63,7 @@ class MainScreenContainer extends Component {
               curstep: that.state.curstep + 1,
             },
             () => {
-              that.setState({
-                complete: true,
-                curstep: that.state.curstep + 1,
-              });
+              that.props.onLoadTodo();
             },
           );
       },
@@ -88,8 +86,14 @@ class MainScreenContainer extends Component {
           <div className="SuccessModal__mission">
             <Icon type="edit" className="SuccessModal__mission__edit" />
           </div>
+          <p className="SUccessModal__message">
+            아래 선물 아이콘을 누르면 이 메세지를 다시 보실 수 있습니다.
+          </p>
         </div>
       ),
+      onOk() {
+        window.localStorage.setItem('successdone', true);
+      },
     });
   };
 
@@ -209,7 +213,6 @@ class MainScreenContainer extends Component {
           handleCameraIcon={this.handleCameraIcon}
           handleCloseScreenShot={this.handleCloseScreenShot}
           handleSaveScreenShot={this.handleSaveScreenShot}
-          handleModalContiner={this.handleModalContiner}
           MissionSuccessModal={this.MissionSuccessModal}
           render={() => <MenuScreenContainer />}
         />
@@ -226,6 +229,9 @@ export default connect(
   dispatch => ({
     onMount: () => {
       dispatch(fetchBothInfo());
+    },
+    onLoadTodo: () => {
+      dispatch(fetchTodoInfo());
     },
   }),
 )(MainScreenContainer);
