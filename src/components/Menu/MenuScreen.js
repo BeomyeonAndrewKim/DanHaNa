@@ -32,7 +32,7 @@ export default class MenuScreen extends Component {
         this.props.handleToggleMenu();
         break;
       case '4':
-        if (!this.props.todoInfo.fixcount) {
+        if (!this.props.todoInfo.fixcount && !this.props.todoInfo.complete) {
           Modal.error({
             title: '더 이상 수정이 불가합니다.',
             content: '신중하게 목표를 설정해주세요.',
@@ -82,7 +82,15 @@ export default class MenuScreen extends Component {
               <span>프로필</span>
             </Menu.Item>
             <Menu.Item key="4">
-              {this.props.todoInfo.fixcount ? <Link to="/mission" /> : null}
+              {this.props.todoInfo.fixcount ? (
+                <Link
+                  to={
+                    this.props.todoInfo.complete
+                      ? '/nextweekmission'
+                      : '/thisweekmission'
+                  }
+                />
+              ) : null}
               <Icon type="edit" />
               <span>미션 설정</span>
             </Menu.Item>

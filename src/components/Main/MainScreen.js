@@ -29,31 +29,14 @@ export default class MainScreen extends Component {
     circle.style.transition = 'width 0.3s, height 0.3s';
   };
 
-  MissionSuccess = () => {
-    Modal.success({
-      title: '미션 달성을 축하드립니다!',
-      content: (
-        <div className="SuccessModal">
-          <p className="SuccessModal__message">친구들에게 자랑해보세요.</p>
-          <div className="SuccessModal__sns">
-            <Icon className="SuccessModal__sns__facebook" type="facebook" />
-            <Icon className="SuccessModal__sns__twitter" type="twitter" />
-          </div>
-          <p className="SUccessModal__message">
-            다음주 미션을 미리 설정하세요.
-          </p>
-          <div className="SuccessModal__mission">
-            <Icon type="edit" className="SuccessModal__mission__edit" />
-          </div>
-        </div>
-      ),
-    });
-  };
+  MissionSuccessStamp = () => (
+    <div className="MainScreen__todo--stamp">미션 성공!</div>
+  );
 
   AddToDoScreen = () => (
     <div className="MainScreen__todo__noData">
       <div className="MainScreen__todo__wrapper">
-        <Link to="/mission">
+        <Link to="/editthisweekmission">
           <Icon className="MainScreen__todo__add" type="plus" />
         </Link>
         <p className="MainScreen__todo__req">새로운 미션을 시작해보세요</p>
@@ -73,26 +56,24 @@ export default class MainScreen extends Component {
               /{this.props.steps}
             </span>
           </div>
-          <Icon
-            className="MainScreen__rollback"
-            type="rollback"
-            onClick={throttle(this.props.rollbackTodo, 2000)}
-          />
+          {!this.props.complete && (
+            <Icon
+              className="MainScreen__rollback"
+              type="rollback"
+              onClick={throttle(() => this.props.rollbackTodo(), 2000)}
+            />
+          )}
           <div className="MainScreen__todo">
             <div className="MainScreen__todo__wrapper">
               <p className="MainScreen__todo__title">{this.props.todo}</p>
-              {this.props.complete && (
-                <div className="MainScreen__todo--stamp">미션 성공!</div>
-              )}
+              {this.props.complete && this.MissionSuccessStamp()}
+              {this.props.complete &&
+                setTimeout(() => this.props.MissionSuccessModal(), 1000)}
             </div>
             <Icon
               className="MainScreen__todo__check"
-              type={this.props.complete ? 'gift' : 'check'}
-              onClick={
-                this.props.complete
-                  ? this.MissionSuccess
-                  : throttle(this.props.checkTodo, 2000)
-              }
+              type="check"
+              onClick={throttle(() => this.props.checkTodo(), 2000)}
             />
           </div>
         </div>
