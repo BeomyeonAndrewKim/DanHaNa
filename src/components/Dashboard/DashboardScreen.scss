@@ -1,0 +1,21 @@
+.DashboardScreen{
+  &__header{
+    text-align: center;
+    height: 50px;
+    background-color: #E0E0E0;
+    display: block;
+    font-size: 20px;
+    line-height: 50px;
+    &__icon{
+      position: absolute;
+      left: 5px;
+      font-size:25px;
+      line-height:50px
+    }
+  }
+  &__main{
+    margin: 0 auto;
+    margin-top: 30px;
+    width:70vw;
+  }
+}
