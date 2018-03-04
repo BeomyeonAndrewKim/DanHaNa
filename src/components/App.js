@@ -13,6 +13,7 @@ import ShowThisWeekMissionContainer from '../containers/Mission/ShowThisWeekMiss
 import EditThisWeekMissionContainer from '../containers/Mission/EditThisWeekMissionContainer';
 import ShowNextWeekMissionContainer from '../containers/Mission/ShowNextWeekMissionContainer';
 import EditNextWeekMissionContainer from '../containers/Mission/EditNextWeekMissonContainer';
+import DashboardScreenContainer from '../containers/Dashboard/DashboardScreenContainer';
 import withAuth from '../hocs/withAuth';
 
 /* eslint-disable no-underscore-dangle */
@@ -45,6 +46,10 @@ export default class extends Component {
             <Route
               path="/editnextweekmission"
               component={withAuth(EditNextWeekMissionContainer)}
+            />
+            <Route
+              path="/dashboard"
+              component={withAuth(DashboardScreenContainer)}
             />
           </div>
         </BrowserRouter>
