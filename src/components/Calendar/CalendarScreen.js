@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as moment from 'moment';
 import 'react-dates/initialize';
-import { DayPickerRangeController, isSameDay } from 'react-dates';
+import { DayPickerRangeController } from 'react-dates';
 import { Modal, Button } from 'antd';
 import 'react-dates/lib/css/_datepicker.css';
 
@@ -29,17 +29,17 @@ export default class CalendarScreen extends Component {
       mission: a,
     });
   }
-  componentDidUpdate() {
-    if (this.state.mission[0]) {
-      console.log('z');
-      datesList.push(moment());
-      // for (let i = 0; i < 6; i++) {
-      // console.log(moment(this.state.mission[0][0]).add(i, 'days'));
-      // datesList.push(moment().add(3, 'days'));
-      // }
-      // console.log(datesList);
-    }
-  }
+  // 데이터 추가하는 코드 미완성
+  // componentDidUpdate() {
+  //   if (this.state.mission[0]) {
+  //
+  // for (let i = 0; i < 6; i++) {
+  // console.log(moment(this.state.mission[0][0]).add(i, 'days'));
+  // datesList.push(moment().add(3, 'days'));
+  // }
+  // console.log(datesList);
+  //   }
+  // }
   onDatesChange = ({ startDate, endDate }) => {
     this.setState({
       startDate,
@@ -59,10 +59,7 @@ export default class CalendarScreen extends Component {
     }
   };
   info = (jang, dates) => {
-    const a = Object.entries(jang);
-    console.log(jang);
     const { complete, curstep, memo, steps, todo } = jang;
-    console.log(complete, curstep, memo, steps, todo);
     Modal.info({
       title: '당신의 미션 정보입니다.',
       content: (
@@ -106,8 +103,6 @@ export default class CalendarScreen extends Component {
   };
   isDayHighlighted = day1 => datesList.some(day2 => this.isSameDay(day1, day2));
   render() {
-    console.log(moment());
-
     return (
       <div>
         <DayPickerRangeController
@@ -115,11 +110,9 @@ export default class CalendarScreen extends Component {
           endDate={this.state.endDate}
           onDatesChange={this.onDatesChange}
           focusedInput={this.state.focusedInput}
-          // onFocusChange={this.onFocusChange}
           startDateOffset={day => day.startOf('isoWeek')}
           endDateOffset={day => day.endOf('isoWeek')}
           numberOfMonths={2}
-          isDayHighlighted={this.isDayHighlighted}
         />
         <Modal>
           <Button onClick={this.info}>Info</Button>
