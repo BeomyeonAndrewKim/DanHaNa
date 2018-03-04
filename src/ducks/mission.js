@@ -5,8 +5,11 @@ const LOADING = 'mission/LOADING';
 const LOADED_THIS_WEEK = 'mission/LOADED_THIS_WEEK';
 const LOADED_NEXT_WEEK = 'mission/LOADED_NEXT_WEEK';
 
-const THIS_WEEK = moment().format('YYYY-[W]ww');
+const THIS_WEEK = moment()
+  .isoWeekday(1)
+  .format('YYYY-[W]ww');
 const NEXT_WEEK = moment()
+  .isoWeekday(1)
   .add(1, 'weeks')
   .format('YYYY-[W]ww');
 

@@ -7,9 +7,11 @@ import './MissionScreen.css';
 const { TextArea } = Input;
 
 const NEXT_WEEK_DP = `${moment()
+  .isoWeekday(1)
   .add(1, 'weeks')
   .day(1)
   .format('YYYY-MM-DD')}~${moment()
+  .isoWeekday(1)
   .add(1, 'weeks')
   .day(7)
   .format('YYYY-MM-DD')}`;
