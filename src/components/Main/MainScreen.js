@@ -75,7 +75,7 @@ export default class MainScreen extends Component {
             </div>
             <Icon
               className="MainScreen__todo__check"
-              type="check"
+              type={this.props.complete ? 'gift' : 'check'}
               onClick={throttle(() => this.props.checkTodo(), 2000)}
             />
           </div>
