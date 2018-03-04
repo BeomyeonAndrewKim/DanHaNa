@@ -8,7 +8,7 @@ const LOADED_TODO = 'main/LOADEDTODO';
 
 const THIS_WEEK = moment()
   .isoWeekday(1)
-  .format('YYYY-[W]ww-D');
+  .format('YYYY-[W]ww');
 
 export function loading() {
   return {

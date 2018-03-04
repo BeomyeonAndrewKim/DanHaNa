@@ -1,58 +1,85 @@
 import React, { Component } from 'react';
 import { Icon, Modal } from 'antd';
 import { Link } from 'react-router-dom';
+import throttle from 'lodash.throttle';
 import './MainScreen.css';
 
 export default class MainScreen extends Component {
   static defaultProps = {
-    todoInfo: {},
-    userinfo: {},
+    userInfo: {},
     loading: false,
     rollbackTodo: () => {},
     checkTodo: () => {},
   };
 
+  componentDidMount() {
+    this.changeCircleSize();
+  }
+
+  componentDidUpdate() {
+    this.changeCircleSize();
+  }
+
+  changeCircleSize = () => {
+    const circle = document.querySelector('.MainScreen__circle');
+    const size = `${this.props.curstep}` / `${this.props.steps}`;
+    circle.style.width = `calc(100vh * ${size})`;
+    circle.style.height = `calc(100vh * ${size})`;
+    circle.style.transition = 'width 0.3s, height 0.3s';
+  };
+
+  MissionSuccessStamp = () => (
+    <div className="MainScreen__todo--stamp">미션 성공!</div>
+  );
+
   AddToDoScreen = () => (
-    <div className="MainScreen__todo">
-      <Link to="/mission">
-        <Icon className="MainScreen__todo__add" type="plus" />
-      </Link>
-      <p className="MainScreen__todo__req">새로운 미션을 시작해보세요</p>
+    <div className="MainScreen__todo__noData">
+      <div className="MainScreen__todo__wrapper">
+        <Link to="/editthisweekmission">
+          <Icon className="MainScreen__todo__add" type="plus" />
+        </Link>
+        <p className="MainScreen__todo__req">새로운 미션을 시작해보세요</p>
+      </div>
     </div>
   );
 
+  showSuccessModal = () => {
+    if (window.localStorage.getItem('successdone') === 'false')
+      this.props.MissionSuccessModal();
+  };
   showToDoScreen = () => (
-    <div className="MainScreen__showtodo">
-      <span className="MainScreen__curstep">{this.props.todoInfo.curstep}</span>
-      <span className="MainScreen__steps">/{this.props.todoInfo.steps}</span>
-      <div className="MainScreen__todo">
-        <p className="MainScreen__todo__title">{this.props.todoInfo.todo}</p>
-        <Icon
-          className="MainScreen__todo__rollback"
-          type="rollback"
-          onClick={this.props.rollbackTodo}
-        />
-        <Icon
-          className="MainScreen__todo__check"
-          type="check"
-          onClick={this.props.checkTodo}
-        />
-        <Link to={this.props.todoInfo.fixcount ? '/mission' : '/main'}>
-          <Icon
-            className="MainScreen__todo__edit"
-            type="edit"
-            onClick={() =>
-              this.props.todoInfo.fixcount === 0 &&
-              Modal.error({
-                title: '더 이상 수정이 불가합니다.',
-                content: '신중하게 목표를 설정해주세요.',
-              })
-            }
-          />
-        </Link>
-        <span className="MainScreen__fixcount">
-          {this.props.todoInfo.fixcount}
-        </span>
+    <div>
+      <div className="MainScreen__showtodo">
+        <div className="MainScreen__showtodo__wrapper">
+          <div className="MainScreen__stepContainer">
+            <span className="MainScreen__stepContainer--curstep">
+              {this.props.curstep}
+            </span>
+            <span className="MainScreen__stepContainer--steps">
+              /{this.props.steps}
+            </span>
+          </div>
+          {!this.props.complete && (
+            <Icon
+              className="MainScreen__rollback"
+              type="rollback"
+              onClick={throttle(() => this.props.rollbackTodo(), 2000)}
+            />
+          )}
+          <div className="MainScreen__todo">
+            <div className="MainScreen__todo__wrapper">
+              <p className="MainScreen__todo__title">{this.props.todo}</p>
+              {this.props.complete && this.MissionSuccessStamp()}
+              {this.props.complete &&
+                setTimeout(() => this.showSuccessModal(), 1000)}
+            </div>
+            <Icon
+              className="MainScreen__todo__check"
+              type={this.props.complete ? 'gift' : 'check'}
+              onClick={throttle(() => this.props.checkTodo(), 2000)}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -60,8 +87,9 @@ export default class MainScreen extends Component {
   render() {
     return (
       <div className="MainScreen">
+        <div className="MainScreen__circle" />
         {this.props.render()}
-        {this.props.todoInfo.todo ? (
+        {this.props.todo ? (
           <div>
             {this.showToDoScreen()}
             <Icon
