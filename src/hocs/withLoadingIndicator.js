@@ -4,7 +4,7 @@ import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator';
 
 export default function withLoadingIndicator(WrappedComponent) {
   return class extends Component {
-    static defaultProp = {
+    static defaultProps = {
       loading: false,
     };
     render() {
