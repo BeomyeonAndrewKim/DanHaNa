@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as moment from 'moment';
+import { PieChart, Pie, Cell, Tooltip, Label } from 'recharts';
 import 'react-dates/initialize';
 import { DayPickerRangeController } from 'react-dates';
 import { Modal, Button } from 'antd';
@@ -11,6 +12,9 @@ moment.updateLocale('ko', {
   },
 });
 const datesList = [];
+
+const data02 = [];
+const COLORS = ['#61bf93', '#ededed'];
 export default class CalendarScreen extends Component {
   static defaultState = {
     onClickDates: () => {},
@@ -60,6 +64,11 @@ export default class CalendarScreen extends Component {
   };
   info = (jang, dates) => {
     const { complete, curstep, memo, steps, todo } = jang;
+    const achievement = Math.floor(curstep / steps * 100);
+    data02.push(
+      { name: '실행 횟수', value: curstep },
+      { name: '남은 횟수', value: steps - curstep },
+    );
     Modal.info({
       title: '당신의 미션 정보입니다.',
       content: (
@@ -69,11 +78,44 @@ export default class CalendarScreen extends Component {
           <p>메모: {memo}</p>
           <p>설정 횟수: {steps}</p>
           <p>실행 횟수: {curstep}</p>
-          <p>목표 달성률: {Math.floor(curstep / steps * 100)}%</p>
+          <p>목표 달성률: {achievement}%</p>
           <p>미션 : {complete ? '성공' : '실패'}</p>
+          <PieChart width={400} height={400}>
+            {/* <Pie
+              data={data02}
+              cx={200}
+              cy={200}
+              innerRadius={40}
+              outerRadius={80}
+              fill="#82ca9d"
+            /> */}
+
+            <Pie
+              data={data02}
+              cx={100}
+              cy={100}
+              innerRadius={55}
+              outerRadius={60}
+              textAnchor="end"
+              dataKey="value"
+              label
+            >
+              <Label
+                value={`달성률: ${achievement}%`}
+                offset={0}
+                position="center"
+              />
+              {data02.map((entry, index) => (
+                <Cell fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+            <Tooltip cursor={{ stroke: 'red', strokeWidth: 2 }} />
+          </PieChart>
         </div>
       ),
-      onOk() {},
+      onOk() {
+        data02.splice(0, data02.length);
+      },
     });
   };
   // info = (jang, dates) => {
@@ -103,6 +145,7 @@ export default class CalendarScreen extends Component {
   };
   isDayHighlighted = day1 => datesList.some(day2 => this.isSameDay(day1, day2));
   render() {
+    console.log(moment().isoWeekday());
     return (
       <div>
         <DayPickerRangeController
