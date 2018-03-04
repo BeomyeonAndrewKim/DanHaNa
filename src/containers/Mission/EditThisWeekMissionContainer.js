@@ -9,7 +9,9 @@ import { fetchThisWeek } from '../../ducks/mission';
 import { fetchProfileInfo } from '../../ducks/profile';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 
-const THIS_WEEK = moment().format('YYYY-[W]ww');
+const THIS_WEEK = moment()
+  .isoWeekday(1)
+  .format('YYYY-[W]ww');
 
 const WithLoadingMissionScreen = withLoadingIndicator(ThisWeekMissonScreen);
 

@@ -10,6 +10,7 @@ import { fetchProfileInfo } from '../../ducks/profile';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 
 const NEXT_WEEK = moment()
+  .isoWeekday(1)
   .add(1, 'weeks')
   .format('YYYY-[W]ww');
 
