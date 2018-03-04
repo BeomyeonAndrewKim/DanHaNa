@@ -5,3 +5,4 @@ import './MissionScreen';
 import './IntroScreen';
 import './ProfileScreen';
 import './MenuScreen';
+import './CalendarScreen';

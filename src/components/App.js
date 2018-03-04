@@ -14,7 +14,7 @@ import EditThisWeekMissionContainer from '../containers/Mission/EditThisWeekMiss
 import ShowNextWeekMissionContainer from '../containers/Mission/ShowNextWeekMissionContainer';
 import EditNextWeekMissionContainer from '../containers/Mission/EditNextWeekMissonContainer';
 import withAuth from '../hocs/withAuth';
-
+import CalendarScreenContainer from '../containers/Calendar/CalendarScreenContainer';
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
@@ -45,6 +45,10 @@ export default class extends Component {
             <Route
               path="/editnextweekmission"
               component={withAuth(EditNextWeekMissionContainer)}
+            />
+            <Route
+              path="/calendar"
+              component={withAuth(CalendarScreenContainer)}
             />
           </div>
         </BrowserRouter>
