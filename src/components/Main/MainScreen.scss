@@ -1,7 +1,4 @@
 $translateCenter:translate(-50%, -50%);
-$red: #d00;
-
-
 
 @mixin center(){
   position: absolute;
@@ -24,29 +21,7 @@ $red: #d00;
   height: 100vh;
   display: blcok;
   position: relative;
-  background-color:#dc7036;
   overflow: hidden;
-  background: #dc7036;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: linear-gradient(
-    135deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  filter: progid:DXImageTransform.Microsoft.gradient(
-      startColorstr='#dc7036',
-      endColorstr='#c45b2d',
-      GradientType=1
-    );
   &__circle{
     @include center();
     border-radius: 100%;
