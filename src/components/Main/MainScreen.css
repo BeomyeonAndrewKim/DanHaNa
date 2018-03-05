@@ -3,8 +3,13 @@
   height: 100vh;
   display: blcok;
   position: relative;
-  background-color: #EBEAEA;
+  background-color: #dc7036;
   overflow: hidden;
+  background: #dc7036;
+  background: -moz-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: -webkit-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: linear-gradient(135deg, #dc7036 50%, #c45b2d 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dc7036', endColorstr='#c45b2d', GradientType=1 );
 }
 
 .MainScreen__circle {
@@ -13,13 +18,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 100%;
-  background-color: violet;
+  background-color: #1e2b55;
 }
 
 .MainScreen__showtodo {
+  background: #dc7036;
+  background: -moz-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: -webkit-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: linear-gradient(135deg, #dc7036 50%, #c45b2d 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dc7036', endColorstr='#c45b2d', GradientType=1 );
   width: 100vw;
   height: calc(100vh - 32px);
-  background-color: #EBEAEA;
 }
 
 .MainScreen__showtodo__wrapper {
@@ -33,6 +42,7 @@
 
 .MainScreen__stepContainer {
   display: inline-block;
+  color: #ffffff;
 }
 
 .MainScreen__stepContainer--curstep {
@@ -49,6 +59,7 @@
   right: 0;
   margin-top: 1rem;
   font-size: 1.5rem;
+  color: #ffffff;
 }
 
 .MainScreen__todo {
@@ -67,7 +78,7 @@
 .MainScreen__todo__wrapper {
   width: 80vw;
   height: 30vh;
-  border: 1px solid #979797;
+  border: 7px solid #0b1229;
   background-color: #ffffff;
 }
 
@@ -99,12 +110,14 @@
 .MainScreen__todo__check {
   cursor: pointer;
   transform: translateY(-50%);
-  border: 1px solid #c9c7c7;
+  border: 7px solid #0b1229;
   border-radius: 50%;
-  background-color: #D8D8D8;
+  color: #ffffff;
+  background-color: #68a046;
   padding: 5px;
   display: inline-block;
   font-size: 4rem;
+  font-weight: bold;
 }
 
 .MainScreen__todo__req {
@@ -120,9 +133,10 @@
 .MainScreen__todo__title {
   position: absolute;
   width: inherit;
-  padding: 3rem 0;
+  padding: 3rem 1rem;
   display: block;
   text-align: center;
+  font-weight: bold;
   font-size: 2rem;
 }
 
