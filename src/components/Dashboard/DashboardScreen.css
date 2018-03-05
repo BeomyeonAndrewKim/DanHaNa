@@ -1,7 +1,13 @@
+.DashboardScreen {
+  width: 100vw;
+  height: 100vh;
+}
+
 .DashboardScreen__header {
   text-align: center;
   height: 50px;
-  background-color: #E0E0E0;
+  background-color: #1e2b55;
+  color: #ffffff;
   display: block;
   font-size: 20px;
   line-height: 50px;
@@ -16,7 +22,21 @@
 
 .DashboardScreen__main {
   margin: 0 auto;
-  margin-top: 30px;
+  height: 100vh;
   width: 70vw;
+}
+
+.DashboardScreen__main__calendar {
+  display: block;
+}
+
+.DashboardScreen__main--completeData {
+  display: block;
+  font-size: 10rem;
+  color: #ffffff;
+}
+
+.ant-dropdown-link {
+  color: black;
 }
 /*# sourceMappingURL=DashboardScreen.css.map */

@@ -16,41 +16,30 @@ class DashboardScreenContainer extends Component {
   state = {
     startValue: null,
     endValue: null,
-    startWeek: '',
-    endWeek: '',
-    chosenWeek: [],
     endOpen: false,
+    monthValue: null,
+    yearValue: null,
+    completeData: [],
+    stepsData: [],
   };
 
   componentWillMount() {
     this.props.onLoadTodoList();
   }
 
-  onChange = (field, value) => {
-    this.setState({
-      [field]: value,
-    });
-  };
-
   onStartChange = value => {
-    if (value) {
-      this.setState({
-        startWeek: value.startOf('isoWeek').unix(),
-      });
-    }
     this.setState({
       startValue: value,
+      monthValue: null,
+      yearValue: null,
     });
   };
 
   onEndChange = value => {
-    if (value) {
-      this.setState({
-        endWeek: value.startOf('isoWeek').unix(),
-      });
-    }
     this.setState({
       endValue: value,
+      monthValue: null,
+      yearValue: null,
     });
   };
 
@@ -70,7 +59,6 @@ class DashboardScreenContainer extends Component {
       return false;
     }
     const date = moment().isoWeekday(7);
-
     return (
       startValue.valueOf() > endValue.valueOf() ||
       startValue.valueOf() >= date.valueOf()
@@ -88,22 +76,43 @@ class DashboardScreenContainer extends Component {
       endValue.valueOf() >= date.valueOf()
     );
   };
-  disabledDate = current => {
-    if (!current) {
-      return false;
-    }
-    const date = moment();
-    date.hour(0);
-    date.minute(0);
-    date.second(0);
-    return current.valueOf() > date.valueOf(); // can not select days before today
+
+  handleMonthPanelChange = monthValue => {
+    this.setState({
+      monthValue,
+      startValue: null,
+      endValue: null,
+      yearValue: null,
+    });
+  };
+
+  handleYearPanelChange = yearValue => {
+    this.setState({
+      yearValue,
+      startValue: null,
+      endValue: null,
+      monthValue: null,
+    });
   };
   makeChosenDataArr = () =>
-    this.props.todoList
-      .map(el => [moment(el[0]).unix(), el[1]])
-      .filter(
-        el => this.state.startWeek <= el[0] && el[0] <= this.state.endWeek,
-      );
+    this.props.todoList.map(el => [moment(el[0]).unix(), el[1]]).filter(el => {
+      if (this.state.startValue && this.state.endValue) {
+        return (
+          this.state.startValue.startOf('isoWeek').unix() <= el[0] &&
+          el[0] <= this.state.endValue.startOf('isoWeek').unix()
+        );
+      } else if (this.state.monthValue) {
+        return (
+          this.state.monthValue[0].startOf('isoWeek').unix() <= el[0] &&
+          el[0] <= this.state.monthValue[1].startOf('isoWeek').unix()
+        );
+      } else if (this.state.yearValue) {
+        return (
+          this.state.yearValue[0].startOf('isoWeek').unix() <= el[0] &&
+          el[0] <= this.state.yearValue[1].startOf('isoWeek').unix()
+        );
+      }
+    });
 
   handleAnimateData = Data => {
     const options = {
@@ -128,6 +137,15 @@ class DashboardScreenContainer extends Component {
         chosenComplete.length *
         100,
     );
+    const onlyCompletedData = chosenComplete.filter(el => el === true);
+    const completeDataforPie = [
+      { name: 'MissionSuccess', value: onlyCompletedData.length },
+      {
+        name: 'MissionFail',
+        value: chosenComplete.length - onlyCompletedData.length,
+      },
+    ];
+    this.setState({ completeData: completeDataforPie });
     this.handleAnimateData(completeData);
   };
 
@@ -138,6 +156,17 @@ class DashboardScreenContainer extends Component {
     const completeStepsData =
       chosenCompleteStpesData.reduce((acc, item) => acc + item) /
       chosenCompleteStpesData.length;
+    const stepsData = this.makeChosenDataArr()
+      .map(el => el[1].steps)
+      .reduce((acc, item) => (acc + item) / chosenCompleteStpesData.length);
+    const curStepData = this.makeChosenDataArr()
+      .map(el => el[1].curstep)
+      .reduce((acc, item) => (acc + item) / chosenCompleteStpesData.length);
+    const stepsDataforPie = [
+      { name: 'Total Steps average', value: stepsData },
+      { name: 'Step done average', value: curStepData },
+    ];
+    this.setState({ completeData: null, stepsData: stepsDataforPie });
     this.handleAnimateData(completeStepsData);
   };
 
@@ -156,6 +185,8 @@ class DashboardScreenContainer extends Component {
         disabledEndDate={this.disabledEndDate}
         handleCompleteData={this.handleCompleteData}
         handleCompleteStepsData={this.handleCompleteStepsData}
+        handleMonthPanelChange={this.handleMonthPanelChange}
+        handleYearPanelChange={this.handleYearPanelChange}
       />
     );
   }
