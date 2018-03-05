@@ -27,39 +27,6 @@ export default class MissionScreen extends Component {
     thisWeek: {},
   };
 
-  showWeekMission = () => (
-    <div>
-      <div className="MissionScreen__main">
-        <div className="MissionScreen__main__todo">
-          <p className="MissionScreen__main__todo__title">미션</p>
-          <p className="MissionScreen__main__todo__body">
-            {this.props.thisWeek.todo}
-          </p>
-        </div>
-        <div className="MissionScreen__main__memo">
-          <p className="MissionScreen__main__memo__title">메모</p>
-          <p className="MissionScreen__main__memo__body">
-            {this.props.thisWeek.memo}
-          </p>
-        </div>
-        <div className="MissionScreen__main__steps">
-          <p className="MissionScreen__main__steps__title">횟수</p>
-          <p className="MissionScreen__main__steps__body">
-            {this.props.thisWeek.steps}
-          </p>
-        </div>
-        <div>
-          <Button type="primary" onClick={this.props.handleEditTodo}>
-            수정
-          </Button>
-          <p className="MissionScreen__main__fixcount">
-            {this.props.thisWeek.fixcount}번 수정 가능합니다.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-
   showEditWeekMission = () => (
     <div>
       <div className="MissionScreen__main">
@@ -117,7 +84,7 @@ export default class MissionScreen extends Component {
           >
             저장
           </Button>
-          <Link to="/thisweekmission">
+          <Link to="/main">
             <Button type="primary">취소</Button>
           </Link>
         </div>
@@ -137,9 +104,7 @@ export default class MissionScreen extends Component {
         <div className="MissionScreen__week">
           <p>{THIS_WEEK_DP}</p>
         </div>
-        {this.props.editTodo
-          ? this.showEditWeekMission()
-          : this.showWeekMission()}
+        {this.showEditWeekMission()}
       </div>
     );
   }

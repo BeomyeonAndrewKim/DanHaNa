@@ -85,7 +85,7 @@ export default class MenuScreen extends Component {
                   to={
                     this.props.todoInfo.complete
                       ? '/nextweekmission'
-                      : '/thisweekmission'
+                      : '/editthisweekmission'
                   }
                 />
               )}
