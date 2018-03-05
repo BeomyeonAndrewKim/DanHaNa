@@ -20,7 +20,8 @@ class DashboardScreenContainer extends Component {
     monthValue: null,
     yearValue: null,
     completeData: [],
-    stepsData: [],
+    stepsDataPie: [],
+    stepsDataLine: [],
   };
 
   componentWillMount() {
@@ -166,7 +167,20 @@ class DashboardScreenContainer extends Component {
       { name: 'Total Steps average', value: stepsData },
       { name: 'Step done average', value: curStepData },
     ];
-    this.setState({ completeData: null, stepsData: stepsDataforPie });
+    const stepsDataforLine = [];
+    this.makeChosenDataArr()
+      .map(el => [el[0], el[1].curstep / el[1].steps * 100])
+      .forEach(el => {
+        stepsDataforLine.push({
+          date: moment(el[0]).format('YYYY'),
+          AverageCompleteRate: el[1],
+        });
+      });
+    this.setState({
+      completeData: null,
+      stepsDataPie: stepsDataforPie,
+      stepsDataLine: stepsDataforLine,
+    });
     this.handleAnimateData(completeStepsData);
   };
 

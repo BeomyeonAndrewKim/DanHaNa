@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon, DatePicker, Button, Menu, Dropdown } from 'antd';
-import { PieChart, Pie, Cell, Tooltip, Label } from 'recharts';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  Bar,
+  YAxis,
+  XAxis,
+  BarChart,
+  CartesianGrid,
+  LineChart,
+  Line,
+} from 'recharts';
 import moment from 'moment';
 import './DashboardScreen.css';
 
@@ -123,36 +136,45 @@ export default class DashboardScreen extends Component {
             label
           >
             {this.props.completeData.map((entry, index) => (
-              <Cell key={index} fill={COLORS[index % COLORS.length]} />
+              <Cell fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
           <Tooltip cursor={{ stroke: 'red', strokeWidth: 2 }} />
         </PieChart>
       );
-    } else if (this.props.stepsData) {
+    } else if (this.props.stepsDataPie) {
       return (
-        <PieChart width={400} height={400}>
-          <Pie
-            data={this.props.stepsData}
-            cx={200}
-            cy={200}
-            outerRadius={60}
-            textAnchor="end"
-            dataKey="value"
-            label
+        <div>
+          <BarChart width={350} height={150} data={this.props.stepsDataPie}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="value" fill="#8884d8" barSize={60} />
+          </BarChart>
+          <LineChart
+            width={730}
+            height={250}
+            data={this.props.stepsDataLine}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
-            {this.props.stepsData.map((entry, index) => (
-              <Cell key={index} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-          <Tooltip cursor={{ stroke: 'red', strokeWidth: 2 }} />
-        </PieChart>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="AverageCompleteRate"
+              stroke="#8884d8"
+            />
+          </LineChart>
+        </div>
       );
     }
   };
 
   render() {
-    console.log(this.props.completeData);
     const menu = (
       <Menu onClick={this.handleDropDownList}>
         <Menu.Item key={1}>Week</Menu.Item>
