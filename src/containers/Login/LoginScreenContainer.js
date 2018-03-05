@@ -52,6 +52,24 @@ export default class LoginScreenContainer extends Component {
       });
     }
   };
+  handleTwitterLogin = async () => {
+    this.handleLoginClick();
+    const provider = new firebase.auth.TwitterAuthProvider();
+    try {
+      await firebase.auth().signInWithPopup(provider);
+      await this.submitProfileInfo();
+      this.setState({
+        loading: false,
+        redirectToMain: true,
+      });
+      window.localStorage.setItem('introdone', true);
+    } catch (e) {
+      console.log(e);
+      this.setState({
+        loading: false,
+      });
+    }
+  };
   checkExistUser = async () => {
     firebase.database().ref(`users/`);
   };
@@ -91,6 +109,7 @@ export default class LoginScreenContainer extends Component {
         onLoading={this.state.loading}
         onGoogleLogin={this.handleGoogleLogin}
         onFacebookLogin={this.handleFacebookLogin}
+        onTwitterLogin={this.handleTwitterLogin}
       />
     );
   }

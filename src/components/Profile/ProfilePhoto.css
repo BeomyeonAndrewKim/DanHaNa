@@ -7,6 +7,7 @@
 }
 .fileUploadBtn > span {
   cursor: pointer;
+  color: #fff;
 }
 .fileUploadBtn > input {
   position: absolute;
@@ -16,4 +17,10 @@
   height: 100%;
   opacity: 0;
   cursor: pointer;
+}
+.ant-btn,
+.fileUploadBtn,
+.ant-btn-lg {
+  background-color: #3d4144;
+  border: 1px solid #0b1229;
 }

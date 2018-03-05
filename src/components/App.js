@@ -9,10 +9,12 @@ import LoginScreenContainer from '../containers/Login/LoginScreenContainer';
 import IntroScreen from '../components/Intro/IntroScreen';
 import Profile from '../components/Profile/ProfileScreen';
 import MainScreenContainer from '../containers/Main/MainScreenContainer';
-import MissionScreeenContainer from '../containers/Mission/MissionScreenContainer';
-import SNSShareScreen from '../components/SNSShare/SNSShareScreen';
+import ShowThisWeekMissionContainer from '../containers/Mission/ShowThisWeekMissionContainer';
+import EditThisWeekMissionContainer from '../containers/Mission/EditThisWeekMissionContainer';
+import ShowNextWeekMissionContainer from '../containers/Mission/ShowNextWeekMissionContainer';
+import EditNextWeekMissionContainer from '../containers/Mission/EditNextWeekMissonContainer';
 import withAuth from '../hocs/withAuth';
-
+import CalendarScreenContainer from '../containers/Calendar/CalendarScreenContainer';
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
@@ -29,8 +31,24 @@ export default class extends Component {
             <Route path="/profile" component={withAuth(Profile)} />
             <Route path="/main" component={withAuth(MainScreenContainer)} />
             <Route
-              path="/mission"
-              component={withAuth(MissionScreeenContainer)}
+              path="/thisweekmission"
+              component={withAuth(ShowThisWeekMissionContainer)}
+            />
+            <Route
+              path="/editthisweekmission"
+              component={withAuth(EditThisWeekMissionContainer)}
+            />
+            <Route
+              path="/nextweekmission"
+              component={withAuth(ShowNextWeekMissionContainer)}
+            />
+            <Route
+              path="/editnextweekmission"
+              component={withAuth(EditNextWeekMissionContainer)}
+            />
+            <Route
+              path="/calendar"
+              component={withAuth(CalendarScreenContainer)}
             />
             <Route path="/snsshare" component={SNSShareScreen} />
           </div>

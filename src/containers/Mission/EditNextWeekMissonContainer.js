@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Modal } from 'antd';
 import * as firebase from 'firebase';
 import moment from 'moment';
-import MissionScreen from '../../components/Mission/MissionScreen';
-import { fetchBothInfo, fetchTodoInfo } from '../../ducks/main';
+import NextWeekMissonScreen from '../../components/Mission/NextWeekMissionScreen';
+import { fetchNextWeek } from '../../ducks/mission';
+import { fetchProfileInfo } from '../../ducks/profile';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 
-const THIS_WEEK = moment()
+const NEXT_WEEK = moment()
   .isoWeekday(1)
-  .format('YYYY-[W]ww-D');
+  .add(1, 'weeks')
+  .format('YYYY-[W]ww');
 
-const WithLoadingMissionScreen = withLoadingIndicator(MissionScreen);
+const WithLoadingMissionScreen = withLoadingIndicator(NextWeekMissonScreen);
 
-class MissionScreenContainer extends Component {
+class EditNextWeekMissionContainer extends Component {
   static defaultProps = {
-    todoInfo: {},
-    userInfo: {},
-    onMount: () => {},
+    nextWeek: {},
+    profileInfo: {},
+    onLoadNextWeek: () => {},
     loading: false,
   };
 
@@ -25,31 +28,22 @@ class MissionScreenContainer extends Component {
     newTodo: '',
     newMemo: '',
     newSteps: 1,
+    editTodo: true,
   };
 
   componentWillMount() {
-    this.props.onMount();
+    this.props.onLoadNextWeek();
+    this.props.onLoadUserInfo();
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      newTodo: nextProps.todoInfo.todo,
-      newMemo: nextProps.todoInfo.memo,
-      newSteps: nextProps.todoInfo.steps,
+      newTodo: nextProps.nextWeek.todo,
+      newMemo: nextProps.nextWeek.memo,
+      newSteps: nextProps.nextWeek.steps,
     });
   }
 
-  handleEditTodo = () => {
-    if (this.props.todoInfo.fixcount === 0)
-      Modal.error({
-        title: '더 이상 수정이 불가합니다.',
-        content: '신중하게 목표설정을 해주세요.',
-      });
-    else
-      this.setState({
-        editTodo: !this.state.editTodo,
-      });
-  };
   handleCancelEdit = () => {
     this.setState({
       editTodo: false,
@@ -82,10 +76,10 @@ class MissionScreenContainer extends Component {
   };
 
   handleSetTodo = async () => {
-    if (this.state.newSteps && this.state.newMemo && this.state.newTodo) {
+    if (this.state.newSteps && this.state.newTodo) {
       await firebase
         .database()
-        .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
+        .ref(`users/${this.props.profileInfo.uid}/todos/${NEXT_WEEK}`)
         .set(
           {
             todo: this.state.newTodo,
@@ -96,7 +90,10 @@ class MissionScreenContainer extends Component {
             fixcount: 5,
           },
           () => {
-            this.props.onLoadTodo();
+            this.props.onLoadNextWeek();
+            this.setState({
+              editTodo: false,
+            });
           },
         );
     } else {
@@ -108,10 +105,10 @@ class MissionScreenContainer extends Component {
   };
 
   handleUpdateTodo = async () => {
-    if (this.state.newSteps && this.state.newMemo && this.state.newTodo) {
+    if (this.state.newSteps && this.state.newTodo) {
       await firebase
         .database()
-        .ref(`users/${this.props.userInfo.uid}/todos/${THIS_WEEK}`)
+        .ref(`users/${this.props.profileInfo.uid}/todos/${NEXT_WEEK}`)
         .update(
           {
             todo: this.state.newTodo,
@@ -119,10 +116,10 @@ class MissionScreenContainer extends Component {
             steps: this.state.newSteps,
             complete: false,
             curstep: 0,
-            fixcount: this.props.todoInfo.fixcount - 1,
+            fixcount: this.props.nextWeek.fixcount - 1,
           },
           () => {
-            this.props.onLoadTodo();
+            this.props.onLoadNextWeek();
             this.setState({
               editTodo: false,
             });
@@ -138,33 +135,35 @@ class MissionScreenContainer extends Component {
 
   render() {
     return (
-      <WithLoadingMissionScreen
-        {...this.props}
-        {...this.state}
-        handleTodoChange={this.handleTodoChange}
-        handleMemoChange={this.handleMemoChange}
-        handleStepsChange={this.handleStepsChange}
-        handleEditTodo={this.handleEditTodo}
-        handleSetTodo={this.handleSetTodo}
-        handleUpdateTodo={this.handleUpdateTodo}
-        handleCancelEdit={this.handleCancelEdit}
-      />
+      <div>
+        {!this.state.editTodo && <Redirect to="/nextweekmission" />}
+        <WithLoadingMissionScreen
+          {...this.props}
+          {...this.state}
+          handleTodoChange={this.handleTodoChange}
+          handleMemoChange={this.handleMemoChange}
+          handleStepsChange={this.handleStepsChange}
+          handleSetTodo={this.handleSetTodo}
+          handleUpdateTodo={this.handleUpdateTodo}
+          handleCancelEdit={this.handleCancelEdit}
+        />
+      </div>
     );
   }
 }
 
 export default connect(
   state => ({
-    loading: state.main.loading,
-    todoInfo: state.main.todoInfo,
-    userInfo: state.main.userInfo,
+    loading: state.mission.loading,
+    nextWeek: state.mission.nextWeek,
+    profileInfo: state.profile.profileInfo,
   }),
   dispatch => ({
-    onMount: () => {
-      dispatch(fetchBothInfo());
+    onLoadNextWeek: () => {
+      dispatch(fetchNextWeek());
     },
-    onLoadTodo: () => {
-      dispatch(fetchTodoInfo());
+    onLoadUserInfo: () => {
+      dispatch(fetchProfileInfo());
     },
   }),
-)(MissionScreenContainer);
+)(EditNextWeekMissionContainer);

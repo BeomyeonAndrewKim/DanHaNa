@@ -3,24 +3,91 @@
   height: 100vh;
   display: blcok;
   position: relative;
+  background-color: #EBEAEA;
+  overflow: hidden;
+}
+
+.MainScreen__circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  background-color: violet;
 }
 
 .MainScreen__showtodo {
   width: 100vw;
   height: calc(100vh - 32px);
+  background-color: #EBEAEA;
 }
 
-.MainScreen__todo {
+.MainScreen__showtodo__wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
+  margin: 0 auto;
+}
+
+.MainScreen__stepContainer {
+  display: inline-block;
+}
+
+.MainScreen__stepContainer--curstep {
+  font-size: 3.5rem;
+}
+
+.MainScreen__stepContainer--steps {
+  font-size: 1.5rem;
+}
+
+.MainScreen__rollback {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.MainScreen__todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MainScreen__todo__noData {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.MainScreen__todo__wrapper {
+  width: 80vw;
   height: 30vh;
-  border: 1px solid black;
+  border: 1px solid #979797;
+  background-color: #ffffff;
+}
+
+.MainScreen__todo--stamp {
+  font-size: 4rem;
+  font-weight: bold;
+  width: 300px;
+  margin: 7vh auto;
+  color: red;
+  border: 7px solid red;
+  padding: 10px 7px;
+  border-radius: 5px;
+  animation-name: pulse;
+  animation-duration: 0.5s;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
 .MainScreen__todo__add {
+  cursor: pointer;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -30,85 +97,90 @@
 }
 
 .MainScreen__todo__check {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  cursor: pointer;
+  transform: translateY(-50%);
+  border: 1px solid #c9c7c7;
+  border-radius: 50%;
+  background-color: #D8D8D8;
+  padding: 5px;
   display: inline-block;
-  top: 70%;
-  font-size: 50px;
+  font-size: 4rem;
 }
 
 .MainScreen__todo__req {
+  cursor: pointer;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   display: block;
-  margin-top: 170px;
+  bottom: 2rem;
   text-align: center;
 }
 
 .MainScreen__todo__title {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  width: inherit;
+  padding: 3rem 0;
   display: block;
-  margin-top: 70px;
   text-align: center;
   font-size: 2rem;
 }
 
-.MainScreen__curstep {
-  display: inline-block;
-  font-size: 2.5rem;
-}
-
-.MainScreen__steps {
-  font-size: 1rem;
-}
-
 .MainScreen__camera {
+  cursor: pointer;
   position: absolute;
   font-size: 40px;
   right: 10px;
   bottom: 10px;
 }
 
-.ant-modal {
-  margin: 0;
-  top: initial;
+.SuccessModal__sns {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.SuccessModal__sns__facebook {
+  padding: 2rem;
+}
+
+.SuccessModal__sns__twitter {
+  padding: 2rem;
+}
+
+.SuccessModal__mission {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.SuccessModal__mission__edit {
+  padding: 2rem;
+}
+
+.screenshot-modal {
   height: 100vh;
   width: 100vw;
-  padding-bottom: initial;
-  position: relative;
+  margin: 0;
+  top: initial;
 }
 
-.ant-modal-header {
-  display: none;
-}
-
-.ant-modal-close {
+.screenshot-modal-close {
   top: 10%;
   right: 10%;
 }
 
-.ant-modal-content {
+.screenshot-modal-content {
   height: 100vh;
   width: 100vw;
-  position: absolute;
-  margin: 0 auto;
-  border-radius: 0;
   background-color: transparent;
-  background-clip: content-box;
 }
 
-.ant-modal-body {
+.screenshot-modal-body {
   height: 100vh;
   width: 100vw;
-  position: absolute;
   padding: 0;
 }
 
-.ant-modal-footer {
+.screenshot-modal-footer {
   display: none;
 }
 
@@ -129,5 +201,21 @@
   margin: 0 auto;
   position: absolute;
   transform: scale(0.8);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: .50;
+    transform-origin: 50% 50%;
+    transform: rotate(-2deg) scale(5);
+    transition: all 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  }
+  100% {
+    opacity: .70;
+    transform: rotate(-15deg) scale(1);
+  }
 }
 /*# sourceMappingURL=MainScreen.css.map */

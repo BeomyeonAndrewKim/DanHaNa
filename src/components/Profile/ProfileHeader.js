@@ -5,11 +5,12 @@ import { Icon } from 'antd';
 
 const Header = styled.div`
   width: 100%;
-  background-color: pink;
+  background-color: #1e2b55;
   position: relative;
 `;
 const ProfileText = styled.h2`
   padding: 20px 0;
+  color: #fff;
 `;
 const LeftArrowIcon = styled(Icon)`
   padding: 10px;
@@ -18,6 +19,7 @@ const LeftArrowIcon = styled(Icon)`
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  color: #fff;
 `;
 
 export default class ProfileHeader extends Component {
