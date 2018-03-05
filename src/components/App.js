@@ -15,6 +15,7 @@ import ShowNextWeekMissionContainer from '../containers/Mission/ShowNextWeekMiss
 import EditNextWeekMissionContainer from '../containers/Mission/EditNextWeekMissonContainer';
 import withAuth from '../hocs/withAuth';
 import CalendarScreenContainer from '../containers/Calendar/CalendarScreenContainer';
+import SNSShareScreen from '../components/SNSShare/SNSShareScreen';
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
