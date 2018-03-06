@@ -23,18 +23,28 @@
   &__main{
     margin: 0 auto;
     height:100vh;
-    width:70vw;
+    width:80vw;
+    background-color: #ffffff;
     &__calendar{
       display: block;
     }
-    &--completeData{
-      display:block;
-      font-size:10rem;
-      color:#ffffff;
+    &--data{
+      &--completeData{
+        display:block;
+        font-size:8rem;
+        color:#1e2b55;
+      }
     }
   }
 }
 
 .ant-dropdown-link{
   color:black;
+}
+.ant-calendar-range{
+  width:80vw;
+}
+.ant-calendar-week-number{
+  transform: translateX(-40px);
+  width:60vw;
 }

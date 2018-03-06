@@ -96,21 +96,29 @@ class DashboardScreenContainer extends Component {
     });
   };
   makeChosenDataArr = () =>
-    this.props.todoList.map(el => [moment(el[0]).unix(), el[1]]).filter(el => {
+    this.props.todoList.filter(el => {
       if (this.state.startValue && this.state.endValue) {
-        return (
-          this.state.startValue.startOf('isoWeek').unix() <= el[0] &&
-          el[0] <= this.state.endValue.startOf('isoWeek').unix()
+        return moment(el[0]).isBetween(
+          this.state.startValue,
+          this.state.endValue,
+          'week',
+          '[]',
         );
       } else if (this.state.monthValue) {
-        return (
-          this.state.monthValue[0].startOf('isoWeek').unix() <= el[0] &&
-          el[0] <= this.state.monthValue[1].startOf('isoWeek').unix()
+        return moment(el[0]).isBetween(
+          this.state.monthValue[0],
+          this.state.monthValue[1],
+          null,
+          'week',
+          '[]',
         );
       } else if (this.state.yearValue) {
-        return (
-          this.state.yearValue[0].startOf('isoWeek').unix() <= el[0] &&
-          el[0] <= this.state.yearValue[1].startOf('isoWeek').unix()
+        return moment(el[0]).isBetween(
+          this.state.yearValue[0],
+          this.state.yearValue[1],
+          null,
+          'week',
+          '[]',
         );
       }
     });
@@ -121,7 +129,7 @@ class DashboardScreenContainer extends Component {
       useGrouping: true,
     };
     const animateCompleteData = new CountUp(
-      document.querySelector('.DashboardScreen__main--completeData'),
+      document.querySelector('.DashboardScreen__main--data--completeData'),
       0,
       Data,
       0,
@@ -140,9 +148,9 @@ class DashboardScreenContainer extends Component {
     );
     const onlyCompletedData = chosenComplete.filter(el => el === true);
     const completeDataforPie = [
-      { name: 'MissionSuccess', value: onlyCompletedData.length },
+      { name: '미션 성공', value: onlyCompletedData.length },
       {
-        name: 'MissionFail',
+        name: '미션 실패',
         value: chosenComplete.length - onlyCompletedData.length,
       },
     ];
@@ -164,15 +172,15 @@ class DashboardScreenContainer extends Component {
       .map(el => el[1].curstep)
       .reduce((acc, item) => (acc + item) / chosenCompleteStpesData.length);
     const stepsDataforPie = [
-      { name: 'Total Steps average', value: stepsData },
-      { name: 'Step done average', value: curStepData },
+      { name: '총 단계 평균', value: stepsData },
+      { name: '달성된 단계 평균', value: curStepData },
     ];
     const stepsDataforLine = [];
     this.makeChosenDataArr()
       .map(el => [el[0], el[1].curstep / el[1].steps * 100])
       .forEach(el => {
         stepsDataforLine.push({
-          date: moment(el[0]).format('YYYY'),
+          date: moment(el[0]).format('YYYY-ww[th]'),
           AverageCompleteRate: el[1],
         });
       });
