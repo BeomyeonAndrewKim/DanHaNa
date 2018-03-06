@@ -39,12 +39,7 @@ export default class ProfileNickName extends Component {
         {loading ? (
           <LoadingIndicator />
         ) : (
-          <Card
-            title="닉네임"
-            style={{ margin: '0 30px' }}
-            type="inner"
-            bordered={false}
-          >
+          <Card title="닉네임" type="inner" bordered={false}>
             <button onClick={this.showModal} style={{ border: 'none' }}>
               <span
                 style={{

@@ -6,3 +6,4 @@ import './IntroScreen';
 import './ProfileScreen';
 import './MenuScreen';
 import './DashBoardScreen';
+import './CalendarScreen';

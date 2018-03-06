@@ -4,3 +4,7 @@
 .ant-form-inline .ant-form-item {
   margin: 0;
 }
+.ant-card,
+.ant-card-type-inner {
+  border-radius: 0;
+}

@@ -11,12 +11,7 @@ export default class ProfileProvider extends Component {
     console.log(str);
     return (
       <div>
-        <Card
-          title="로그인 정보"
-          style={{ margin: '0 30px' }}
-          type="inner"
-          bordered={false}
-        >
+        <Card title="로그인 정보" type="inner" bordered={false}>
           {profileInfo.providerId}
         </Card>
       </div>

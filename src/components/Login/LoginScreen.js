@@ -5,6 +5,31 @@ import './LoginScreen.css';
 
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 
+const LoginPageWrap = styled.div`
+  height: 100vh;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#dc7036+50,c45b2d+50 */
+  background: #dc7036; /* Old browsers */
+  background: -moz-linear-gradient(
+    -45deg,
+    #dc7036 50%,
+    #c45b2d 50%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #dc7036 50%,
+    #c45b2d 50%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    #dc7036 50%,
+    #c45b2d 50%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr='#dc7036',
+      endColorstr='#c45b2d',
+      GradientType=1
+    ); /* IE6-9 fallback on horizontal gradient */
+`;
 const LoginWrap = styled.div`
   position: relative;
   top: 50%;
@@ -39,7 +64,7 @@ export default class LoginScreen extends Component {
       onTwitterLogin,
     } = this.props;
     return (
-      <div style={{ height: '100vh' }}>
+      <LoginPageWrap>
         {onLoading ? (
           <LoadingIndicator />
         ) : (
@@ -64,7 +89,7 @@ export default class LoginScreen extends Component {
             </LoginList>
           </LoginWrap>
         )}
-      </div>
+      </LoginPageWrap>
     );
   }
 }
