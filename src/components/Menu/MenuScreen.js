@@ -93,6 +93,7 @@ export default class MenuScreen extends Component {
               <span>미션 설정</span>
             </Menu.Item>
             <Menu.Item key="5">
+              <Link to="/calendar" />
               <Icon type="calendar" />
               <span>캘린더</span>
             </Menu.Item>
