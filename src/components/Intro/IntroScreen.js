@@ -50,16 +50,16 @@ export default class IntroScreen extends Component {
           }}
           draggable
         >
-          <div>
+          <div className="IntroScreen__carousel__1">
             <h3>일주일 단 하나</h3>
           </div>
-          <div>
+          <div className="IntroScreen__carousel__2">
             <h3>자신을 위해 무엇이든 시작해보세요</h3>
           </div>
-          <div>
+          <div className="IntroScreen__carousel__3">
             <h3>일주일 단하나와 함께라면 할 수 있어요</h3>
           </div>
-          <div>
+          <div className="IntroScreen__carousel__4">
             <h3>그럼 시작해볼까요?</h3>
           </div>
         </Carousel>

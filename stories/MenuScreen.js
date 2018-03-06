@@ -9,7 +9,21 @@ const dummyProfileInfo = {
   photoURL:
     'https://localmarketingplus.ca/wp-content/uploads/2015/02/blue-head.jpg',
 };
+
+const dummyTodo = {
+  todo: 'todo',
+  complete: false,
+};
 storiesOf('MenuScreen', module)
   .addDecorator(StoryRouter())
-  .add('default', () => <MenuScreen />)
-  .add('opend', () => <MenuScreen collapsed userInfo={dummyProfileInfo} />);
+  .add('default', () => (
+    <MenuScreen nextWeek={dummyTodo} todoInfo={dummyTodo} />
+  ))
+  .add('opend', () => (
+    <MenuScreen
+      nextWeek={dummyTodo}
+      todoInfo={dummyTodo}
+      collapsed
+      userInfo={dummyProfileInfo}
+    />
+  ));

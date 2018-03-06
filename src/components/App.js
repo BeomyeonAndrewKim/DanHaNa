@@ -9,10 +9,10 @@ import LoginScreenContainer from '../containers/Login/LoginScreenContainer';
 import IntroScreen from '../components/Intro/IntroScreen';
 import Profile from '../components/Profile/ProfileScreen';
 import MainScreenContainer from '../containers/Main/MainScreenContainer';
-import ShowThisWeekMissionContainer from '../containers/Mission/ShowThisWeekMissionContainer';
 import EditThisWeekMissionContainer from '../containers/Mission/EditThisWeekMissionContainer';
 import ShowNextWeekMissionContainer from '../containers/Mission/ShowNextWeekMissionContainer';
 import EditNextWeekMissionContainer from '../containers/Mission/EditNextWeekMissonContainer';
+import DashboardScreenContainer from '../containers/Dashboard/DashboardScreenContainer';
 import withAuth from '../hocs/withAuth';
 import CalendarScreenContainer from '../containers/Calendar/CalendarScreenContainer';
 import SNSShareScreen from '../components/SNSShare/SNSShareScreen';
@@ -26,15 +26,11 @@ export default class extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div>
+          <div className="App">
             <Route path="/" exact component={IntroScreen} />
             <Route path="/login" component={LoginScreenContainer} />
             <Route path="/profile" component={withAuth(Profile)} />
             <Route path="/main" component={withAuth(MainScreenContainer)} />
-            <Route
-              path="/thisweekmission"
-              component={withAuth(ShowThisWeekMissionContainer)}
-            />
             <Route
               path="/editthisweekmission"
               component={withAuth(EditThisWeekMissionContainer)}
@@ -48,6 +44,10 @@ export default class extends Component {
               component={withAuth(EditNextWeekMissionContainer)}
             />
             <Route
+              path="/dashboard"
+              component={withAuth(DashboardScreenContainer)}
+            />
+             <Route
               path="/calendar"
               component={withAuth(CalendarScreenContainer)}
             />

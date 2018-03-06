@@ -17,7 +17,7 @@ export function getTodoListSuccess(todoList) {
 
 const initialState = {
   loading: false,
-  todoList: {},
+  todoList: [],
 };
 
 export default function(state = initialState, action) {
@@ -30,7 +30,7 @@ export default function(state = initialState, action) {
     case GET_TODOLIST_SUCCESS:
       return {
         ...state,
-        loading: true,
+        loading: false,
         todoList: action.todoList,
       };
     default:

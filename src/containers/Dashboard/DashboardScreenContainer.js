@@ -1,0 +1,225 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import CountUp from 'countup.js';
+import DashboardScreen from '../../components/Dashboard/DashboardScreen';
+import withLoadingIndicator from '../../hocs/withLoadingIndicator';
+import { fetchTodoList } from '../../ducks/calendar';
+
+const DashboardScreenwithLoading = withLoadingIndicator(DashboardScreen);
+class DashboardScreenContainer extends Component {
+  static defaultProps = {
+    todoList: [],
+    loading: false,
+  };
+
+  state = {
+    startValue: null,
+    endValue: null,
+    endOpen: false,
+    monthValue: null,
+    yearValue: null,
+    completeData: [],
+    stepsDataPie: [],
+    stepsDataLine: [],
+  };
+
+  componentWillMount() {
+    this.props.onLoadTodoList();
+  }
+
+  onStartChange = value => {
+    this.setState({
+      startValue: value,
+      monthValue: null,
+      yearValue: null,
+    });
+  };
+
+  onEndChange = value => {
+    this.setState({
+      endValue: value,
+      monthValue: null,
+      yearValue: null,
+    });
+  };
+
+  handleStartOpenChange = open => {
+    if (!open) {
+      this.setState({ endOpen: true });
+    }
+  };
+
+  handleEndOpenChange = open => {
+    this.setState({ endOpen: open });
+  };
+
+  disabledStartDate = startValue => {
+    const { endValue } = this.state;
+    if (!startValue || !endValue) {
+      return false;
+    }
+    const date = moment().isoWeekday(7);
+    return (
+      startValue.valueOf() > endValue.valueOf() ||
+      startValue.valueOf() >= date.valueOf()
+    );
+  };
+
+  disabledEndDate = endValue => {
+    const { startValue } = this.state;
+    if (!endValue || !startValue) {
+      return false;
+    }
+    const date = moment().isoWeekday(7);
+    return (
+      endValue.valueOf() <= startValue.valueOf() ||
+      endValue.valueOf() >= date.valueOf()
+    );
+  };
+
+  handleMonthPanelChange = monthValue => {
+    this.setState({
+      monthValue,
+      startValue: null,
+      endValue: null,
+      yearValue: null,
+    });
+  };
+
+  handleYearPanelChange = yearValue => {
+    this.setState({
+      yearValue,
+      startValue: null,
+      endValue: null,
+      monthValue: null,
+    });
+  };
+  makeChosenDataArr = () =>
+    this.props.todoList.filter(el => {
+      if (this.state.startValue && this.state.endValue) {
+        return moment(el[0]).isBetween(
+          this.state.startValue,
+          this.state.endValue,
+          'week',
+          '[]',
+        );
+      } else if (this.state.monthValue) {
+        return moment(el[0]).isBetween(
+          this.state.monthValue[0],
+          this.state.monthValue[1],
+          null,
+          'week',
+          '[]',
+        );
+      } else if (this.state.yearValue) {
+        return moment(el[0]).isBetween(
+          this.state.yearValue[0],
+          this.state.yearValue[1],
+          null,
+          'week',
+          '[]',
+        );
+      }
+    });
+
+  handleAnimateData = Data => {
+    const options = {
+      useEasing: true,
+      useGrouping: true,
+    };
+    const animateCompleteData = new CountUp(
+      document.querySelector('.DashboardScreen__main--data--completeData'),
+      0,
+      Data,
+      0,
+      2.5,
+      options,
+    );
+    animateCompleteData.start();
+  };
+
+  handleCompleteData = () => {
+    const chosenComplete = this.makeChosenDataArr().map(el => el[1].complete);
+    const completeData = Math.round(
+      chosenComplete.filter(el => el === true).length /
+        chosenComplete.length *
+        100,
+    );
+    const onlyCompletedData = chosenComplete.filter(el => el === true);
+    const completeDataforPie = [
+      { name: '미션 성공', value: onlyCompletedData.length },
+      {
+        name: '미션 실패',
+        value: chosenComplete.length - onlyCompletedData.length,
+      },
+    ];
+    this.setState({ completeData: completeDataforPie });
+    this.handleAnimateData(completeData);
+  };
+
+  handleCompleteStepsData = () => {
+    const chosenCompleteStpesData = this.makeChosenDataArr().map(
+      el => el[1].curstep / el[1].steps * 100,
+    );
+    const completeStepsData =
+      chosenCompleteStpesData.reduce((acc, item) => acc + item) /
+      chosenCompleteStpesData.length;
+    const stepsData = this.makeChosenDataArr()
+      .map(el => el[1].steps)
+      .reduce((acc, item) => (acc + item) / chosenCompleteStpesData.length);
+    const curStepData = this.makeChosenDataArr()
+      .map(el => el[1].curstep)
+      .reduce((acc, item) => (acc + item) / chosenCompleteStpesData.length);
+    const stepsDataforPie = [
+      { name: '총 단계 평균', value: stepsData },
+      { name: '달성된 단계 평균', value: curStepData },
+    ];
+    const stepsDataforLine = [];
+    this.makeChosenDataArr()
+      .map(el => [el[0], el[1].curstep / el[1].steps * 100])
+      .forEach(el => {
+        stepsDataforLine.push({
+          date: moment(el[0]).format('YYYY-ww[th]'),
+          AverageCompleteRate: el[1],
+        });
+      });
+    this.setState({
+      completeData: null,
+      stepsDataPie: stepsDataforPie,
+      stepsDataLine: stepsDataforLine,
+    });
+    this.handleAnimateData(completeStepsData);
+  };
+
+  render() {
+    return (
+      <DashboardScreenwithLoading
+        {...this.props}
+        {...this.state}
+        completeData={this.state.completeData}
+        onChange={this.onChange}
+        onStartChange={this.onStartChange}
+        onEndChange={this.onEndChange}
+        handleStartOpenChange={this.handleStartOpenChange}
+        handleEndOpenChange={this.handleEndOpenChange}
+        disabledStartDate={this.disabledStartDate}
+        disabledEndDate={this.disabledEndDate}
+        handleCompleteData={this.handleCompleteData}
+        handleCompleteStepsData={this.handleCompleteStepsData}
+        handleMonthPanelChange={this.handleMonthPanelChange}
+        handleYearPanelChange={this.handleYearPanelChange}
+      />
+    );
+  }
+}
+
+export default connect(
+  state => ({
+    loading: state.calendar.loading,
+    todoList: state.calendar.todoList,
+  }),
+  dispatch => ({
+    onLoadTodoList: () => dispatch(fetchTodoList()),
+  }),
+)(DashboardScreenContainer);

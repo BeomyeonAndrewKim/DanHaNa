@@ -1,0 +1,50 @@
+@mixin max(){
+  width:100vw;
+  height:100vh;
+}
+
+.DashboardScreen{
+  @include max();
+  &__header{
+    text-align: center;
+    height: 50px;
+    background-color: #1e2b55;
+    color:#ffffff;
+    display: block;
+    font-size: 20px;
+    line-height: 50px;
+    &__icon{
+      position: absolute;
+      left: 5px;
+      font-size:25px;
+      line-height:50px
+    }
+  }
+  &__main{
+    margin: 0 auto;
+    height:100vh;
+    width:80vw;
+    background-color: #ffffff;
+    &__calendar{
+      display: block;
+    }
+    &--data{
+      &--completeData{
+        display:block;
+        font-size:8rem;
+        color:#1e2b55;
+      }
+    }
+  }
+}
+
+.ant-dropdown-link{
+  color:black;
+}
+.ant-calendar-range{
+  width:80vw;
+}
+.ant-calendar-week-number{
+  transform: translateX(-40px);
+  width:60vw;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Icon, Button, Modal } from 'antd';
+import { Menu, Icon, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import './MenuScreen.css';
@@ -85,7 +85,7 @@ export default class MenuScreen extends Component {
                   to={
                     this.props.todoInfo.complete
                       ? '/nextweekmission'
-                      : '/thisweekmission'
+                      : '/editthisweekmission'
                   }
                 />
               )}
@@ -97,8 +97,9 @@ export default class MenuScreen extends Component {
               <span>캘린더</span>
             </Menu.Item>
             <Menu.Item key="6">
-              <Icon type="bell" />
-              <span>알람</span>
+              <Link to="/dashboard" />
+              <Icon type="line-chart" />
+              <span>통계</span>
             </Menu.Item>
             <Menu.Item key="7">
               <Icon type="mail" />

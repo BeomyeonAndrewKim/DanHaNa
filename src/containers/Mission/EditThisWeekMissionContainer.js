@@ -136,7 +136,7 @@ class EditThisMissionContainer extends Component {
   render() {
     return (
       <div>
-        {!this.state.editTodo && <Redirect to="/thisweekmission" />}
+        {!this.state.editTodo && <Redirect to="/main" />}
         <WithLoadingMissionScreen
           {...this.props}
           {...this.state}
