@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Icon } from 'antd';
 import * as firebase from 'firebase';
+import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
 import html2canvas from 'html2canvas';
 import MainScreen from '../../components/Main/MainScreen';
@@ -31,6 +32,9 @@ class MainScreenContainer extends Component {
     steps: 0,
     fixcount: 0,
     complete: false,
+    showSuccessModal: false,
+    facebook: false,
+    twitter: false,
   };
 
   componentWillMount() {
@@ -66,43 +70,86 @@ class MainScreenContainer extends Component {
             },
             () => {
               that.props.onLoadTodo();
-              setTimeout(() => that.MissionSuccessModal(), 1000);
+              setTimeout(() => that.setState({ showSuccessModal: true }), 1000);
             },
           );
       },
     });
   };
 
-  MissionSuccessModal = () => {
-    Modal.success({
-      title: '미션 달성을 축하드립니다!',
-      content: (
-        <div className="SuccessModal">
-          <p className="SuccessModal__message">친구들에게 자랑해보세요.</p>
-          <div className="SuccessModal__sns">
-            <Icon className="SuccessModal__sns__facebook" type="facebook" />
-            <Icon className="SuccessModal__sns__twitter" type="twitter" />
-          </div>
-          <p className="SUccessModal__message">
-            다음주 미션을 미리 설정하세요.
-          </p>
-          <div className="SuccessModal__mission">
-            <Icon type="edit" className="SuccessModal__mission__edit" />
-          </div>
-          <p className="SUccessModal__message">
-            아래 선물 아이콘을 누르면 이 메세지를 다시 보실 수 있습니다.
-          </p>
-        </div>
-      ),
-      onOk() {
-        window.localStorage.setItem('successdone', true);
-      },
+  handleSuccessModalOk = () => {
+    this.setState({
+      showSuccessModal: false,
+    });
+    window.localStorage.setItem('successdone', true);
+  };
+  handleSuccessModalcancel = () => {
+    this.setState({
+      showSuccessModal: false,
     });
   };
 
+  handleFacebookIcon = () => {
+    this.setState({
+      facebook: true,
+    });
+  };
+  handleTwitterIcon = () => {
+    this.setState({
+      twitter: true,
+    });
+  };
+
+  // MissionSuccessModal = () => {
+  //   Modal.success({
+  //     title: '미션 달성을 축하드립니다!',
+  //     content: (
+  //       <div className="SuccessModal">
+  //         <p className="SuccessModal__message">친구들에게 자랑해보세요.</p>
+  //         <div className="SuccessModal__sns">
+  //           <Link
+  //             to="facebookshare"
+  //             target="_blank"
+  //             onClick={event => {
+  //               event.preventDefault();
+  //               window.open(this.makeHref('facebookshare'));
+  //             }}
+  //           >
+  //             <Icon className="SuccessModal__sns__facebook" type="facebook" />
+  //           </Link>
+  //           <Link
+  //             to="twittershare"
+  //             target="_blank"
+  //             onClick={event => {
+  //               event.preventDefault();
+  //               window.open(this.makeHref('twittershare'));
+  //             }}
+  //           >
+  //             <Icon className="SuccessModal__sns__twitter" type="twitter" />
+  //           </Link>
+  //         </div>
+  //         <p className="SUccessModal__message">
+  //           다음주 미션을 미리 설정하세요.
+  //         </p>
+  //         <div className="SuccessModal__mission">
+  //           <Icon type="edit" className="SuccessModal__mission__edit" />
+  //         </div>
+  //         <p className="SUccessModal__message">
+  //           아래 선물 아이콘을 누르면 이 메세지를 다시 보실 수 있습니다.
+  //         </p>
+  //       </div>
+  //     ),
+  //     onOk() {
+  //       window.localStorage.setItem('successdone', true);
+  //     },
+  //   });
+  // };
+
   checkTodo = async () => {
     if (this.state.complete) {
-      this.MissionSuccessModal();
+      this.setState({
+        showSuccessModal: true,
+      });
     } else if (this.state.curstep + 1 === this.state.steps) {
       this.checkToComplete();
     } else {
@@ -207,18 +254,28 @@ class MainScreenContainer extends Component {
   render() {
     return (
       <div>
-        <MainScreenWithLoading
-          {...this.props}
-          {...this.state}
-          handleAddToDo={this.handleAddToDo}
-          checkTodo={this.checkTodo}
-          rollbackTodo={this.rollbackTodo}
-          handleCameraIcon={this.handleCameraIcon}
-          handleCloseScreenShot={this.handleCloseScreenShot}
-          handleSaveScreenShot={this.handleSaveScreenShot}
-          MissionSuccessModal={this.MissionSuccessModal}
-          render={() => <MenuScreenContainer />}
-        />
+        {this.state.facebook ? (
+          <Redirect to="facebookshare" />
+        ) : this.state.twitter ? (
+          <Redirect to="twittershare" />
+        ) : (
+          <MainScreenWithLoading
+            {...this.props}
+            {...this.state}
+            handleAddToDo={this.handleAddToDo}
+            checkTodo={this.checkTodo}
+            rollbackTodo={this.rollbackTodo}
+            handleCameraIcon={this.handleCameraIcon}
+            handleCloseScreenShot={this.handleCloseScreenShot}
+            handleSaveScreenShot={this.handleSaveScreenShot}
+            MissionSuccessModal={this.MissionSuccessModal}
+            handleSuccessModalOk={this.handleSuccessModalOk}
+            handleSuccessModalcancel={this.handleSuccessModalcancel}
+            handleFacebookIcon={this.handleFacebookIcon}
+            handleTwitterIcon={this.handleTwitterIcon}
+            render={() => <MenuScreenContainer />}
+          />
+        )}
       </div>
     );
   }
