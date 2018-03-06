@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Icon, Button, Modal } from 'antd';
+import { Menu, Icon, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import './MenuScreen.css';

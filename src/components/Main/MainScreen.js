@@ -47,6 +47,9 @@ export default class MainScreen extends Component {
     if (window.localStorage.getItem('successdone') === 'false')
       this.props.MissionSuccessModal();
   };
+
+  handleClickCheck = throttle(() => this.props.checkTodo(), 1000);
+  handleClickRollBack = throttle(() => this.props.rollbackTodo(), 1000);
   showToDoScreen = () => (
     <div>
       <div className="MainScreen__showtodo">
@@ -63,20 +66,18 @@ export default class MainScreen extends Component {
             <Icon
               className="MainScreen__rollback"
               type="rollback"
-              onClick={throttle(() => this.props.rollbackTodo(), 2000)}
+              onClick={this.handleClickRollBack}
             />
           )}
           <div className="MainScreen__todo">
             <div className="MainScreen__todo__wrapper">
               <p className="MainScreen__todo__title">{this.props.todo}</p>
               {this.props.complete && this.MissionSuccessStamp()}
-              {this.props.complete &&
-                setTimeout(() => this.showSuccessModal(), 1000)}
             </div>
             <Icon
               className="MainScreen__todo__check"
               type={this.props.complete ? 'gift' : 'check'}
-              onClick={throttle(() => this.props.checkTodo(), 2000)}
+              onClick={this.handleClickCheck}
             />
           </div>
         </div>
