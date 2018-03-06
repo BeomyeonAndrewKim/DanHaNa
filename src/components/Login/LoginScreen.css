@@ -5,3 +5,33 @@
   padding: 30px 50px;
   height: 100%;
 }
+.login__button__facebook {
+  background-color: #3b5998;
+}
+.login__button__google {
+  background-color: #db3236;
+}
+.login__button__twitter {
+  background-color: #0084b4;
+}
+
+.login__title {
+  position: relative;
+}
+.login__title > span {
+  padding: 0 0.3em;
+  position: relative;
+  color: #1e2b55;
+  background-color: #fff;
+}
+
+.login__title:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #c45b2d;
+  transform: translateY(-50%);
+}

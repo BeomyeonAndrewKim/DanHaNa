@@ -47,7 +47,7 @@ export default class extends Component {
               path="/dashboard"
               component={withAuth(DashboardScreenContainer)}
             />
-             <Route
+            <Route
               path="/calendar"
               component={withAuth(CalendarScreenContainer)}
             />
