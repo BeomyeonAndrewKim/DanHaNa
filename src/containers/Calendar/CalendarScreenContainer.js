@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import * as firebase from 'firebase';
 import { connect } from 'react-redux';
 import CalendarScreen from '../../components/Calendar/CalendarScreen';
+import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 import { fetchTodoList } from '../../ducks/calendar';
 
+const CalendarScreenwithLoading = withLoadingIndicator(CalendarScreen);
 class CalendarScreenContainer extends Component {
   static defaultProps = {
     todoList: [],
     onTodoList: () => {},
     loading: '',
   };
-  componentWillMount() {
+  state = {};
+  componentDidMount() {
     this.props.onTodoList();
   }
-  handleClickDates = () => {
-    const { todoList } = this.props;
-    return todoList;
-  };
   render() {
+    const { todoList, ...rest } = this.props;
     return (
       <div>
-        <CalendarScreen onClickDates={this.handleClickDates} />
+        <CalendarScreenwithLoading todoList={todoList} />
       </div>
     );
   }
