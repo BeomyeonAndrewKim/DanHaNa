@@ -1,0 +1,63 @@
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 95vh;
+  overflow: hidden;
+}
+
+
+
+.IntroScreen{
+  &__btn{
+    height: 5vh;
+    width: 100vw;
+    border-radius: initial;
+    background-color: #dc7036;
+    color:#ffffff;
+    &--login{
+      height: 5vh;
+      width: 100vw;
+      border-radius: initial;
+      background-color: #dc7036;
+      color:#ffffff;
+      animation: login 0.5s;
+    }
+  }
+  &__carousel{
+    &__1{
+      background-image: url('../../assets/images/Intro/page1.jpg');
+      background-size: cover;
+    }
+    &__2{
+      background-image: url('../../assets/images/Intro/page2.jpg');
+      background-size: cover;
+   
+    }
+    &__3{
+      background-image: url('../../assets/images/Intro/page3.jpg');
+      background-size: cover;
+    
+    }
+    &__4{
+      background-image: url('../../assets/images/Intro/page4.jpg');
+      background-size: cover;
+     
+    }
+    &__text{
+      background-color: #c45b2d;
+      color:#ffffff;
+      position: absolute;
+      top:50%;
+      transform: translate(-50%,-50%);
+      font-size:1rem;
+    }
+  }
+}
+
+@keyframes login{
+  50%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
