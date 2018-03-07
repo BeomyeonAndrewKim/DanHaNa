@@ -1,0 +1,114 @@
+@mixin title(){
+  font-size:1rem;
+  padding: 1rem 0;
+}
+@mixin body(){
+  padding:1rem 0;
+  border: 0; 
+  border-bottom: 1px solid #000000; 
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.MissionScreen{
+  &__header{
+    text-align: center;
+    height: 50px;
+    background-color: #1e2b55;
+    color:white;
+    display: block;
+    font-size: 1rem;
+    line-height: 50px;
+    &__icon{
+      position: absolute;
+      left: 5px;
+      font-size:1.5rem;
+      line-height:50px
+    }
+  }
+  &__week{
+    width:85vw;
+    margin:1rem auto;
+    padding:1rem 0;
+    background-color:#ffffff;
+    box-shadow: 5px 5px #1e2b55;
+    line-height: 1rem;
+    text-align: center;
+    &__wrapper{
+      display: inline-block;
+      width:60vw;
+      margin:0 auto;
+    }
+    &__dash{
+      display: inline-block;
+      transform: translateY(-150%);
+      font-size:2rem;
+      padding: 0 1rem;
+    }
+    &__first{
+      width:20vw;
+      color:#1e2b55;
+      display: inline-block;
+      text-align: center;
+      font-weight:lighter;
+      border:1px solid #1e2b55;
+      padding:0.5rem 0;
+    }
+    &__last{
+      width:20vw;
+      color:#1e2b55;
+      display: inline-block;
+      text-align: center;
+      font-weight:lighter;
+      border:1px solid #1e2b55;
+      padding:0.5rem 0;
+    }
+  }
+  &__main{
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding:1rem;
+    width:85vw;
+    background-color: #ffffff;
+    box-shadow: 5px 5px #1e2b55;
+    &__todo{
+      margin-bottom: 1rem;
+      &__title{
+        @include title()
+      }
+      &__body{
+        @include body();
+        &:focus{
+          border:0 !important;
+        }
+      }
+    }
+    &__memo{
+      margin-bottom:1rem;
+      &__title{
+        @include title()
+      }
+      &__body{
+        border-radius: 0;
+      }
+    }
+    &__steps{
+      margin-bottom:1rem;
+      &__title{
+        @include title()
+      }
+      &__body{
+        border-radius: 0;
+      }
+    }
+    &__limit{
+      font-size:0.8rem;
+      opacity: 0.8;
+    }
+    &__fixcount{
+      font-size:0.8rem;
+      display: inline-block;
+      margin-left: 6rem;
+    }
+  }
+}

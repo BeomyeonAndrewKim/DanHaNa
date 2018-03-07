@@ -1,0 +1,394 @@
+.MainScreen {
+  width: 100vw;
+  height: 100vh;
+  display: blcok;
+  position: relative;
+  overflow: hidden;
+}
+
+.MainScreen__circle {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  background-color: #1e2b55;
+}
+
+.MainScreen__showtodo {
+  background: #dc7036;
+  background: -moz-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: -webkit-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: linear-gradient(135deg, #dc7036 50%, #c45b2d 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#dc7036", endColorstr="#c45b2d", GradientType=1 );
+  width: 100vw;
+  height: calc(100vh - 32px);
+}
+
+.MainScreen__showtodo__wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.MainScreen__stepContainer {
+  display: inline-block;
+  color: #ffffff;
+}
+
+.MainScreen__stepContainer--curstep {
+  font-size: 3.5rem;
+}
+
+.MainScreen__stepContainer--steps {
+  font-size: 1.5rem;
+}
+
+.MainScreen__rollback {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.MainScreen__todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MainScreen__todo__noData {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.MainScreen__todo__wrapper {
+  width: 80vw;
+  height: 30vh;
+  border: 7px solid #0b1229;
+  background-color: #ffffff;
+}
+
+.MainScreen__todo--stamp {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin: 7vh auto;
+  color: red;
+  border: 7px solid red;
+  padding: 10px 7px;
+  border-radius: 5px;
+  animation-name: pulse;
+  animation-duration: 0.5s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.MainScreen__todo__add {
+  cursor: pointer;
+  font-size: 50px;
+  display: block;
+  margin-top: 7vh;
+}
+
+.MainScreen__todo__check {
+  cursor: pointer;
+  transform: translateY(-50%);
+  border: 7px solid #0b1229;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #68a046;
+  padding: 5px;
+  display: inline-block;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.MainScreen__todo__req {
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  top: 100%;
+  margin-top: 5%;
+}
+
+.MainScreen__todo__title {
+  position: absolute;
+  width: inherit;
+  padding: 3rem 1rem;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.MainScreen__camera {
+  cursor: pointer;
+  color: #ffffff;
+  position: absolute;
+  font-size: 40px;
+  right: 10px;
+  bottom: 10px;
+}
+
+.waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: .4s transform ease;
+  transform-origin: bottom center;
+}
+
+@media (min-width: 500px) {
+  .waves {
+    border-radius: 5px;
+  }
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: wave 1s linear infinite;
+}
+
+.wave--front {
+  color: #32BAFA;
+  opacity: 0.8;
+}
+
+.wave--back {
+  color: #2C7FBE;
+  opacity: 0.8;
+  animation-direction: reverse;
+}
+
+.water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background: currentColor;
+}
+
+.water svg {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 99.9%;
+}
+
+.water:first-of-type {
+  transform: translate(-100%, 0);
+}
+
+svg {
+  fill: currentColor;
+}
+
+@keyframes wave {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(50%, 0.5em, 0);
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.SuccessModal {
+  text-align: center;
+}
+
+.SuccessModal__sns {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.SuccessModal__sns__facebook {
+  padding: 2rem;
+}
+
+.SuccessModal__sns__twitter {
+  padding: 2rem;
+}
+
+.SuccessModal__mission {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.SuccessModal__mission__edit {
+  padding: 2rem;
+}
+
+.SNSShareScreen__tomain {
+  font-size: 4rem;
+  color: #0b1229;
+}
+
+.screenshot-modal {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  top: initial;
+}
+
+.screenshot-modal-close {
+  top: 10%;
+  right: 10%;
+}
+
+.screenshot-modal-content {
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+}
+
+.screenshot-modal-body {
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+}
+
+.screenshot-modal-footer {
+  display: none;
+}
+
+.downloadLink {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 75%;
+  background-color: #9b9b9b;
+  padding: 8px 20px;
+  color: #ffffff;
+  display: inline-block;
+  border: 1px solid #9b9b9b;
+}
+
+.screenshotCanvas {
+  margin-top: 50%;
+  margin: 0 auto;
+  position: absolute;
+  transform: scale(0.8);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+    transform-origin: 50% 50%;
+    transform: rotate(-2deg) scale(5);
+    transition: all 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  }
+  100% {
+    opacity: 0.7;
+    transform: rotate(-15deg) scale(1);
+  }
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+.waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.4s transform ease;
+  transform-origin: bottom center;
+}
+
+@media (min-width: 500px) {
+  .waves {
+    border-radius: 5px;
+  }
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: wave 1s linear infinite;
+}
+
+.wave--front {
+  color: #32bafa;
+  opacity: 0.8;
+}
+
+.wave--back {
+  color: #2c7fbe;
+  opacity: 0.8;
+  animation-direction: reverse;
+}
+
+.water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background: currentColor;
+}
+
+.water svg {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 99.9%;
+}
+
+.water:first-of-type {
+  transform: translate(-100%, 0);
+}
+
+svg {
+  fill: currentColor;
+}
+
+@keyframes wave {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(50%, 0.5em, 0);
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+/*# sourceMappingURL=MainScreen.css.map */

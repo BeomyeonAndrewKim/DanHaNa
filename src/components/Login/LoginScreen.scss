@@ -1,0 +1,136 @@
+$white: #fff;
+$dark-blue: #1e2b55;
+$orange: #c45b2d;
+$facebook-bg: #4467af;
+
+$google-bg: #f9f9f9;
+$google-text: #1e2b55;
+$google-icon: #e2503d;
+
+$twitter-bg: #0099d1;
+
+.spin--bg {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  height: 100%;
+}
+
+.login {
+  height: 100vh;
+}
+.login__logo {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px 0 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  & > img {
+    width: 40px;
+    height: 40px;
+  }
+  & > span {
+    color: $dark-blue;
+  }
+}
+.login__title {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 500px;
+  width: 100%;
+  font-size: 2.7rem;
+  font-weight: 200;
+  color: $white;
+  & > .login__title--fading {
+    margin-left: 10px;
+  }
+  & > .login__title--fading:nth-child(2) {
+    padding: 20px 0 20px 30px;
+  }
+  & > .login__title--fading:nth-child(3) {
+    padding-left: 50px;
+  }
+}
+.login__wrap {
+  position: relative;
+  top: 65%;
+  transform: translateY(-50%);
+  padding: 0 40px;
+  max-width: 500px;
+  margin: auto;
+}
+.login__list {
+  width: 100%;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.login__list__title {
+  padding: 1rem;
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid $white;
+    transform: translateY(-50%);
+  }
+}
+.login__list__title > span {
+  padding: 0 0.3em;
+  position: relative;
+  color: $dark-blue;
+  background-color: $orange;
+  border-radius: 100%;
+}
+.login__list__item {
+  margin-top: 0.7rem;
+}
+.login__list__item__button {
+  border: none;
+  border-radius: 30px;
+  padding: 1rem 0;
+  width: 100%;
+  color: #fff;
+  font-size: 0.8rem;
+}
+.login__list__item__button__facebook {
+  background-color: $facebook-bg;
+}
+.login__list__item__button__google {
+  background-color: $google-bg;
+}
+.login__list__item__button__google > .login__list__item__button__text {
+  color: $google-text;
+}
+.login__list__item__button__google
+  > .login__list__item__button__text
+  > .login__list__item__button__icon {
+  color: $google-icon;
+}
+.login__list__item__button__twitter {
+  background-color: $twitter-bg;
+}
+
+.login__list__item__button__icon {
+  padding-right: 1rem;
+  font-size: 1.2rem;
+}
+.login__list__item__button__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center;
+}

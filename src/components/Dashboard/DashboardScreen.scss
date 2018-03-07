@@ -1,0 +1,71 @@
+@mixin max(){
+  width:100vw;
+  height:100vh;
+}
+
+.DashboardScreen{
+  @include max();
+  &__header{
+    text-align: center;
+    height: 50px;
+    background-color: #1e2b55;
+    color:#ffffff;
+    display: block;
+    font-size: 1rem;
+    line-height: 50px;
+    &__icon{
+      position: absolute;
+      left: 5px;
+      font-size:25px;
+      line-height:50px
+    }
+  }
+  &__main{
+    margin: 0 auto;
+    height:100vh;
+    &--dropdown{
+      border:1px solid #1e2b55;
+    }
+    &__calendar{
+      width:85vw;
+      margin:0 auto;
+      margin-top:1rem;
+      background-color: #ffffff;
+      box-shadow: 5px 5px #1e2b55;
+      display: block;
+      &__btn{
+        width:85vw;
+      }
+    }
+    &--data{
+      width:85vw;
+      margin:1rem auto;
+      background-color: #ffffff;
+      box-shadow: 5px 5px #1e2b55;
+      text-align: center;
+      &--title{
+        font-weight: bold;
+        margin: 1rem auto;
+      }
+      &__btn{
+        width:85vw;
+      }
+      &--completeData{
+        display:block;
+        font-size:8rem;
+        color:#1e2b55;
+      }
+    }
+  }
+}
+
+.ant-dropdown-link{
+  color:black;
+}
+.ant-calendar-range{
+  width:80vw;
+}
+.ant-calendar-week-number{
+  transform: translateX(-40px);
+  width:60vw;
+}

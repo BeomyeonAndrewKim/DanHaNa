@@ -3,14 +3,48 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animate.css": "^3.6.1",
+    "antd": "^3.2.0",
+    "countup.js": "^1.9.3",
+    "firebase": "^4.9.1",
+    "html2canvas": "^1.0.0-alpha.10",
+    "install-peerdeps": "^1.5.0",
+    "lodash.throttle": "^4.1.1",
+    "moment": "^2.20.1",
+    "npx": "^9.7.1",
     "react": "^16.2.0",
+    "react-animated-css": "^1.0.4",
+    "react-dates": "^16.3.6",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.0"
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.0",
+    "recharts": "^1.0.0-beta.10",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^3.1.6"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-css": "less-watch-compiler --run-once --main-file=index.less src/less/ src/less/",
+    "watch-css": "npm run build-css && less-watch-compiler --main-file=index.less src/less/ src/less/"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.3.12",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.6.1",
+    "less-watch-compiler": "^1.11.0",
+    "prettier": "^1.10.2",
+    "storybook-router": "^0.3.2"
   }
 }
