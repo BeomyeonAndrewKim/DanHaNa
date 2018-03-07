@@ -1,19 +1,24 @@
+$black: #0b1229;
+$white: #fff;
+$sliver: #cccccc;
+$darkblue: #1e2b55;
+$orange: #c96530;
+$bright-orange: #e8945f;
+
 .profile {
   text-align: center;
   height: 100vh;
 }
-
 .profile__text {
   margin: 0 15px;
-  border: 3px solid #0b1229;
+  border: 3px solid $black;
 }
-
+// 프로필 헤더
 .profile__header__wrap {
   width: 100%;
-  background-color: #1e2b55;
+  background-color: $darkblue;
   position: relative;
 }
-
 .profile__header__arrow {
   padding: 10px;
   position: absolute;
@@ -21,44 +26,44 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: #fff;
+  color: $white;
 }
-
 .profile__header__title {
   padding: 20px 0;
-  color: #fff;
+  color: $white;
 }
-
+// 프로필 헤더
 .profile__photo__wrap {
   padding: 30px 0;
 }
-
+.profile__photo__picture {
+}
+.profile__photo__picture__wrap {
+}
 .profile__photo__picture__img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   margin: 15px auto;
   display: block;
-  background-color: #c96530;
-  border: 0.5px solid #cccccc;
+  background-color: $orange;
+  border: 0.5px solid $sliver;
 }
 
+// 프로필 사진
 .profile__photo__upload__button {
   position: relative;
   background-color: #3d4144;
-  border: 1px solid #0b1229;
+  border: 1px solid $black;
+  &:hover {
+    background: $bright-orange;
+    border: 1px solid $black;
+  }
 }
-
-.profile__photo__upload__button:hover {
-  background: #e8945f;
-  border: 1px solid #0b1229;
-}
-
 .profile__photo__upload__button > span {
   cursor: pointer;
   color: #fff;
 }
-
 .profile__photo__upload__button > input {
   position: absolute;
   top: 0;
@@ -69,21 +74,20 @@
   cursor: pointer;
 }
 
+// 프로필 닉네임
 .profile__text__nickname__card {
   border-radius: 0 !important;
 }
-
 .profile__text__nickname__card__button {
   border: none;
 }
-
 .profile__text__nickname__card__button__text {
   font-size: 1.2em;
   font-weight: bold;
   margin-right: 5px;
 }
 
+// 프로필 제공자
 .profile__text__provider__card {
   border-radius: 0 !important;
 }
-/*# sourceMappingURL=ProfileScreen.css.map */
