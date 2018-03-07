@@ -8,7 +8,7 @@
   height: 5vh;
   width: 100vw;
   border-radius: initial;
-  background-color: #dc7036;
+  background-color: #1e2b55;
   color: #ffffff;
 }
 
@@ -16,7 +16,7 @@
   height: 5vh;
   width: 100vw;
   border-radius: initial;
-  background-color: #dc7036;
+  background-color: #1e2b55;
   color: #ffffff;
   animation: login 0.5s;
 }
