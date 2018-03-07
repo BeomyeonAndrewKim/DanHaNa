@@ -24,6 +24,11 @@ export default class MainScreen extends Component {
   changeCircleSize = () => {
     const circle = document.querySelectorAll('.water');
     const size = `${this.props.curstep}` / `${this.props.steps}`;
+    if (!this.props.todo) {
+      circle.forEach(el => {
+        el.style.height = `0`;
+      });
+    }
     circle.forEach(el => {
       el.style.height = `calc(100vh * ${size})`;
       el.style.transition = 'height 0.3s';
@@ -73,7 +78,12 @@ export default class MainScreen extends Component {
           )}
           <div className="MainScreen__todo">
             <div className="MainScreen__todo__wrapper">
-              <p className="MainScreen__todo__title">{this.props.todo}</p>
+              <p
+                onClick={this.props.handleTodoTitle}
+                className="MainScreen__todo__title"
+              >
+                {this.props.todo}
+              </p>
               {this.props.complete && this.MissionSuccessStamp()}
             </div>
             <Icon

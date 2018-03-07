@@ -166,10 +166,12 @@
 
 .wave--front {
   color: #32BAFA;
+  opacity: 0.8;
 }
 
 .wave--back {
   color: #2C7FBE;
+  opacity: 0.8;
   animation-direction: reverse;
 }
 
@@ -344,10 +346,12 @@ body {
 
 .wave--front {
   color: #32bafa;
+  opacity: 0.8;
 }
 
 .wave--back {
   color: #2c7fbe;
+  opacity: 0.8;
   animation-direction: reverse;
 }
 

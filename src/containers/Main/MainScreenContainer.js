@@ -51,6 +51,13 @@ class MainScreenContainer extends Component {
     }
   }
 
+  handleTodoTitle = () => {
+    const that = this;
+    Modal.info({
+      title: '이번주 미션 메모사항입니다.',
+      content: that.state.memo,
+    });
+  };
   checkToComplete = () => {
     const that = this;
     Modal.confirm({
@@ -220,6 +227,7 @@ class MainScreenContainer extends Component {
           handleSuccessModalcancel={this.handleSuccessModalcancel}
           handleFacebookIcon={this.handleFacebookIcon}
           handleTwitterIcon={this.handleTwitterIcon}
+          handleTodoTitle={this.handleTodoTitle}
           render={() => <MenuScreenContainer />}
         />
       </div>

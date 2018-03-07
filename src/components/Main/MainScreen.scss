@@ -173,10 +173,12 @@ $stage-bg:           $blue-dark;
 
     &--front {
         color: $blue-light;
+        opacity: 0.8;
     }
 
     &--back {
         color: $blue;
+        opacity: 0.8;
         animation-direction: reverse;
     }
 }
@@ -340,10 +342,12 @@ body {
 
   &--front {
     color: $blue-light;
+    opacity: 0.8;
   }
 
   &--back {
     color: $blue;
+    opacity: 0.8;
     animation-direction: reverse;
   }
 }
