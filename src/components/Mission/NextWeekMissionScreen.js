@@ -78,9 +78,13 @@ export default class MissionScreen extends Component {
         <Button type="primary" onClick={this.props.handleEditTodo}>
           수정
         </Button>
-        <span className="MissionScreen__main__fixcount">
-          {this.props.nextWeek.fixcount}번 수정 가능합니다.
-        </span>
+        {this.props.nextWeek.fixcount && (
+          <span className="MissionScreen__main__fixcount">
+            <span style={{ fontWeight: 'bold' }}>
+              {this.props.nextWeek.fixcount}
+            </span>번 수정 가능합니다.
+          </span>
+        )}
       </div>
     </div>
   );
@@ -175,9 +179,13 @@ export default class MissionScreen extends Component {
           >
             저장
           </Button>
-          <span className="MissionScreen__main__fixcount">
-            {this.props.nextWeek.fixcount}번 수정 가능합니다.
-          </span>
+          {this.props.nextWeek.fixcount && (
+            <span className="MissionScreen__main__fixcount">
+              <span style={{ fontWeight: 'bold' }}>
+                {this.props.nextWeek.fixcount}
+              </span>번 수정 가능합니다.
+            </span>
+          )}
         </div>
       </div>
     </div>

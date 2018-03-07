@@ -14,18 +14,19 @@ export default class MainScreen extends Component {
   };
 
   componentDidMount() {
-    this.changeCircleSize();
+    // this.changeCircleSize();
   }
 
   componentDidUpdate() {
-    this.changeCircleSize();
+    // this.changeCircleSize();
   }
 
   changeCircleSize = () => {
-    const circle = document.querySelector('.MainScreen__circle');
+    const water = document.querySelector('.water');
     const size = `${this.props.curstep}` / `${this.props.steps}`;
-    circle.style.height = `calc(100vh * ${size})`;
-    circle.style.transition = 'height 0.3s';
+    water.style.height = `calc(100vh * ${size})%`;
+    console.log(water.style.height);
+    // water.style.transition = 'height 0.3s';
   };
 
   MissionSuccessStamp = () => (
@@ -89,7 +90,6 @@ export default class MainScreen extends Component {
   render() {
     return (
       <div className="MainScreen">
-        <div className="MainScreen__circle" />
         {this.props.render()}
         {this.props.todo ? (
           <div>

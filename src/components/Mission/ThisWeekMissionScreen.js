@@ -117,12 +117,13 @@ export default class MissionScreen extends Component {
           >
             저장
           </Button>
-          <span className="MissionScreen__main__fixcount">
-            수정 가능 횟수{' '}
-            <span style={{ fontWeight: 'bold' }}>
-              {this.props.thisWeek.fixcount}
+          {this.props.thisWeek.fixcount && (
+            <span className="MissionScreen__main__fixcount">
+              <span style={{ fontWeight: 'bold' }}>
+                {this.props.thisWeek.fixcount}
+              </span>번 수정 가능합니다.
             </span>
-          </span>
+          )}
         </div>
       </div>
     </div>
