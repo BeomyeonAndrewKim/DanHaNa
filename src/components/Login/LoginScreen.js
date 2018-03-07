@@ -9,7 +9,7 @@ const LoginPageWrap = styled.div`
 `;
 const LoginWrap = styled.div`
   position: relative;
-  top: 50%;
+  top: 70%;
   transform: translateY(-50%);
   padding: 0 40px;
   max-width: 500px;
@@ -17,7 +17,6 @@ const LoginWrap = styled.div`
 `;
 const LoginList = styled.ul`
   width: 100%;
-  background-color: #fff;
   text-align: center;
   padding: 3rem 1rem;
 `;
@@ -25,14 +24,15 @@ const LoginTitle = styled.h1`
   padding: 1rem;
 `;
 const LoginListItem = styled.li`
-  margin-top: 0.45rem;
+  margin-top: 0.6rem;
 `;
 const LoginButton = styled.button`
   border: none;
   border-radius: 30px;
-  padding: 0.5rem 1rem;
+  padding: 1rem 0;
   width: 100%;
   color: #fff;
+  font-size: 0.8rem;
 `;
 
 export default class LoginScreen extends Component {
@@ -64,8 +64,10 @@ export default class LoginScreen extends Component {
                   className="login__button__facebook"
                   onClick={onFacebookLogin}
                 >
-                  <Icon type="facebook" />
-                  LOGIN IN WITH FACEBOOK
+                  <span className="login__button__text">
+                    <Icon className="login__button__icon" type="facebook" />
+                    SIGN IN WITH FACEBOOK
+                  </span>
                 </LoginButton>
               </LoginListItem>
               <LoginListItem>
@@ -73,7 +75,10 @@ export default class LoginScreen extends Component {
                   className="login__button__google"
                   onClick={onGoogleLogin}
                 >
-                  <Icon type="google-plus" /> LOGIN IN WITH GOOGLE
+                  <span className="login__button__text">
+                    <Icon className="login__button__icon" type="google-plus" />
+                    SIGN IN WITH GOOGLE
+                  </span>
                 </LoginButton>
               </LoginListItem>
               <LoginListItem>
@@ -81,7 +86,10 @@ export default class LoginScreen extends Component {
                   className="login__button__twitter"
                   onClick={onTwitterLogin}
                 >
-                  <Icon type="twitter" /> LOGIN IN WITH TWITTER
+                  <span className="login__button__text">
+                    <Icon className="login__button__icon" type="twitter" /> SIGN
+                    IN WITH TWITTER
+                  </span>
                 </LoginButton>
               </LoginListItem>
             </LoginList>
