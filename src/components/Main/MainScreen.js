@@ -14,19 +14,20 @@ export default class MainScreen extends Component {
   };
 
   componentDidMount() {
-    // this.changeCircleSize();
+    this.changeCircleSize();
   }
 
   componentDidUpdate() {
-    // this.changeCircleSize();
+    this.changeCircleSize();
   }
 
   changeCircleSize = () => {
-    const water = document.querySelector('.water');
+    const circle = document.querySelectorAll('.water');
     const size = `${this.props.curstep}` / `${this.props.steps}`;
-    water.style.height = `calc(100vh * ${size})%`;
-    console.log(water.style.height);
-    // water.style.transition = 'height 0.3s';
+    circle.forEach(el => {
+      el.style.height = `calc(100vh * ${size})`;
+      el.style.transition = 'height 0.3s';
+    });
   };
 
   MissionSuccessStamp = () => (
@@ -54,7 +55,6 @@ export default class MainScreen extends Component {
   showToDoScreen = () => (
     <div>
       <div className="MainScreen__showtodo">
-        <div className="MainScreen__showtodo__pattern" />
         <div className="MainScreen__showtodo__wrapper">
           <div className="MainScreen__stepContainer">
             <span className="MainScreen__stepContainer--curstep">
@@ -90,6 +90,54 @@ export default class MainScreen extends Component {
   render() {
     return (
       <div className="MainScreen">
+        <div>
+          <div className="waves">
+            <div className="wave wave--back">
+              <div className="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <title>wave2</title>
+                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+                </svg>
+              </div>
+              <div className="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <title>wave2</title>
+                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+                </svg>
+              </div>
+            </div>
+            <div className="wave wave--front">
+              <div className="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <title>wave2</title>
+                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+                </svg>
+              </div>
+              <div className="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <title>wave2</title>
+                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
         {this.props.render()}
         {this.props.todo ? (
           <div>
