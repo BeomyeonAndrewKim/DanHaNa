@@ -210,6 +210,10 @@ svg {
   }
 }
 
+.SuccessModal {
+  text-align: center;
+}
+
 .SuccessModal__sns {
   text-align: center;
   font-size: 2rem;

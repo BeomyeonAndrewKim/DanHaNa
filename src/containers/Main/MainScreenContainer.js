@@ -32,8 +32,6 @@ class MainScreenContainer extends Component {
     fixcount: 0,
     complete: false,
     showSuccessModal: false,
-    facebook: false,
-    twitter: false,
   };
 
   componentWillMount() {

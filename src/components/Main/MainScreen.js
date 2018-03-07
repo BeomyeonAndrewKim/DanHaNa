@@ -179,8 +179,11 @@ export default class MainScreen extends Component {
               다음주 미션을 미리 설정하세요.
             </p>
             <div className="SuccessModal__mission">
-              <Icon type="edit" className="SuccessModal__mission__edit" />
+              <Link to="editnextweekmission">
+                <Icon type="edit" className="SuccessModal__mission__edit" />
+              </Link>
             </div>
+
             <p className="SUccessModal__message">
               아래 선물 아이콘을 누르면 이 메세지를 다시 보실 수 있습니다.
             </p>
