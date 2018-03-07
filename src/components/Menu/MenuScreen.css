@@ -1,5 +1,6 @@
 .ant-menu-inline-collapsed{
   width: 0;
+  border: 0;
   overflow: hidden;
   height: calc(100vh - 32px);
 }
@@ -7,7 +8,7 @@
   display: none;
 }
 .ant-menu-light{
-  height: calc(100vh - 32px);
+  height: calc(100vh - 1.2rem);
   z-index:2;
   position: relative;
 }
@@ -41,4 +42,9 @@
 }
 .close-btn::after{
   border: none !important;
+}
+.MenuScreen__btn{
+  color:#ffffff;
+  border: 0;
+  font-size: 1.2rem;
 }

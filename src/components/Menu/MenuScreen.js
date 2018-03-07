@@ -49,7 +49,11 @@ export default class MenuScreen extends Component {
             onClick={this.handleCloseMenuLayout}
           />
         )}
-        <Button type="ghost" onClick={this.props.handleToggleMenu}>
+        <Button
+          className="MenuScreen__btn"
+          type="ghost"
+          onClick={this.props.handleToggleMenu}
+        >
           <Icon type={this.props.collapsed ? 'menu-fold' : 'menu-unfold'} />
         </Button>
         <div className="menu-screen">

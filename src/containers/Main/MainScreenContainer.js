@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Modal, Icon } from 'antd';
+import { Modal } from 'antd';
 import * as firebase from 'firebase';
-import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
 import html2canvas from 'html2canvas';
 import MainScreen from '../../components/Main/MainScreen';

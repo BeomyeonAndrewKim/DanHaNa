@@ -24,9 +24,8 @@ export default class MainScreen extends Component {
   changeCircleSize = () => {
     const circle = document.querySelector('.MainScreen__circle');
     const size = `${this.props.curstep}` / `${this.props.steps}`;
-    circle.style.width = `calc(100vh * ${size})`;
     circle.style.height = `calc(100vh * ${size})`;
-    circle.style.transition = 'width 0.3s, height 0.3s';
+    circle.style.transition = 'height 0.3s';
   };
 
   MissionSuccessStamp = () => (
@@ -49,11 +48,12 @@ export default class MainScreen extends Component {
       this.props.MissionSuccessModal();
   };
 
-  handleClickCheck = throttle(() => this.props.checkTodo(), 1000);
-  handleClickRollBack = throttle(() => this.props.rollbackTodo(), 1000);
+  handleClickCheck = throttle(() => this.props.checkTodo(), 500);
+  handleClickRollBack = throttle(() => this.props.rollbackTodo(), 500);
   showToDoScreen = () => (
     <div>
       <div className="MainScreen__showtodo">
+        <div className="MainScreen__showtodo__pattern" />
         <div className="MainScreen__showtodo__wrapper">
           <div className="MainScreen__stepContainer">
             <span className="MainScreen__stepContainer--curstep">

@@ -23,8 +23,9 @@ $translateCenter:translate(-50%, -50%);
   position: relative;
   overflow: hidden;
   &__circle{
-    @include center();
-    border-radius: 100%;
+    position: absolute;
+    bottom:0;
+    width:100vw;
     background-color:#1e2b55;
   }
   &__showtodo{
@@ -51,8 +52,16 @@ $translateCenter:translate(-50%, -50%);
     );
     width: 100vw;
     height: calc(100vh - 32px);
+    &__pattern{
+      // position: absolute;
+      // width:30vw;
+      // height:30vh;
+      // background: linear-gradient(90deg,transparent 50%, #ffffff 50%, #ffffff 60%, transparent 60%);
+      // background-size: 2em 2em;
+      // background-color: transparent;
+      // font: italic 40px/2 'Trebuchet MS', Verdana, sans-serif;
+    }
     &__wrapper{
-
       @include center();
       width: 80vw;
       margin:0 auto;
@@ -90,9 +99,10 @@ $translateCenter:translate(-50%, -50%);
       background-color:#ffffff;
     }
     &--stamp{
-      font-size: 4rem;
+      font-size: 3.5rem;
       font-weight: bold;
-      width:300px;
+      text-align: center;
+      width:100%;
       margin: 7vh auto;
       color: red;
       border: 7px solid red;
@@ -105,9 +115,9 @@ $translateCenter:translate(-50%, -50%);
     }
     &__add{
       cursor: pointer;
-      @include center();
-      display: inline-block;
       font-size: 50px; 
+      display:block;
+      margin-top:7vh;
     }
     &__check{
       cursor: pointer;
@@ -123,10 +133,11 @@ $translateCenter:translate(-50%, -50%);
     }
     &__req{
       cursor: pointer;
-      @include horizonalCenter();
       display: block;
-      bottom:2rem;
       text-align: center;
+      font-size:1rem;
+      top:100%;
+      margin-top:5%;
     }
     &__title{
       position: absolute;
@@ -136,11 +147,13 @@ $translateCenter:translate(-50%, -50%);
       text-align: center;
       font-weight: bold;
       font-size:2rem;
+      
     }
   }
   
   &__camera{
     cursor: pointer;
+    color:#ffffff;
     position: absolute;
     font-size:40px;
     right: 10px;
@@ -227,3 +240,5 @@ $translateCenter:translate(-50%, -50%);
     transform: rotate(-15deg) scale(1);
   }
 }
+
+

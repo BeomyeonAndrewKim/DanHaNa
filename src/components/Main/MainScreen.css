@@ -8,10 +8,8 @@
 
 .MainScreen__circle {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 100%;
+  bottom: 0;
+  width: 100vw;
   background-color: #1e2b55;
 }
 
@@ -77,9 +75,10 @@
 }
 
 .MainScreen__todo--stamp {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: bold;
-  width: 300px;
+  text-align: center;
+  width: 100%;
   margin: 7vh auto;
   color: red;
   border: 7px solid red;
@@ -93,12 +92,9 @@
 
 .MainScreen__todo__add {
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: inline-block;
   font-size: 50px;
+  display: block;
+  margin-top: 7vh;
 }
 
 .MainScreen__todo__check {
@@ -116,12 +112,11 @@
 
 .MainScreen__todo__req {
   cursor: pointer;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: block;
-  bottom: 2rem;
   text-align: center;
+  font-size: 1rem;
+  top: 100%;
+  margin-top: 5%;
 }
 
 .MainScreen__todo__title {
@@ -136,6 +131,7 @@
 
 .MainScreen__camera {
   cursor: pointer;
+  color: #ffffff;
   position: absolute;
   font-size: 40px;
   right: 10px;
