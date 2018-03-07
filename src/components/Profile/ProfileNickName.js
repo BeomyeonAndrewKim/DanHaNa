@@ -10,6 +10,7 @@ export default class ProfileNickName extends Component {
     loading: '',
     handleNickNameChange: () => {},
     handleNickNameEditSave: () => {},
+    handleCancelClicked: () => {},
   };
   state = { visible: false };
   showModal = () => {
@@ -17,16 +18,14 @@ export default class ProfileNickName extends Component {
       visible: true,
     });
   };
-  handleOk = e => {
+  handleOk = () => {
     this.props.handleNickNameEditSave();
-    console.log(e);
     this.setState({
       visible: false,
     });
   };
-  handleCancel = e => {
+  handleCancel = () => {
     this.props.handleCancelClicked();
-    console.log(e);
     this.setState({
       visible: false,
     });

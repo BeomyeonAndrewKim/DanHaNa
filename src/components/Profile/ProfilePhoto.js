@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { Button, Avatar } from 'antd';
-
 import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator';
 
 export default class ProfilePhoto extends Component {
