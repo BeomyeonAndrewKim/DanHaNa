@@ -2861,8 +2861,8 @@ mark {
 }
 .ant-btn-primary {
   color: #fff;
-  background-color: #dc7036;
-  border-color: #dc7036;
+  background-color: #3d4144;
+  border-color: #3d4144;
 }
 .ant-btn-primary > a:only-child {
   color: currentColor;
@@ -2879,8 +2879,8 @@ mark {
 .ant-btn-primary:hover,
 .ant-btn-primary:focus {
   color: #fff;
-  background-color: #e8945f;
-  border-color: #e8945f;
+  background-color: #4d5052;
+  border-color: #4d5052;
 }
 .ant-btn-primary:hover > a:only-child,
 .ant-btn-primary:focus > a:only-child {
@@ -2899,8 +2899,8 @@ mark {
 .ant-btn-primary:active,
 .ant-btn-primary.active {
   color: #fff;
-  background-color: #b55224;
-  border-color: #b55224;
+  background-color: #1a1c1f;
+  border-color: #1a1c1f;
 }
 .ant-btn-primary:active > a:only-child,
 .ant-btn-primary.active > a:only-child {
@@ -3445,9 +3445,9 @@ mark {
   color: #fff;
 }
 .ant-btn-background-ghost.ant-btn-primary {
-  color: #dc7036;
+  color: #3d4144;
   background-color: transparent;
-  border-color: #dc7036;
+  border-color: #3d4144;
 }
 .ant-btn-background-ghost.ant-btn-primary > a:only-child {
   color: currentColor;
@@ -3463,9 +3463,9 @@ mark {
 }
 .ant-btn-background-ghost.ant-btn-primary:hover,
 .ant-btn-background-ghost.ant-btn-primary:focus {
-  color: #e8945f;
+  color: #4d5052;
   background-color: transparent;
-  border-color: #e8945f;
+  border-color: #4d5052;
 }
 .ant-btn-background-ghost.ant-btn-primary:hover > a:only-child,
 .ant-btn-background-ghost.ant-btn-primary:focus > a:only-child {
@@ -3483,9 +3483,9 @@ mark {
 }
 .ant-btn-background-ghost.ant-btn-primary:active,
 .ant-btn-background-ghost.ant-btn-primary.active {
-  color: #b55224;
+  color: #1a1c1f;
   background-color: transparent;
-  border-color: #b55224;
+  border-color: #1a1c1f;
 }
 .ant-btn-background-ghost.ant-btn-primary:active > a:only-child,
 .ant-btn-background-ghost.ant-btn-primary.active > a:only-child {
@@ -5295,8 +5295,8 @@ a.ant-btn-sm {
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   position: relative;
   color: #fff;
-  background-color: #dc7036;
-  border-color: #dc7036;
+  background-color: #3d4144;
+  border-color: #3d4144;
   padding: 0 7px;
   font-size: 14px;
   border-radius: 4px;
@@ -5353,8 +5353,8 @@ a.ant-btn-sm {
 .ant-calendar .ant-calendar-ok-btn:hover,
 .ant-calendar .ant-calendar-ok-btn:focus {
   color: #fff;
-  background-color: #e8945f;
-  border-color: #e8945f;
+  background-color: #4d5052;
+  border-color: #4d5052;
 }
 .ant-calendar .ant-calendar-ok-btn:hover > a:only-child,
 .ant-calendar .ant-calendar-ok-btn:focus > a:only-child {
@@ -5373,8 +5373,8 @@ a.ant-btn-sm {
 .ant-calendar .ant-calendar-ok-btn:active,
 .ant-calendar .ant-calendar-ok-btn.active {
   color: #fff;
-  background-color: #b55224;
-  border-color: #b55224;
+  background-color: #1a1c1f;
+  border-color: #1a1c1f;
 }
 .ant-calendar .ant-calendar-ok-btn:active > a:only-child,
 .ant-calendar .ant-calendar-ok-btn.active > a:only-child {

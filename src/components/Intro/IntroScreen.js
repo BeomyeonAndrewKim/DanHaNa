@@ -31,11 +31,14 @@ export default class IntroScreen extends Component {
     this.state.redirectToLogin || window.localStorage.getItem('introdone') ? (
       <Redirect to="/login" />
     ) : this.state.intropage < PAGE_NUM ? (
-      <Button className="introBtn" onClick={this.handleNextpage}>
+      <Button className="IntroScreen__btn" onClick={this.handleNextpage}>
         Continue
       </Button>
     ) : this.state.intropage === PAGE_NUM ? (
-      <Button className="introBtn" onClick={this.handleRedirectLogin}>
+      <Button
+        className="IntroScreen__btn--login"
+        onClick={this.handleRedirectLogin}
+      >
         Login
       </Button>
     ) : null;
@@ -51,16 +54,22 @@ export default class IntroScreen extends Component {
           draggable
         >
           <div className="IntroScreen__carousel__1">
-            <h3>일주일 단 하나</h3>
+            <span className="IntroScreen__carousel__text">일주일 단 하나</span>
           </div>
           <div className="IntroScreen__carousel__2">
-            <h3>자신을 위해 무엇이든 시작해보세요</h3>
+            <span className="IntroScreen__carousel__text">
+              자신을 위해 무엇이든 시작해보세요
+            </span>
           </div>
           <div className="IntroScreen__carousel__3">
-            <h3>일주일 단하나와 함께라면 할 수 있어요</h3>
+            <span className="IntroScreen__carousel__text">
+              일주일 단하나와 함께라면 할 수 있어요
+            </span>
           </div>
           <div className="IntroScreen__carousel__4">
-            <h3>그럼 시작해볼까요?</h3>
+            <span className="IntroScreen__carousel__text">
+              그럼 시작해볼까요?
+            </span>
           </div>
         </Carousel>
         <div>{this.renderRedirectBtn()}</div>

@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import * as firebase from 'firebase';
 
 import 'animate.css';
-import 'antd/dist/antd.less';
-import './less/src/less/index.css';
+import './less/index.css';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
