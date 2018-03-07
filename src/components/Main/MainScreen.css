@@ -164,6 +164,11 @@
   padding: 2rem;
 }
 
+.SNSShareScreen__tomain {
+  font-size: 4rem;
+  color: #0b1229;
+}
+
 .screenshot-modal {
   height: 100vh;
   width: 100vw;

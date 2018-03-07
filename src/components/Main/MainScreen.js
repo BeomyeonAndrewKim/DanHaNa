@@ -10,6 +10,7 @@ export default class MainScreen extends Component {
     loading: false,
     rollbackTodo: () => {},
     checkTodo: () => {},
+    showSuccessModal: false,
   };
 
   componentDidMount() {
@@ -106,6 +107,37 @@ export default class MainScreen extends Component {
         ) : (
           this.AddToDoScreen()
         )}
+        <Modal
+          title="미션 달성을 축하드립니다!"
+          visible={this.props.showSuccessModal}
+          onOk={this.props.handleSuccessModalOk}
+          onCancel={this.props.handleSuccessModalcancel}
+        >
+          <div className="SuccessModal">
+            <p className="SuccessModal__message">친구들에게 자랑해보세요.</p>
+            <div className="SuccessModal__sns">
+              <Icon
+                onClick={this.props.handleFacebookIcon}
+                className="SuccessModal__sns__facebook"
+                type="facebook"
+              />
+              <Icon
+                onClick={this.props.handleTwitterIcon}
+                className="SuccessModal__sns__twitter"
+                type="twitter"
+              />
+            </div>
+            <p className="SUccessModal__message">
+              다음주 미션을 미리 설정하세요.
+            </p>
+            <div className="SuccessModal__mission">
+              <Icon type="edit" className="SuccessModal__mission__edit" />
+            </div>
+            <p className="SUccessModal__message">
+              아래 선물 아이콘을 누르면 이 메세지를 다시 보실 수 있습니다.
+            </p>
+          </div>
+        </Modal>
       </div>
     );
   }

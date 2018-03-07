@@ -15,7 +15,7 @@ import EditNextWeekMissionContainer from '../containers/Mission/EditNextWeekMiss
 import DashboardScreenContainer from '../containers/Dashboard/DashboardScreenContainer';
 import withAuth from '../hocs/withAuth';
 import CalendarScreenContainer from '../containers/Calendar/CalendarScreenContainer';
-import SNSShareScreen from '../components/SNSShare/SNSShareScreen';
+import SNSMainScreenContainer from '../containers/Main/SNSMainScreenContainer';
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
@@ -51,7 +51,7 @@ export default class extends Component {
               path="/calendar"
               component={withAuth(CalendarScreenContainer)}
             />
-            <Route path="/snsshare" component={SNSShareScreen} />
+            <Route path="/snsshare" component={SNSMainScreenContainer} />
           </div>
         </BrowserRouter>
       </Provider>
