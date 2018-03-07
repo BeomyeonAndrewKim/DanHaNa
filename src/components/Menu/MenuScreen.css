@@ -1,18 +1,18 @@
-.ant-menu-inline-collapsed{
+.ant-menu-inline-collapsed {
   width: 0;
   border: 0;
   overflow: hidden;
   height: calc(100vh - 32px);
 }
-.ant-menu-inline-collapsed-tooltip{
+.ant-menu-inline-collapsed-tooltip {
   display: none;
 }
-.ant-menu-light{
+.ant-menu-light {
   height: calc(100vh - 1.2rem);
-  z-index:2;
+  z-index: 2;
   position: relative;
 }
-.profileImg{
+.profileImg {
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -20,31 +20,35 @@
   display: block;
 }
 .menu-avatar {
-  height:250px !important;
+  height: 250px !important;
   text-align: center;
-  padding:0 20px !important;
+  padding: 0 20px !important;
 }
-.menu-screen{
+.menu-screen {
   position: absolute;
   width: 256px;
   top: 32px;
   left: 0;
+  z-index: 3;
 }
-.close-btn{
-  overflow:visible !important;
+.close-btn {
+  overflow: visible !important;
   position: absolute;
   display: inline-block;
   height: 20px !important;
-  width: 20px !important;  
-  padding:0 !important;
+  width: 20px !important;
+  padding: 0 !important;
   transform: translateX(225px);
-  background-color:#ffffff !important; 
+  background-color: #ffffff !important;
 }
-.close-btn::after{
+.close-btn::after {
   border: none !important;
 }
-.MenuScreen__btn{
-  color:#ffffff;
+.MenuScreen__btn {
+  color: #ffffff;
   border: 0;
   font-size: 1.2rem;
+  position: absolute;
+  z-index: 2;
+  top: 0;
 }

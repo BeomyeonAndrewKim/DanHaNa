@@ -1,19 +1,19 @@
-$translateCenter:translate(-50%, -50%);
+$translateCenter: translate(-50%, -50%);
 
-@mixin center(){
+@mixin center() {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: $translateCenter;
 }
-@mixin horizonalCenter(){
+@mixin horizonalCenter() {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
-@mixin max(){
-  height:100vh;
-  width:100vw;
+@mixin max() {
+  height: 100vh;
+  width: 100vw;
 }
 
 .MainScreen {
@@ -22,223 +22,289 @@ $translateCenter:translate(-50%, -50%);
   display: blcok;
   position: relative;
   overflow: hidden;
-  &__circle{
+  &__circle {
     position: absolute;
-    bottom:0;
-    width:100vw;
-    background-color:#1e2b55;
+    bottom: 0;
+    width: 100vw;
+    background-color: #1e2b55;
   }
-  &__showtodo{
+  &__showtodo {
     background: #dc7036;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: linear-gradient(
-    135deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  filter: progid:DXImageTransform.Microsoft.gradient(
-      startColorstr='#dc7036',
-      endColorstr='#c45b2d',
-      GradientType=1
-    );
+    background: -moz-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+    background: -webkit-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+    background: linear-gradient(135deg, #dc7036 50%, #c45b2d 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(
+        startColorstr="#dc7036",
+        endColorstr="#c45b2d",
+        GradientType=1
+      );
     width: 100vw;
     height: calc(100vh - 32px);
-    &__pattern{
-      // position: absolute;
-      // width:30vw;
-      // height:30vh;
-      // background: linear-gradient(90deg,transparent 50%, #ffffff 50%, #ffffff 60%, transparent 60%);
-      // background-size: 2em 2em;
-      // background-color: transparent;
-      // font: italic 40px/2 'Trebuchet MS', Verdana, sans-serif;
-    }
-    &__wrapper{
+    &__wrapper {
       @include center();
       width: 80vw;
-      margin:0 auto;
+      margin: 0 auto;
+      z-index: 2;
     }
   }
-  &__stepContainer{
+  &__stepContainer {
     display: inline-block;
-    color:#ffffff;
-    &--curstep{
+    color: #ffffff;
+    &--curstep {
       font-size: 3.5rem;
     }
-    &--steps{
+    &--steps {
       font-size: 1.5rem;
     }
   }
-  &__rollback{
+  &__rollback {
     display: inline-block;
     position: absolute;
-    right:0;
-    margin-top:1rem;
+    right: 0;
+    margin-top: 1rem;
     font-size: 1.5rem;
-    color:#ffffff;
+    color: #ffffff;
   }
-  &__todo{
+  &__todo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    &__noData{
+    &__noData {
       @include center();
     }
-    &__wrapper{
+    &__wrapper {
       width: 80vw;
       height: 30vh;
       border: 7px solid#0b1229;
-      background-color:#ffffff;
+      background-color: #ffffff;
     }
-    &--stamp{
+    &--stamp {
       font-size: 3.5rem;
       font-weight: bold;
       text-align: center;
-      width:100%;
+      width: 100%;
       margin: 7vh auto;
       color: red;
       border: 7px solid red;
       padding: 10px 7px;
-      border-radius:5px;
+      border-radius: 5px;
       animation-name: pulse;
       animation-duration: 0.5s;
       opacity: 0;
-      animation-fill-mode:forwards;
+      animation-fill-mode: forwards;
     }
-    &__add{
+    &__add {
       cursor: pointer;
-      font-size: 50px; 
-      display:block;
-      margin-top:7vh;
+      font-size: 50px;
+      display: block;
+      margin-top: 7vh;
     }
-    &__check{
+    &__check {
       cursor: pointer;
       transform: translateY(-50%);
-      border:7px solid #0b1229;
+      border: 7px solid #0b1229;
       border-radius: 50%;
-      color:#ffffff;
-      background-color:#68a046;
-      padding:5px;
+      color: #ffffff;
+      background-color: #68a046;
+      padding: 5px;
       display: inline-block;
       font-size: 4rem;
       font-weight: bold;
     }
-    &__req{
+    &__req {
       cursor: pointer;
       display: block;
       text-align: center;
-      font-size:1rem;
-      top:100%;
-      margin-top:5%;
+      font-size: 1rem;
+      top: 100%;
+      margin-top: 5%;
     }
-    &__title{
+    &__title {
       position: absolute;
-      width:inherit;
+      width: inherit;
       padding: 3rem 1rem;
       display: block;
       text-align: center;
       font-weight: bold;
-      font-size:2rem;
-      
+      font-size: 2rem;
     }
   }
-  
-  &__camera{
+
+  &__camera {
     cursor: pointer;
-    color:#ffffff;
+    color: #ffffff;
     position: absolute;
-    font-size:40px;
+    font-size: 40px;
     right: 10px;
     bottom: 10px;
+    z-index: 2;
   }
 }
 
-.SuccessModal{
-  &__sns{
+.SuccessModal {
+  &__sns {
     text-align: center;
-    font-size:2rem;
-    &__facebook{
-      padding:2rem;
+    font-size: 2rem;
+    &__facebook {
+      padding: 2rem;
     }
-    &__twitter{
-      padding:2rem;
+    &__twitter {
+      padding: 2rem;
     }
   }
-  &__mission{
-    font-size:2rem;
-    text-align:center;
-    &__edit{
-      padding:2rem;
+  &__mission {
+    font-size: 2rem;
+    text-align: center;
+    &__edit {
+      padding: 2rem;
     }
   }
 }
-.SNSShareScreen__tomain{
-  font-size:4rem;
-  color:#0b1229;
+.SNSShareScreen__tomain {
+  font-size: 4rem;
+  color: #0b1229;
 }
 
-.screenshot-modal{
+.screenshot-modal {
   @include max();
-  margin:0;
-  top:initial;
+  margin: 0;
+  top: initial;
 }
 
-.screenshot-modal-close{
-  top:10%;
-  right:10%;
+.screenshot-modal-close {
+  top: 10%;
+  right: 10%;
 }
-.screenshot-modal-content{
+.screenshot-modal-content {
   @include max();
   background-color: transparent;
 }
 
-.screenshot-modal-body{
+.screenshot-modal-body {
   @include max();
-  padding:0;
+  padding: 0;
 }
 
-.screenshot-modal-footer{
+.screenshot-modal-footer {
   display: none;
 }
 
-.downloadLink{
+.downloadLink {
   @include horizonalCenter();
-  top:75%;
-  background-color: #9B9B9B;
-  padding:8px 20px;
+  top: 75%;
+  background-color: #9b9b9b;
+  padding: 8px 20px;
   color: #ffffff;
   display: inline-block;
-  border:1px solid #9B9B9B;
+  border: 1px solid #9b9b9b;
 }
-.screenshotCanvas{
+.screenshotCanvas {
   margin-top: 50%;
   margin: 0 auto;
   position: absolute;
-  transform: scale(0.8)
+  transform: scale(0.8);
 }
 
-@keyframes pulse{
-  0%{
+@keyframes pulse {
+  0% {
     opacity: 0;
   }
-  10%{
-    opacity:.50;
+  10% {
+    opacity: 0.5;
     transform-origin: 50% 50%;
     transform: rotate(-2deg) scale(5);
-    transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    transition: all 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
   }
-  100%{
-    opacity:.70;
+  100% {
+    opacity: 0.7;
     transform: rotate(-15deg) scale(1);
   }
 }
 
+$blue-dark: #1e384c;
+$blue: #2c7fbe;
+$blue-light: #32bafa;
+$green: #02c39a;
 
+$stage-bg: $blue-dark;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+.waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  transition: 0.4s transform ease;
+  transform-origin: bottom center;
+
+  @media (min-width: 500px) {
+    border-radius: 5px;
+  }
+}
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: wave 1s linear infinite;
+
+  &--front {
+    z-index: 2;
+    color: $blue-light;
+  }
+
+  &--back {
+    z-index: 1;
+    color: $blue;
+    animation-direction: reverse;
+  }
+}
+
+.water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background: currentColor;
+
+  svg {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 99.9%;
+  }
+}
+.water:first-of-type {
+  transform: translate(-100%, 0);
+}
+
+svg {
+  fill: currentColor;
+}
+
+@keyframes wave {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(50%, 0.5em, 0);
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}

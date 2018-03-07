@@ -22,10 +22,12 @@ export default class MainScreen extends Component {
   }
 
   changeCircleSize = () => {
-    const circle = document.querySelector('.MainScreen__circle');
+    const circle = document.querySelectorAll('.water');
     const size = `${this.props.curstep}` / `${this.props.steps}`;
-    circle.style.height = `calc(100vh * ${size})`;
-    circle.style.transition = 'height 0.3s';
+    circle.forEach(el => {
+      el.style.height = `calc(100vh * ${size})`;
+      el.style.transition = 'height 0.3s';
+    });
   };
 
   MissionSuccessStamp = () => (
@@ -53,7 +55,6 @@ export default class MainScreen extends Component {
   showToDoScreen = () => (
     <div>
       <div className="MainScreen__showtodo">
-        <div className="MainScreen__showtodo__pattern" />
         <div className="MainScreen__showtodo__wrapper">
           <div className="MainScreen__stepContainer">
             <span className="MainScreen__stepContainer--curstep">
@@ -89,6 +90,68 @@ export default class MainScreen extends Component {
   render() {
     return (
       <div className="MainScreen">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 350 32"
+            preserveAspectRatio="none"
+          >
+            <path
+              className="water-glass"
+              d="M39.92,45H25V43.21H38.15L43.14,4l2,.2ZM25,45H10.08L4.89,4.15l2-.2,5,39.26H25Z"
+            />
+            <path
+              className="water-glass__water"
+              d="M39.09,6.88s-3.13,2-5.48,0c-4.92,2.65-7.72,0-7.72,0s-4.59,2.76-7.94,0c-4.47,3.09-7,0-7,0l3.91,33.76H35Z"
+            />
+          </svg>
+          <div className="waves">
+            <div className="wave wave--back">
+              <div className="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <title>wave2</title>
+                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+                </svg>
+              </div>
+              <div className="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <title>wave2</title>
+                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+                </svg>
+              </div>
+            </div>
+            <div className="wave wave--front">
+              <div className="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <title>wave2</title>
+                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+                </svg>
+              </div>
+              <div className="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <title>wave2</title>
+                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="MainScreen__circle" />
         {this.props.render()}
         {this.props.todo ? (

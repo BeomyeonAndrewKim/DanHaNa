@@ -56,7 +56,7 @@ export default class MenuScreen extends Component {
         >
           <Icon type={this.props.collapsed ? 'menu-fold' : 'menu-unfold'} />
         </Button>
-        <div className="menu-screen">
+        <div className="menu-screen" style={{ visibility: 'hidden' }}>
           <Menu
             mode="inline"
             theme="light"
