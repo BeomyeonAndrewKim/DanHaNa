@@ -1,6 +1,6 @@
 {
   "short_name": "DanHaNa",
-  "name": "One Week,One Mission,One Goal",
+  "name": "One Week,One Mission, DanHaNa",
   "icons": [
     {
      "src": "favicon/android-icon-36x36.png",
@@ -39,7 +39,7 @@
      "density": "4.0"
     }
    ],
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#1e2b55",
   "background_color": "#c45b2d"
