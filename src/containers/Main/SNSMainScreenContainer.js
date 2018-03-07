@@ -17,15 +17,6 @@ class SNSMainScreenContainer extends Component {
   componentWillMount() {
     this.props.onMount();
   }
-  componentDidMount() {
-    if (window.location.href.includes('facebookshare')) {
-      window.open('http://www.facebook.com/sharer/sharer.php?u=facebookshare');
-    } else if (window.location.href.includes('twittershare')) {
-      window.open(
-        'https://twitter.com/intent/tweet?text=TEXT&url=twittershare',
-      );
-    }
-  }
   render() {
     return (
       <div>
