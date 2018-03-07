@@ -19,9 +19,9 @@ class DashboardScreenContainer extends Component {
     endOpen: false,
     monthValue: null,
     yearValue: null,
-    completeData: [],
-    stepsDataPie: [],
-    stepsDataLine: [],
+    completeData: null,
+    stepsDataPie: null,
+    stepsDataLine: null,
   };
 
   componentWillMount() {
@@ -154,7 +154,11 @@ class DashboardScreenContainer extends Component {
         value: chosenComplete.length - onlyCompletedData.length,
       },
     ];
-    this.setState({ completeData: completeDataforPie });
+    this.setState({
+      completeData: completeDataforPie,
+      stepsDataLine: null,
+      stepsDataPie: null,
+    });
     this.handleAnimateData(completeData);
   };
 
@@ -175,6 +179,15 @@ class DashboardScreenContainer extends Component {
       { name: '총 단계 평균', value: stepsData },
       { name: '달성된 단계 평균', value: curStepData },
     ];
+    this.setState({
+      completeData: null,
+      stepsDataPie: stepsDataforPie,
+      stepsDataLine: null,
+    });
+    this.handleAnimateData(completeStepsData);
+  };
+
+  handleCompleteStepsDataforLine = () => {
     const stepsDataforLine = [];
     this.makeChosenDataArr()
       .map(el => [el[0], el[1].curstep / el[1].steps * 100])
@@ -186,10 +199,9 @@ class DashboardScreenContainer extends Component {
       });
     this.setState({
       completeData: null,
-      stepsDataPie: stepsDataforPie,
+      stepsDataPie: null,
       stepsDataLine: stepsDataforLine,
     });
-    this.handleAnimateData(completeStepsData);
   };
 
   render() {
@@ -209,6 +221,7 @@ class DashboardScreenContainer extends Component {
         handleCompleteStepsData={this.handleCompleteStepsData}
         handleMonthPanelChange={this.handleMonthPanelChange}
         handleYearPanelChange={this.handleYearPanelChange}
+        handleCompleteStepsDataforLine={this.handleCompleteStepsDataforLine}
       />
     );
   }

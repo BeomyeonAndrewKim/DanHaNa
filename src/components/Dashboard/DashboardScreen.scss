@@ -11,7 +11,7 @@
     background-color: #1e2b55;
     color:#ffffff;
     display: block;
-    font-size: 20px;
+    font-size: 1rem;
     line-height: 50px;
     &__icon{
       position: absolute;
@@ -23,12 +23,33 @@
   &__main{
     margin: 0 auto;
     height:100vh;
-    width:80vw;
-    background-color: #ffffff;
+    &--dropdown{
+      border:1px solid #1e2b55;
+    }
     &__calendar{
+      width:85vw;
+      margin:0 auto;
+      margin-top:1rem;
+      background-color: #ffffff;
+      box-shadow: 5px 5px #1e2b55;
       display: block;
+      &__btn{
+        width:85vw;
+      }
     }
     &--data{
+      width:85vw;
+      margin:1rem auto;
+      background-color: #ffffff;
+      box-shadow: 5px 5px #1e2b55;
+      text-align: center;
+      &--title{
+        font-weight: bold;
+        margin: 1rem auto;
+      }
+      &__btn{
+        width:85vw;
+      }
       &--completeData{
         display:block;
         font-size:8rem;

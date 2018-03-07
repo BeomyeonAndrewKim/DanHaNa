@@ -9,7 +9,7 @@
   background-color: #1e2b55;
   color: #ffffff;
   display: block;
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 50px;
 }
 
@@ -23,12 +23,40 @@
 .DashboardScreen__main {
   margin: 0 auto;
   height: 100vh;
-  width: 80vw;
-  background-color: #ffffff;
+}
+
+.DashboardScreen__main--dropdown {
+  border: 1px solid #1e2b55;
 }
 
 .DashboardScreen__main__calendar {
+  width: 85vw;
+  margin: 0 auto;
+  margin-top: 1rem;
+  background-color: #ffffff;
+  box-shadow: 5px 5px #1e2b55;
   display: block;
+}
+
+.DashboardScreen__main__calendar__btn {
+  width: 85vw;
+}
+
+.DashboardScreen__main--data {
+  width: 85vw;
+  margin: 1rem auto;
+  background-color: #ffffff;
+  box-shadow: 5px 5px #1e2b55;
+  text-align: center;
+}
+
+.DashboardScreen__main--data--title {
+  font-weight: bold;
+  margin: 1rem auto;
+}
+
+.DashboardScreen__main--data__btn {
+  width: 85vw;
 }
 
 .DashboardScreen__main--data--completeData {

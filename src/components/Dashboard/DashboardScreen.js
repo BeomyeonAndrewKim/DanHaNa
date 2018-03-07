@@ -48,7 +48,7 @@ export default class DashboardScreen extends Component {
     monthPicker: false,
     yearPicker: false,
   };
-  handleDropDownList = info => {
+  handleDropDownListCalendar = info => {
     switch (info.key) {
       case '1':
         this.setState({
@@ -74,7 +74,20 @@ export default class DashboardScreen extends Component {
       default:
     }
   };
-
+  handleDropDownListData = info => {
+    switch (info.key) {
+      case '1':
+        this.props.handleCompleteData();
+        break;
+      case '2':
+        this.props.handleCompleteStepsData();
+        break;
+      case '3':
+        this.props.handleCompleteStepsDataforLine();
+        break;
+      default:
+    }
+  };
   showCalendar = () => {
     const calendarStyle = {
       width: '10vw',
@@ -139,8 +152,10 @@ export default class DashboardScreen extends Component {
     if (this.props.completeData) {
       return (
         <div>
-          <span className="DashboardScreen__main--data--completeData" />
-          <ResponsiveContainer width="80%" height={400}>
+          <span className="DashboardScreen__main--data--title">
+            기간내 목표 달성률
+          </span>
+          <ResponsiveContainer width="80%" height={200}>
             <PieChart width={400} height={400}>
               <Pie
                 data={this.props.completeData}
@@ -149,7 +164,7 @@ export default class DashboardScreen extends Component {
                 label
               >
                 {this.props.completeData.map((entry, index) => (
-                  <Cell fill={COLORS[index % COLORS.length]} />
+                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip cursor={{ stroke: 'red', strokeWidth: 2 }} />
@@ -160,7 +175,9 @@ export default class DashboardScreen extends Component {
     } else if (this.props.stepsDataPie) {
       return (
         <div>
-          <span className="DashboardScreen__main--data--completeData" />
+          <span className="DashboardScreen__main--data--title">
+            기간내 목표 단계별 달성률
+          </span>
           <ResponsiveContainer width="100%" height={150}>
             <BarChart width={350} height={150} data={this.props.stepsDataPie}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -170,6 +187,14 @@ export default class DashboardScreen extends Component {
               <Bar dataKey="value" fill="#8884d8" barSize={60} />
             </BarChart>
           </ResponsiveContainer>
+        </div>
+      );
+    } else if (this.props.stepsDataLine) {
+      return (
+        <div>
+          <span className="DashboardScreen__main--data--title">
+            주별 목표 단계별 달성률
+          </span>
           <ResponsiveContainer width="100%" height={250}>
             <LineChart width={730} height={250} data={this.props.stepsDataLine}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -190,11 +215,18 @@ export default class DashboardScreen extends Component {
   };
 
   render() {
-    const menu = (
-      <Menu onClick={this.handleDropDownList}>
+    const menuCalendar = (
+      <Menu onClick={this.handleDropDownListCalendar}>
         <Menu.Item key={1}>Week</Menu.Item>
         <Menu.Item key={2}>Month</Menu.Item>
         <Menu.Item key={3}>Year</Menu.Item>
+      </Menu>
+    );
+    const menuData = (
+      <Menu onClick={this.handleDropDownListData}>
+        <Menu.Item key={1}>기간내 목표 달성률</Menu.Item>
+        <Menu.Item key={2}>기간내 목표 단계별 달성률</Menu.Item>
+        <Menu.Item key={3}>주별 목표 단계별 달성률</Menu.Item>
       </Menu>
     );
     return (
@@ -206,21 +238,23 @@ export default class DashboardScreen extends Component {
           통계
         </div>
         <div className="DashboardScreen__main">
-          <Dropdown overlay={menu}>
-            <a className="ant-dropdown-link">
-              Select Date Type <Icon type="down" />
-            </a>
-          </Dropdown>
           <div className="DashboardScreen__main__calendar">
+            <Dropdown overlay={menuCalendar}>
+              <Button className="DashboardScreen__main__calendar__btn">
+                기간 단위를 선택하세요. <Icon type="down" />
+              </Button>
+            </Dropdown>
             {this.showCalendar()}
           </div>
-          <Button onClick={this.props.handleCompleteData}>
-            기간내 목표 달성률
-          </Button>
-          <Button onClick={this.props.handleCompleteStepsData}>
-            기간내 목표 단계별 달성률
-          </Button>
           <div className="DashboardScreen__main--data">
+            <Dropdown overlay={menuData}>
+              <Button className="DashboardScreen__main--data__btn">
+                확인하고 싶은 데이터를 고르세요.<Icon type="down" />
+              </Button>
+            </Dropdown>
+            {!this.props.stepsDataLine && (
+              <span className="DashboardScreen__main--data--completeData" />
+            )}
             {this.showPieChart()}
           </div>
         </div>
