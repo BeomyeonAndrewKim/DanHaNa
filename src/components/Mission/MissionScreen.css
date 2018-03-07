@@ -1,65 +1,127 @@
 .MissionScreen__header {
   text-align: center;
   height: 50px;
-  background-color: #E0E0E0;
+  background-color: #1e2b55;
+  color: white;
   display: block;
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 50px;
 }
 
 .MissionScreen__header__icon {
   position: absolute;
   left: 5px;
-  font-size: 25px;
+  font-size: 1.5rem;
   line-height: 50px;
+}
+
+.MissionScreen__week {
+  width: 85vw;
+  margin: 1rem auto;
+  padding: 1rem 0;
+  background-color: #ffffff;
+  box-shadow: 5px 5px #1e2b55;
+  line-height: 1rem;
+  text-align: center;
+}
+
+.MissionScreen__week__wrapper {
+  display: inline-block;
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.MissionScreen__week__dash {
+  display: inline-block;
+  transform: translateY(-150%);
+  font-size: 2rem;
+  padding: 0 1rem;
+}
+
+.MissionScreen__week__first {
+  width: 20vw;
+  color: #1e2b55;
+  display: inline-block;
+  text-align: center;
+  font-weight: lighter;
+  border: 1px solid #1e2b55;
+  padding: 0.5rem 0;
+}
+
+.MissionScreen__week__last {
+  width: 20vw;
+  color: #1e2b55;
+  display: inline-block;
+  text-align: center;
+  font-weight: lighter;
+  border: 1px solid #1e2b55;
+  padding: 0.5rem 0;
 }
 
 .MissionScreen__main {
   margin: 0 auto;
-  margin-top: 30px;
-  width: 70vw;
+  margin-top: 1rem;
+  padding: 1rem;
+  width: 85vw;
+  background-color: #ffffff;
+  box-shadow: 5px 5px #1e2b55;
 }
 
 .MissionScreen__main__todo {
-  margin-bottom: 40px;
+  margin-bottom: 1rem;
 }
 
 .MissionScreen__main__todo__title {
-  font-size: 20px;
-  padding: 20px 0;
+  font-size: 1rem;
+  padding: 1rem 0;
 }
 
 .MissionScreen__main__todo__body {
-  padding: 20px 0;
+  padding: 1rem 0;
+  border: 0;
+  border-bottom: 1px solid #000000;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.MissionScreen__main__todo__body:focus {
+  border: 0 !important;
 }
 
 .MissionScreen__main__memo {
-  margin-bottom: 40px;
+  margin-bottom: 1rem;
 }
 
 .MissionScreen__main__memo__title {
-  font-size: 20px;
-  padding: 20px 0;
+  font-size: 1rem;
+  padding: 1rem 0;
 }
 
 .MissionScreen__main__memo__body {
-  padding: 20px 0;
+  border-radius: 0;
 }
 
 .MissionScreen__main__steps {
-  margin-bottom: 40px;
+  margin-bottom: 1rem;
 }
 
 .MissionScreen__main__steps__title {
-  font-size: 20px;
-  padding: 20px 0;
+  font-size: 1rem;
+  padding: 1rem 0;
 }
 
 .MissionScreen__main__steps__body {
-  padding: 20px 0;
+  border-radius: 0;
+}
+
+.MissionScreen__main__limit {
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 .MissionScreen__main__fixcount {
-  text-align: center;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-left: 6rem;
 }
 /*# sourceMappingURL=MissionScreen.css.map */

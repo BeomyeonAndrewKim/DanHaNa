@@ -6,11 +6,8 @@ import './MissionScreen.css';
 
 const { TextArea } = Input;
 
-const THIS_WEEK_DP = `${moment()
-  .isoWeekday(1)
-  .format('YYYY-MM-DD')}~${moment()
-  .isoWeekday(7)
-  .format('YYYY-MM-DD')}`;
+const FIRST_DAY_OF_WEEK = moment().isoWeekday(1);
+const LAST_DAY_OF_WEEK = moment().isoWeekday(7);
 
 export default class MissionScreen extends Component {
   static defaultProps = {
@@ -29,9 +26,36 @@ export default class MissionScreen extends Component {
 
   showEditWeekMission = () => (
     <div>
+      <div className="MissionScreen__week">
+        <div className="MissionScreen__week__wrapper">
+          <div className="MissionScreen__week__first">
+            <span>
+              {FIRST_DAY_OF_WEEK.format('YYYY')}
+              <br />
+              {FIRST_DAY_OF_WEEK.format('MMM')}
+              <br />
+              {FIRST_DAY_OF_WEEK.format('DD')}
+              <br />
+              {FIRST_DAY_OF_WEEK.format('ddd')}
+            </span>
+          </div>
+          <span className="MissionScreen__week__dash">-</span>
+          <div className="MissionScreen__week__last">
+            <span>
+              {LAST_DAY_OF_WEEK.format('YYYY')}
+              <br />
+              {LAST_DAY_OF_WEEK.format('MMM')}
+              <br />
+              {LAST_DAY_OF_WEEK.format('DD')}
+              <br />
+              {LAST_DAY_OF_WEEK.format('ddd')}
+            </span>
+          </div>
+        </div>
+      </div>
       <div className="MissionScreen__main">
         <div className="MissionScreen__main__todo">
-          <p className="MissionScreen__main__todo__title">미션</p>
+          <p className="MissionScreen__main__todo__title">미션 설정</p>
           <div>
             <Input
               autoFocus
@@ -43,38 +67,47 @@ export default class MissionScreen extends Component {
               maxLength={20}
               minLength={1}
             />
-            <p>20자까지 입력 가능합니다.</p>
+            <p className="MissionScreen__main__limit">
+              20자까지 입력 가능합니다.
+            </p>
           </div>
         </div>
         <div className="MissionScreen__main__memo">
           <p className="MissionScreen__main__memo__title">메모</p>
-          <div className="MissionScreen__main__memo__body">
+          <div>
             <TextArea
+              className="MissionScreen__main__memo__body"
               placeholder="메모를 입력하세요."
               rows={2}
               onChange={this.props.handleMemoChange}
               defaultValue={this.props.thisWeek.memo}
-              maxLength={100}
+              maxLength={50}
               minLength={1}
             />
-            <p>100자까지 입력 가능합니다.</p>
+            <p className="MissionScreen__main__limit">
+              50자까지 입력 가능합니다.
+            </p>
           </div>
         </div>
         <div className="MissionScreen__main__steps">
           <p className="MissionScreen__main__steps__title">횟수</p>
-          <div className="MissionScreen__main__steps__body">
+          <div>
             <InputNumber
               max={20}
               min={1}
+              className="MissionScreen__main__steps__body"
               defaultValue={this.props.thisWeek.steps}
               onChange={this.props.handleStepsChange}
               formatter={value => value.replace(/[^0-9]/g, '')}
             />
-            <p>최대 20회까지 설정 가능합니다.</p>
+            <p className="MissionScreen__main__limit">
+              최대 20회까지 설정 가능합니다.
+            </p>
           </div>
         </div>
         <div>
           <Button
+            className="MissionScreen__main__btn"
             type="primary"
             onClick={
               this.props.thisWeek.todo
@@ -84,9 +117,12 @@ export default class MissionScreen extends Component {
           >
             저장
           </Button>
-          <Link to="/main">
-            <Button type="primary">취소</Button>
-          </Link>
+          <span className="MissionScreen__main__fixcount">
+            수정 가능 횟수{' '}
+            <span style={{ fontWeight: 'bold' }}>
+              {this.props.thisWeek.fixcount}
+            </span>
+          </span>
         </div>
       </div>
     </div>
@@ -100,9 +136,6 @@ export default class MissionScreen extends Component {
             <Icon className="MissionScreen__header__icon" type="arrow-left" />
           </Link>
           미션
-        </div>
-        <div className="MissionScreen__week">
-          <p>{THIS_WEEK_DP}</p>
         </div>
         {this.showEditWeekMission()}
       </div>

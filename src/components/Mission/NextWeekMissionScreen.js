@@ -6,15 +6,12 @@ import './MissionScreen.css';
 
 const { TextArea } = Input;
 
-const NEXT_WEEK_DP = `${moment()
+const FIRST_DAY_OF_WEEK = moment()
   .isoWeekday(1)
-  .add(1, 'weeks')
-  .day(1)
-  .format('YYYY-MM-DD')}~${moment()
-  .isoWeekday(1)
-  .add(1, 'weeks')
-  .day(7)
-  .format('YYYY-MM-DD')}`;
+  .add(1, 'weeks');
+const LAST_DAY_OF_WEEK = moment()
+  .isoWeekday(7)
+  .add(1, 'weeks');
 export default class MissionScreen extends Component {
   static defaultProps = {
     todo: '',
@@ -32,6 +29,33 @@ export default class MissionScreen extends Component {
 
   showWeekMission = () => (
     <div>
+      <div className="MissionScreen__week">
+        <div className="MissionScreen__week__wrapper">
+          <div className="MissionScreen__week__first">
+            <span>
+              {FIRST_DAY_OF_WEEK.format('YYYY')}
+              <br />
+              {FIRST_DAY_OF_WEEK.format('MMM')}
+              <br />
+              {FIRST_DAY_OF_WEEK.format('DD')}
+              <br />
+              {FIRST_DAY_OF_WEEK.format('ddd')}
+            </span>
+          </div>
+          <span className="MissionScreen__week__dash">-</span>
+          <div className="MissionScreen__week__last">
+            <span>
+              {LAST_DAY_OF_WEEK.format('YYYY')}
+              <br />
+              {LAST_DAY_OF_WEEK.format('MMM')}
+              <br />
+              {LAST_DAY_OF_WEEK.format('DD')}
+              <br />
+              {LAST_DAY_OF_WEEK.format('ddd')}
+            </span>
+          </div>
+        </div>
+      </div>
       <div className="MissionScreen__main">
         <div className="MissionScreen__main__todo">
           <p className="MissionScreen__main__todo__title">미션</p>
@@ -51,20 +75,45 @@ export default class MissionScreen extends Component {
             {this.props.nextWeek.steps}
           </p>
         </div>
-        <div>
-          <Button type="primary" onClick={this.props.handleEditTodo}>
-            수정
-          </Button>
-          <p className="MissionScreen__main__fixcount">
-            {this.props.nextWeek.fixcount}번 수정 가능합니다.
-          </p>
-        </div>
+        <Button type="primary" onClick={this.props.handleEditTodo}>
+          수정
+        </Button>
+        <span className="MissionScreen__main__fixcount">
+          {this.props.nextWeek.fixcount}번 수정 가능합니다.
+        </span>
       </div>
     </div>
   );
 
   showEditWeekMission = () => (
     <div>
+      <div className="MissionScreen__week">
+        <div className="MissionScreen__week__wrapper">
+          <div className="MissionScreen__week__first">
+            <span>
+              {FIRST_DAY_OF_WEEK.format('YYYY')}
+              <br />
+              {FIRST_DAY_OF_WEEK.format('MMM')}
+              <br />
+              {FIRST_DAY_OF_WEEK.format('DD')}
+              <br />
+              {FIRST_DAY_OF_WEEK.format('ddd')}
+            </span>
+          </div>
+          <span className="MissionScreen__week__dash">-</span>
+          <div className="MissionScreen__week__last">
+            <span>
+              {LAST_DAY_OF_WEEK.format('YYYY')}
+              <br />
+              {LAST_DAY_OF_WEEK.format('MMM')}
+              <br />
+              {LAST_DAY_OF_WEEK.format('DD')}
+              <br />
+              {LAST_DAY_OF_WEEK.format('ddd')}
+            </span>
+          </div>
+        </div>
+      </div>
       <div className="MissionScreen__main">
         <div className="MissionScreen__main__todo">
           <p className="MissionScreen__main__todo__title">미션</p>
@@ -79,7 +128,9 @@ export default class MissionScreen extends Component {
               maxLength={20}
               minLength={1}
             />
-            <p>20자까지 입력 가능합니다.</p>
+            <p className="MissionScreen__main__limit">
+              20자까지 입력 가능합니다.
+            </p>
           </div>
         </div>
         <div className="MissionScreen__main__memo">
@@ -93,7 +144,9 @@ export default class MissionScreen extends Component {
               maxLength={100}
               minLength={1}
             />
-            <p>100자까지 입력 가능합니다.</p>
+            <p className="MissionScreen__main__limit">
+              100자까지 입력 가능합니다.
+            </p>
           </div>
         </div>
         <div className="MissionScreen__main__steps">
@@ -106,7 +159,9 @@ export default class MissionScreen extends Component {
               onChange={this.props.handleStepsChange}
               formatter={value => value.replace(/[^0-9]/g, '')}
             />
-            <p>최대 20회까지 설정 가능합니다.</p>
+            <p className="MissionScreen__main__limit">
+              최대 20회까지 설정 가능합니다.
+            </p>
           </div>
         </div>
         <div>
@@ -120,9 +175,9 @@ export default class MissionScreen extends Component {
           >
             저장
           </Button>
-          <Link to="/nextweekmission">
-            <Button type="primary">취소</Button>
-          </Link>
+          <span className="MissionScreen__main__fixcount">
+            {this.props.nextWeek.fixcount}번 수정 가능합니다.
+          </span>
         </div>
       </div>
     </div>
@@ -136,9 +191,6 @@ export default class MissionScreen extends Component {
             <Icon className="MissionScreen__header__icon" type="arrow-left" />
           </Link>
           미션
-        </div>
-        <div className="MissionScreen__week">
-          <p>{NEXT_WEEK_DP}</p>
         </div>
         {this.props.editTodo
           ? this.showEditWeekMission()
