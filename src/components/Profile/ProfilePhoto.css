@@ -2,14 +2,14 @@
   width: 200px;
   margin: auto;
 }
-.fileUploadBtn {
+.profile__upload__button {
   position: relative;
 }
-.fileUploadBtn > span {
+.profile__upload__button > span {
   cursor: pointer;
   color: #fff;
 }
-.fileUploadBtn > input {
+.profile__upload__button > input {
   position: absolute;
   top: 0;
   left: 0;
@@ -18,9 +18,3 @@
   opacity: 0;
   cursor: pointer;
 }
-/* .ant-btn,
-.fileUploadBtn,
-.ant-btn-lg {
-  background-color: #3d4144;
-  border: 1px solid #0b1229;
-} */
