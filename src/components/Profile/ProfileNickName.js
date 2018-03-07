@@ -10,6 +10,7 @@ export default class ProfileNickName extends Component {
     loading: '',
     handleNickNameChange: () => {},
     handleNickNameEditSave: () => {},
+    handleCancelClicked: () => {},
   };
   state = { visible: false };
   showModal = () => {
@@ -17,37 +18,38 @@ export default class ProfileNickName extends Component {
       visible: true,
     });
   };
-  handleOk = e => {
+  handleOk = () => {
     this.props.handleNickNameEditSave();
-    console.log(e);
     this.setState({
       visible: false,
     });
   };
-  handleCancel = e => {
+  handleCancel = () => {
     this.props.handleCancelClicked();
-    console.log(e);
     this.setState({
       visible: false,
     });
   };
+
   render() {
     // console.log(this.props);
     const { handleNickNameChange, profileInfo, loading } = this.props;
     return (
-      <div>
+      <div className="profile__text__nickname">
         {loading ? (
           <LoadingIndicator />
         ) : (
-          <Card title="닉네임" type="inner" bordered={false}>
-            <button onClick={this.showModal} style={{ border: 'none' }}>
-              <span
-                style={{
-                  fontSize: '1.2em',
-                  fontWeight: 'bold',
-                  marginRight: 5,
-                }}
-              >
+          <Card
+            className="profile__text__nickname__card"
+            title="닉네임"
+            type="inner"
+            bordered={false}
+          >
+            <button
+              className="profile__text__nickname__card__button"
+              onClick={this.showModal}
+            >
+              <span className="profile__text__nickname__card__button__text">
                 {profileInfo.nickName}
               </span>
               <Icon style={{ opacity: 0.5 }} type="edit" />

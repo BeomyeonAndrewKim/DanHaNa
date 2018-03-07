@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as firebase from 'firebase';
-
 import ProfileNickName from '../../components/Profile/ProfileNickName';
-
 import { fetchProfileInfo } from '../../ducks/profile';
 
 class ProfileNickNameContainer extends Component {
@@ -14,17 +12,14 @@ class ProfileNickNameContainer extends Component {
     // 파이어베이스에 닉네임이 있다면 받아오기
     this.props.onMount();
   }
-
   handleNickNameChange = e => {
     this.setState({
       nickName: e.target.value,
     });
   };
-
   handleCancelClicked = () => {
     this.props.onMount();
   };
-
   handleNickNameEditSave = async () => {
     const { profileInfo } = this.props;
     const { uid } = profileInfo;
@@ -37,7 +32,6 @@ class ProfileNickNameContainer extends Component {
     this.props.onMount();
   };
   render() {
-    console.log(this.props);
     const { onMount, ...rest } = this.props;
     return (
       <div>
