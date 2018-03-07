@@ -39,7 +39,6 @@ export default class MenuScreen extends Component {
       default:
     }
   };
-
   render() {
     return (
       <div>

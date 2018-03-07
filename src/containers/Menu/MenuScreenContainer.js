@@ -35,12 +35,18 @@ class MenuScreenContainer extends Component {
   };
 
   handleToggleMenu = () => {
+    // if (!this.state.collapsed) {
+    //   document.querySelector('.menu-screen').style.visibility = 'visibile';
+    // } else {
+    //   document.querySelector('.menu-screen').style.visibility = 'hidden';
+    // }
     this.setState({
       collapsed: !this.state.collapsed,
     });
   };
 
   render() {
+    console.log(this.state.collapsed);
     return (
       <div>
         {this.state.pageToEditMission && <Redirect to="/editnextweekmission" />}
