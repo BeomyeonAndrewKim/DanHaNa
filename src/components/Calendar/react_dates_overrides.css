@@ -1,3 +1,6 @@
+.DayPicker {
+  margin: auto;
+}
 .CalendarDay__highlighted_calendar {
   background: #82e0aa;
   color: #186a3b;

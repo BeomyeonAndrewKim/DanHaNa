@@ -1,40 +1,13 @@
 import React, { Component } from 'react';
 import * as moment from 'moment';
 import { PieChart, Pie, Cell, Tooltip, Label } from 'recharts';
-import styled from 'styled-components';
 import 'react-dates/initialize';
 import { DayPickerRangeController } from 'react-dates';
 import { Modal, Button } from 'antd';
 import 'react-dates/lib/css/_datepicker.css';
 import CalendarHeader from './CalendarHeader';
 import './react_dates_overrides.css';
-
-const CalendarWrap = styled.div`
-  text-align: center;
-  height: 100vh;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#dc7036+50,c45b2d+50 */
-  background: #dc7036; /* Old browsers */
-  background: -moz-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    135deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(
-      startColorstr='#dc7036',
-      endColorstr='#c45b2d',
-      GradientType=1
-    ); /* IE6-9 fallback on horizontal gradient */
-`;
+import './CalendarScreen.css';
 
 moment.updateLocale('ko', {
   week: {
@@ -55,7 +28,7 @@ export default class CalendarScreen extends Component {
   state = {
     startDate: null,
     endDate: null,
-    datesList: [moment(), moment().add(1, 'days')],
+    datesList: [moment()],
   };
   onDatesChange = ({ startDate, endDate }) => {
     this.setState({
@@ -67,7 +40,7 @@ export default class CalendarScreen extends Component {
       if (startDate.startOf('isoWeek').format('YYYY-[W]ww') === mission[i][0]) {
         const jang = mission[i][1];
         const dates = `
-            ${startDate.isoWeekday(1).format('YYYY-MM-DD')}~
+            ${startDate.isoWeekday(1).format('YYYY-MM-DD')} ~
             ${endDate.isoWeekday(7).format('YYYY-MM-DD')}`;
         this.info(jang, dates);
       }
@@ -91,9 +64,12 @@ export default class CalendarScreen extends Component {
           <p>메모: {memo}</p>
           <p>설정 횟수: {steps}</p>
           <p>실행 횟수: {curstep}</p>
-          <p>목표 달성률: {achievement}%</p>
-          <p>미션 : {complete ? '성공' : '실패'}</p>
-          <PieChart width={400} height={400}>
+          <p>남은 횟수: {steps - curstep}</p>
+          <p>
+            미션 :{' '}
+            <span style={{ color: 'red' }}>{complete ? '성공' : '실패'}</span>
+          </p>
+          <PieChart width={200} height={200}>
             <Pie
               data={data02}
               cx={100}
@@ -129,29 +105,12 @@ export default class CalendarScreen extends Component {
   };
   isDayHighlighted = day1 =>
     this.state.datesList.some(day2 => this.isSameDay(day1, day2));
-  aaa = () => {
-    console.log(this.state.datesList);
-    const list = this.props.todoList;
-    const test = [];
-    for (let i = 0; i < list.length; i++) {
-      for (let j = 0; j <= 6; j++) {
-        test.push(moment(list[i][0]).add(j, 'days'));
-        // test.push(moment().add(j, 'days'));
-      }
-    }
-    this.setState({
-      datesList: test,
-    });
-  };
   render() {
-    // if (this.props.todoList.length !== this.state.datesList.length) {
-    //   this.jang();
-    // }
-    console.log('z');
     return (
       <div>
-        <CalendarWrap>
+        <div className="calendar">
           <CalendarHeader />
+          <h2 className="calendar__title">현재까지의 미션을 확인해보세요!</h2>
           <DayPickerRangeController
             startDate={this.state.startDate}
             endDate={this.state.endDate}
@@ -163,11 +122,10 @@ export default class CalendarScreen extends Component {
             isDayHighlighted={this.isDayHighlighted}
             hideKeyboardShortcutsPanel
           />
-        </CalendarWrap>
+        </div>
         <Modal>
           <Button onClick={this.info}>Info</Button>
         </Modal>
-        <p onClick={this.aaa}>asdfasdfasdf</p>
       </div>
     );
   }

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,KAAK;CACd;;AACD,AAAA,gBAAgB,CAAC;EACf,OAAO,EAAE,MAAM;CAChB",
+    "sources": [
+        "CalendarScreen.scss"
+    ],
+    "names": [],
+    "file": "CalendarScreen.css"
+}
