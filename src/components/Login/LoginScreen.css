@@ -6,25 +6,37 @@
   height: 100%;
 }
 .login__button__facebook {
-  background-color: #3b5998;
+  background-color: #4467af;
 }
 .login__button__google {
-  background-color: #db3236;
+  background-color: #f9f9f9;
+}
+.login__button__google > .login__button__text {
+  color: #1e2b55;
+}
+.login__button__google > .login__button__text > .login__button__icon {
+  color: #e2503d;
 }
 .login__button__twitter {
-  background-color: #0084b4;
+  background-color: #0099d1;
 }
-
+.login__button__icon {
+  padding-right: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.login__button__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center;
+}
 .login__title {
   position: relative;
 }
-.login__title > span {
-  padding: 0 0.3em;
-  position: relative;
-  color: #1e2b55;
-  background-color: #fff;
-}
-
 .login__title:before {
   content: "";
   display: block;
@@ -32,6 +44,12 @@
   top: 50%;
   left: 0;
   width: 100%;
-  border-bottom: 1px solid #c45b2d;
+  border-bottom: 1px solid #fff;
   transform: translateY(-50%);
+}
+.login__title > span {
+  padding: 0 0.3em;
+  position: relative;
+  color: #1e2b55;
+  background-color: #c45b2d;
 }
