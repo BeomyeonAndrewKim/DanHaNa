@@ -4,60 +4,55 @@
   overflow: hidden;
 }
 
-
-
-.IntroScreen{
-  &__btn{
+.IntroScreen {
+  &__btn {
     height: 5vh;
     width: 100vw;
     border-radius: initial;
-    background-color: #dc7036;
-    color:#ffffff;
-    &--login{
+    background-color: #1e2b55;
+    color: #ffffff;
+    &--login {
       height: 5vh;
       width: 100vw;
       border-radius: initial;
-      background-color: #dc7036;
-      color:#ffffff;
+      background-color: #1e2b55;
+      color: #ffffff;
       animation: login 0.5s;
     }
   }
-  &__carousel{
-    &__1{
-      background-image: url('../../assets/images/Intro/page1.jpg');
+  &__carousel {
+    &__1 {
+      background-image: url("../../assets/images/Intro/page1.jpg");
       background-size: cover;
     }
-    &__2{
-      background-image: url('../../assets/images/Intro/page2.jpg');
+    &__2 {
+      background-image: url("../../assets/images/Intro/page2.jpg");
       background-size: cover;
-   
     }
-    &__3{
-      background-image: url('../../assets/images/Intro/page3.jpg');
+    &__3 {
+      background-image: url("../../assets/images/Intro/page3.jpg");
       background-size: cover;
-    
     }
-    &__4{
-      background-image: url('../../assets/images/Intro/page4.jpg');
+    &__4 {
+      background-image: url("../../assets/images/Intro/page4.jpg");
       background-size: cover;
-     
     }
-    &__text{
+    &__text {
       background-color: #c45b2d;
-      color:#ffffff;
+      color: #ffffff;
       position: absolute;
-      top:50%;
-      transform: translate(-50%,-50%);
-      font-size:1rem;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1rem;
     }
   }
 }
 
-@keyframes login{
-  50%{
+@keyframes login {
+  50% {
     transform: scale(1.2);
   }
-  100%{
+  100% {
     transform: scale(1);
   }
 }

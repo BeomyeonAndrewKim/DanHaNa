@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import { PieChart, Pie, Cell, Tooltip, Label } from 'recharts';
 import 'react-dates/initialize';
 import { DayPickerRangeController } from 'react-dates';
-import { Modal, Button, Card, Col, Row } from 'antd';
+import { Modal, Button } from 'antd';
 
 import 'react-dates/lib/css/_datepicker.css';
 import CalendarHeader from './CalendarHeader';

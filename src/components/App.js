@@ -27,6 +27,9 @@ export default class extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <div className="App">
+            <Helmet>
+              <title>DanHaNa</title>
+            </Helmet>
             <Route path="/" exact component={IntroScreen} />
             <Route path="/login" component={LoginScreenContainer} />
             <Route path="/profile" component={withAuth(Profile)} />
