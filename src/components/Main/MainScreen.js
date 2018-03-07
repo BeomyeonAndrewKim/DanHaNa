@@ -35,10 +35,6 @@ export default class MainScreen extends Component {
     });
   };
 
-  MissionSuccessStamp = () => (
-    <div className="MainScreen__todo--stamp">미션 성공!</div>
-  );
-
   AddToDoScreen = () => (
     <div className="MainScreen__todo__noData">
       <div className="MainScreen__todo__wrapper">
@@ -78,13 +74,15 @@ export default class MainScreen extends Component {
           )}
           <div className="MainScreen__todo">
             <div className="MainScreen__todo__wrapper">
-              <p
+              <Icon
+                className="MainScreen__todo__memo"
                 onClick={this.props.handleTodoTitle}
-                className="MainScreen__todo__title"
-              >
-                {this.props.todo}
-              </p>
-              {this.props.complete && this.MissionSuccessStamp()}
+                type="copy"
+              />
+              <p className="MainScreen__todo__title">{this.props.todo}</p>
+              {this.props.complete && (
+                <div className="MainScreen__todo--stamp">미션 성공!</div>
+              )}
             </div>
             <Icon
               className="MainScreen__todo__check"

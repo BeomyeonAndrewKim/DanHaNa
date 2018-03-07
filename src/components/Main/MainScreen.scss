@@ -68,6 +68,12 @@ $translateCenter: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
+    &__memo{
+      display: block;
+      text-align: right;
+      margin: 5px;
+      font-size:1.2rem;
+    }
     &__noData {
       @include center();
     }
@@ -78,14 +84,14 @@ $translateCenter: translate(-50%, -50%);
       background-color: #ffffff;
     }
     &--stamp {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: bold;
       text-align: center;
-      width: 100%;
+      width: 300px;
       margin: 7vh auto;
       color: red;
       border: 7px solid red;
-      padding: 10px 7px;
+      padding: 10px 5px;
       border-radius: 5px;
       animation-name: pulse;
       animation-duration: 0.5s;
@@ -121,7 +127,7 @@ $translateCenter: translate(-50%, -50%);
     &__title {
       position: absolute;
       width: inherit;
-      padding: 3rem 1rem;
+      padding: 2rem 1rem;
       display: block;
       text-align: center;
       font-weight: bold;
@@ -136,6 +142,22 @@ $translateCenter: translate(-50%, -50%);
     font-size: 40px;
     right: 10px;
     bottom: 10px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+    transform-origin: 50% 50%;
+    transform: rotate(-2deg) scale(5);
+    transition: all 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  }
+  100% {
+    opacity: 0.7;
+    transform: rotate(-15deg) scale(1);
   }
 }
 
@@ -284,106 +306,4 @@ svg {
   transform: scale(0.8);
 }
 
-@keyframes pulse {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.5;
-    transform-origin: 50% 50%;
-    transform: rotate(-2deg) scale(5);
-    transition: all 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-  100% {
-    opacity: 0.7;
-    transform: rotate(-15deg) scale(1);
-  }
-}
 
-$blue-dark: #1e384c;
-$blue: #2c7fbe;
-$blue-light: #32bafa;
-$green: #02c39a;
-
-$stage-bg: $blue-dark;
-
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-html,
-body {
-  height: 100%;
-  min-height: 100%;
-}
-.waves {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-
-  transition: 0.4s transform ease;
-  transform-origin: bottom center;
-
-  @media (min-width: 500px) {
-    border-radius: 5px;
-  }
-}
-.wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  animation: wave 1s linear infinite;
-
-  &--front {
-    color: $blue-light;
-    opacity: 0.8;
-  }
-
-  &--back {
-    color: $blue;
-    opacity: 0.8;
-    animation-direction: reverse;
-  }
-}
-
-.water {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 80%;
-  background: currentColor;
-
-  svg {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    right: 0;
-    bottom: 99.9%;
-  }
-}
-.water:first-of-type {
-  transform: translate(-100%, 0);
-}
-
-svg {
-  fill: currentColor;
-}
-
-@keyframes wave {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(50%, 0.5em, 0);
-  }
-  100% {
-    transform: translate3d(100%, 0, 0);
-  }
-}
