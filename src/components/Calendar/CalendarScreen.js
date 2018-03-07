@@ -3,7 +3,8 @@ import * as moment from 'moment';
 import { PieChart, Pie, Cell, Tooltip, Label } from 'recharts';
 import 'react-dates/initialize';
 import { DayPickerRangeController } from 'react-dates';
-import { Modal, Button } from 'antd';
+import { Modal, Button, Card, Col, Row } from 'antd';
+
 import 'react-dates/lib/css/_datepicker.css';
 import CalendarHeader from './CalendarHeader';
 import './react_dates_overrides.css';
@@ -59,15 +60,30 @@ export default class CalendarScreen extends Component {
       title: '당신의 미션 정보입니다.',
       content: (
         <div>
-          <p>{dates}</p>
-          <p>목표: {todo}</p>
-          <p>메모: {memo}</p>
-          <p>설정 횟수: {steps}</p>
-          <p>실행 횟수: {curstep}</p>
-          <p>남은 횟수: {steps - curstep}</p>
-          <p>
-            미션 :{' '}
-            <span style={{ color: 'red' }}>{complete ? '성공' : '실패'}</span>
+          <p className="calendar__mission__sub__dates">{dates}</p>
+          <p className="calendar__mission__sub__item">
+            <span className="calendar__mission__sub__title">목표</span>
+            <span>{todo}</span>
+          </p>
+          <p className="calendar__mission__sub__item">
+            <span className="calendar__mission__sub__title">메모</span>
+            <span>{memo}</span>
+          </p>
+          <p className="calendar__mission__sub__item">
+            <span className="calendar__mission__sub__title">설정 횟수</span>
+            <span>{steps}</span>
+          </p>
+          <p className="calendar__mission__sub__item">
+            <span className="calendar__mission__sub__title">실행 횟수</span>
+            <span>{curstep}</span>
+          </p>
+          <p className="calendar__mission__sub__item">
+            <span className="calendar__mission__sub__title">남은 횟수</span>
+            <span>{steps - curstep}</span>
+          </p>
+          <p className="calendar__mission__sub__item">
+            <span className="calendar__mission__sub__title">미션</span>
+            <span>{complete ? '성공' : '실패'}</span>
           </p>
           <PieChart width={200} height={200}>
             <Pie

@@ -6,4 +6,21 @@
 .calendar__title {
   padding: 40px 0;
 }
+
+.calendar__mission__sub__dates {
+  padding: 10px 0 15px 0;
+  font-weight: bold;
+}
+
+.calendar__mission__sub__item {
+  padding: 5px 0;
+}
+
+.calendar__mission__sub__title {
+  color: #757575;
+  display: inline-block;
+  font-weight: 300;
+  width: 70px;
+  margin-right: 20px;
+}
 /*# sourceMappingURL=CalendarScreen.css.map */
