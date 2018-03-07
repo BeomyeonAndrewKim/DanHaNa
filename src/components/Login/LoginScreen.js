@@ -1,39 +1,9 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd';
-import styled from 'styled-components';
-import './LoginScreen.css';
+import { Animated } from 'react-animated-css';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
-
-const LoginPageWrap = styled.div`
-  height: 100vh;
-`;
-const LoginWrap = styled.div`
-  position: relative;
-  top: 70%;
-  transform: translateY(-50%);
-  padding: 0 40px;
-  max-width: 500px;
-  margin: auto;
-`;
-const LoginList = styled.ul`
-  width: 100%;
-  text-align: center;
-  padding: 3rem 1rem;
-`;
-const LoginTitle = styled.h1`
-  padding: 1rem;
-`;
-const LoginListItem = styled.li`
-  margin-top: 0.6rem;
-`;
-const LoginButton = styled.button`
-  border: none;
-  border-radius: 30px;
-  padding: 1rem 0;
-  width: 100%;
-  color: #fff;
-  font-size: 0.8rem;
-`;
+import './LoginScreen.css';
+import logo from '../../assets/images/logo/login__logo.png';
 
 export default class LoginScreen extends Component {
   static defaultProp = {
@@ -50,52 +20,100 @@ export default class LoginScreen extends Component {
       onTwitterLogin,
     } = this.props;
     return (
-      <LoginPageWrap>
+      <div className="login">
+        <h1 className="login__logo">
+          <img src={logo} alt="logo" />
+          <span>DANHANA.</span>
+        </h1>
+        <h2 className="login__title">
+          <Animated
+            className="login__title--fading"
+            animationIn="fadeIn"
+            isVisible
+            style={{
+              animationDuration: '2s',
+              animationDelay: '0.5s',
+            }}
+          >
+            <p>“One Week,</p>
+          </Animated>
+          <Animated
+            className="login__title--fading"
+            animationIn="fadeIn"
+            isVisible
+            style={{
+              animationDuration: '2s',
+              animationDelay: '1.5s',
+            }}
+          >
+            <p>One Mission,</p>
+          </Animated>
+          <Animated
+            className="login__title--fading"
+            animationIn="fadeIn"
+            isVisible
+            style={{
+              animationDuration: '2s',
+              animationDelay: '2.5s',
+            }}
+          >
+            <p>One Goal”</p>
+          </Animated>
+        </h2>
         {onLoading ? (
           <LoadingIndicator />
         ) : (
-          <LoginWrap>
-            <LoginList>
-              <LoginTitle className="login__title">
+          <div className="login__wrap">
+            <ul className="login__list">
+              <h3 className="login__list__title">
                 <span>SIGN IN</span>
-              </LoginTitle>
-              <LoginListItem>
-                <LoginButton
-                  className="login__button__facebook"
+              </h3>
+              <li className="login__list__item">
+                <button
+                  className="login__list__item__button login__list__item__button__facebook"
                   onClick={onFacebookLogin}
                 >
-                  <span className="login__button__text">
-                    <Icon className="login__button__icon" type="facebook" />
+                  <span className="login__list__item__button__text">
+                    <Icon
+                      className="login__list__item__button__icon"
+                      type="facebook"
+                    />
                     SIGN IN WITH FACEBOOK
                   </span>
-                </LoginButton>
-              </LoginListItem>
-              <LoginListItem>
-                <LoginButton
-                  className="login__button__google"
+                </button>
+              </li>
+              <li className="login__list__item">
+                <button
+                  className="login__list__item__button login__list__item__button__google"
                   onClick={onGoogleLogin}
                 >
-                  <span className="login__button__text">
-                    <Icon className="login__button__icon" type="google-plus" />
+                  <span className="login__list__item__button__text">
+                    <Icon
+                      className="login__list__item__button__icon"
+                      type="google-plus"
+                    />
                     SIGN IN WITH GOOGLE
                   </span>
-                </LoginButton>
-              </LoginListItem>
-              <LoginListItem>
-                <LoginButton
-                  className="login__button__twitter"
+                </button>
+              </li>
+              <li className="login__list__item">
+                <button
+                  className="login__list__item__button login__list__item__button__twitter"
                   onClick={onTwitterLogin}
                 >
-                  <span className="login__button__text">
-                    <Icon className="login__button__icon" type="twitter" /> SIGN
-                    IN WITH TWITTER
+                  <span className="login__list__item__button__text">
+                    <Icon
+                      className="login__list__item__button__icon"
+                      type="twitter"
+                    />{' '}
+                    SIGN IN WITH TWITTER
                   </span>
-                </LoginButton>
-              </LoginListItem>
-            </LoginList>
-          </LoginWrap>
+                </button>
+              </li>
+            </ul>
+          </div>
         )}
-      </LoginPageWrap>
+      </div>
     );
   }
 }

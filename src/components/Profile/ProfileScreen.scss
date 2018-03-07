@@ -10,8 +10,9 @@ $bright-orange: #e8945f;
   height: 100vh;
 }
 .profile__text {
-  margin: 0 15px;
-  border: 3px solid $black;
+  width: 85vw;
+  margin: auto;
+  box-shadow: 5px 5px;
 }
 // 프로필 헤더
 .profile__header__wrap {
