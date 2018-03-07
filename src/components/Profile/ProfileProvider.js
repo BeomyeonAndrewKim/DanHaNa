@@ -7,11 +7,14 @@ export default class ProfileProvider extends Component {
   };
   render() {
     const { profileInfo } = this.props;
-    const str = profileInfo.providerId;
-    console.log(str);
     return (
-      <div>
-        <Card title="로그인 정보" type="inner" bordered={false}>
+      <div className="profile__text__provider">
+        <Card
+          className="profile__text__provider__card"
+          title="로그인 정보"
+          type="inner"
+          bordered={false}
+        >
           {profileInfo.providerId}
         </Card>
       </div>

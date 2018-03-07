@@ -37,7 +37,6 @@ class ProfileNickNameContainer extends Component {
     this.props.onMount();
   };
   render() {
-    console.log(this.props);
     const { onMount, ...rest } = this.props;
     return (
       <div>
