@@ -33,6 +33,9 @@
       background-color: #ffffff;
       box-shadow: 5px 5px #1e2b55;
       display: block;
+      &--weekpicker{
+        width:inherit;
+      }
       &__btn{
         width:85vw;
       }
@@ -43,9 +46,17 @@
       background-color: #ffffff;
       box-shadow: 5px 5px #1e2b55;
       text-align: center;
+      &--wrapper{
+        display: none;
+      }
+      &--pie{
+        margin:0 auto;
+      }
       &--title{
         font-weight: bold;
         margin: 1rem auto;
+        line-height: 2.5rem;
+        font-size:1.2rem;
       }
       &__btn{
         width:85vw;
@@ -63,9 +74,8 @@
   color:black;
 }
 .ant-calendar-range{
-  width:80vw;
+  width:85vw;
 }
-.ant-calendar-week-number{
-  transform: translateX(-40px);
-  width:60vw;
+.ant-calendar-picker{
+  width:inherit;
 }

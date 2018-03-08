@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Modal } from 'antd';
 import moment from 'moment';
 import CountUp from 'countup.js';
 import DashboardScreen from '../../components/Dashboard/DashboardScreen';
@@ -128,6 +129,10 @@ class DashboardScreenContainer extends Component {
       useEasing: true,
       useGrouping: true,
     };
+    document.querySelector(
+      '.DashboardScreen__main--data--wrapper',
+    ).style.display =
+      'block';
     const animateCompleteData = new CountUp(
       document.querySelector('.DashboardScreen__main--data--completeData'),
       0,
@@ -136,72 +141,95 @@ class DashboardScreenContainer extends Component {
       2.5,
       options,
     );
+
     animateCompleteData.start();
   };
 
   handleCompleteData = () => {
     const chosenComplete = this.makeChosenDataArr().map(el => el[1].complete);
-    const completeData = Math.round(
-      chosenComplete.filter(el => el === true).length /
-        chosenComplete.length *
-        100,
-    );
-    const onlyCompletedData = chosenComplete.filter(el => el === true);
-    const completeDataforPie = [
-      { name: '미션 성공', value: onlyCompletedData.length },
-      {
-        name: '미션 실패',
-        value: chosenComplete.length - onlyCompletedData.length,
-      },
-    ];
-    this.setState({
-      completeData: completeDataforPie,
-      stepsDataLine: null,
-      stepsDataPie: null,
-    });
-    this.handleAnimateData(completeData);
+    if (chosenComplete.length === 0) {
+      Modal.warning({
+        title: '기간을 선택해주세요.',
+      });
+    } else {
+      const completeData = Math.round(
+        chosenComplete.filter(el => el === true).length /
+          chosenComplete.length *
+          100,
+      );
+      const onlyCompletedData = chosenComplete.filter(el => el === true);
+      const completeDataforPie = [
+        { name: '미션 성공', value: onlyCompletedData.length },
+        {
+          name: '미션 실패',
+          value: chosenComplete.length - onlyCompletedData.length,
+        },
+      ];
+      this.handleAnimateData(completeData);
+      this.setState({
+        completeData: completeDataforPie,
+        stepsDataLine: null,
+        stepsDataPie: null,
+      });
+    }
   };
 
   handleCompleteStepsData = () => {
     const chosenCompleteStpesData = this.makeChosenDataArr().map(
       el => el[1].curstep / el[1].steps * 100,
     );
-    const completeStepsData =
-      chosenCompleteStpesData.reduce((acc, item) => acc + item) /
-      chosenCompleteStpesData.length;
-    const stepsData = this.makeChosenDataArr()
-      .map(el => el[1].steps)
-      .reduce((acc, item) => (acc + item) / chosenCompleteStpesData.length);
-    const curStepData = this.makeChosenDataArr()
-      .map(el => el[1].curstep)
-      .reduce((acc, item) => (acc + item) / chosenCompleteStpesData.length);
-    const stepsDataforPie = [
-      { name: '총 단계 평균', value: stepsData },
-      { name: '달성된 단계 평균', value: curStepData },
-    ];
-    this.setState({
-      completeData: null,
-      stepsDataPie: stepsDataforPie,
-      stepsDataLine: null,
-    });
-    this.handleAnimateData(completeStepsData);
+    if (chosenCompleteStpesData.length === 0) {
+      Modal.warning({
+        title: '기간을 선택해주세요.',
+      });
+    } else {
+      const completeStepsData =
+        chosenCompleteStpesData.reduce((acc, item) => acc + item) /
+        chosenCompleteStpesData.length;
+      const stepsData = this.makeChosenDataArr()
+        .map(el => el[1].steps)
+        .reduce((acc, item) => (acc + item) / chosenCompleteStpesData.length);
+      const curStepData = this.makeChosenDataArr()
+        .map(el => el[1].curstep)
+        .reduce((acc, item) => (acc + item) / chosenCompleteStpesData.length);
+      const stepsDataforPie = [
+        { name: '총 단계 평균', value: stepsData },
+        { name: '달성된 단계 평균', value: curStepData },
+      ];
+      this.handleAnimateData(completeStepsData);
+      this.setState({
+        completeData: null,
+        stepsDataPie: stepsDataforPie,
+        stepsDataLine: null,
+      });
+    }
   };
 
   handleCompleteStepsDataforLine = () => {
-    const stepsDataforLine = [];
-    this.makeChosenDataArr()
-      .map(el => [el[0], el[1].curstep / el[1].steps * 100])
-      .forEach(el => {
-        stepsDataforLine.push({
-          date: moment(el[0]).format('YYYY-ww[th]'),
-          AverageCompleteRate: el[1],
-        });
+    if (this.makeChosenDataArr().length === 0) {
+      Modal.warning({
+        title: '기간을 선택해주세요.',
       });
-    this.setState({
-      completeData: null,
-      stepsDataPie: null,
-      stepsDataLine: stepsDataforLine,
-    });
+    } else {
+      const stepsDataforLine = [];
+      this.makeChosenDataArr()
+        .map(el => [el[0], el[1].curstep / el[1].steps * 100])
+        .forEach(el => {
+          stepsDataforLine.push({
+            date: moment(el[0]).format('YYYY-ww[th]'),
+            AverageCompleteRate: el[1],
+          });
+        });
+      this.setState({
+        completeData: null,
+        stepsDataPie: null,
+        stepsDataLine: stepsDataforLine,
+      });
+      document.querySelector(
+        '.DashboardScreen__main--data--wrapper',
+      ).style.display =
+        'none';
+    }
   };
 
   render() {

@@ -155,7 +155,11 @@ export default class DashboardScreen extends Component {
           <span className="DashboardScreen__main--data--title">
             기간내 목표 달성률
           </span>
-          <ResponsiveContainer width="80%" height={200}>
+          <ResponsiveContainer
+            className="DashboardScreen__main--data--pie"
+            width="80%"
+            height={200}
+          >
             <PieChart width={400} height={400}>
               <Pie
                 data={this.props.completeData}
@@ -167,6 +171,7 @@ export default class DashboardScreen extends Component {
                   <Cell key={index} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
+              <Legend />
               <Tooltip cursor={{ stroke: 'red', strokeWidth: 2 }} />
             </PieChart>
           </ResponsiveContainer>
@@ -178,7 +183,12 @@ export default class DashboardScreen extends Component {
           <span className="DashboardScreen__main--data--title">
             기간내 목표 단계별 달성률
           </span>
-          <ResponsiveContainer width="100%" height={150}>
+
+          <ResponsiveContainer
+            className="DashboardScreen__main--data--bar"
+            width="100%"
+            height={150}
+          >
             <BarChart width={350} height={150} data={this.props.stepsDataPie}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
@@ -195,8 +205,12 @@ export default class DashboardScreen extends Component {
           <span className="DashboardScreen__main--data--title">
             주별 목표 단계별 달성률
           </span>
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart width={730} height={250} data={this.props.stepsDataLine}>
+          <ResponsiveContainer
+            className="DashboardScreen__main--data--line"
+            width="100%"
+            height={350}
+          >
+            <LineChart width={730} height={350} data={this.props.stepsDataLine}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="date" />
               <YAxis />
@@ -239,7 +253,7 @@ export default class DashboardScreen extends Component {
         </div>
         <div className="DashboardScreen__main">
           <div className="DashboardScreen__main__calendar">
-            <Dropdown overlay={menuCalendar}>
+            <Dropdown trigger={['click']} overlay={menuCalendar}>
               <Button className="DashboardScreen__main__calendar__btn">
                 기간 단위를 선택하세요. <Icon type="down" />
               </Button>
@@ -247,14 +261,17 @@ export default class DashboardScreen extends Component {
             {this.showCalendar()}
           </div>
           <div className="DashboardScreen__main--data">
-            <Dropdown overlay={menuData}>
+            <Dropdown trigger={['click']} overlay={menuData}>
               <Button className="DashboardScreen__main--data__btn">
                 확인하고 싶은 데이터를 고르세요.<Icon type="down" />
               </Button>
             </Dropdown>
-            {!this.props.stepsDataLine && (
+
+            <div className="DashboardScreen__main--data--wrapper">
               <span className="DashboardScreen__main--data--completeData" />
-            )}
+              <span>out of 100%</span>
+            </div>
+
             {this.showPieChart()}
           </div>
         </div>
