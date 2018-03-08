@@ -8,9 +8,6 @@ export default class LoginScreenContainer extends Component {
     loading: false,
     redirectToMain: false,
   };
-  componentWillMount() {
-    console.log();
-  }
   handleLoginClick = () => {
     this.setState({
       loading: true,
@@ -101,7 +98,7 @@ export default class LoginScreenContainer extends Component {
   };
   render() {
     window.prerenderReady = true;
-    if (window.localStorage.getItem('introdone') || this.state.redirectToMain) {
+    if (window.localStorage.getItem('introdone') && this.state.redirectToMain) {
       return <Redirect to="/main" />;
     }
     return (

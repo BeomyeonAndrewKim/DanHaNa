@@ -18,6 +18,7 @@ export default class MenuScreen extends Component {
     todoInfo: {},
     pageToMission: false,
     collapsed: false,
+    handleLogOut: () => {},
   };
 
   handleCloseMenuLayout = e => {
@@ -36,7 +37,11 @@ export default class MenuScreen extends Component {
           this.props.handleMissionModal();
         }
         break;
+      case '8':
+        this.props.handleLogOut();
+        break;
       default:
+        break;
     }
   };
   render() {
@@ -108,6 +113,10 @@ export default class MenuScreen extends Component {
             <Menu.Item key="7">
               <Icon type="mail" />
               <span>컨택트</span>
+            </Menu.Item>
+            <Menu.Item key="8">
+              <Icon type="logout" />
+              <span>로그아웃</span>
             </Menu.Item>
           </Menu>
         </div>

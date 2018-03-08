@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Modal } from 'antd';
+import * as firebase from 'firebase';
 import { fetchNextWeek } from '../../ducks/mission';
 import MenuScreen from '../../components/Menu/MenuScreen';
 
@@ -13,6 +14,7 @@ class MenuScreenContainer extends Component {
   };
 
   state = {
+    logOut: false,
     collapsed: false,
     pageToEditMission: false,
   };
@@ -39,10 +41,17 @@ class MenuScreenContainer extends Component {
       collapsed: !this.state.collapsed,
     });
   };
+  handleLogOut = () => {
+    firebase.auth().signOut();
+    this.setState({
+      logOut: !this.state.logOut,
+    });
+  };
 
   render() {
     return (
       <div>
+        {this.state.logOut && <Redirect to="/login" />}
         {this.state.pageToEditMission && <Redirect to="/editnextweekmission" />}
         <MenuScreen
           {...this.state}
@@ -50,6 +59,7 @@ class MenuScreenContainer extends Component {
           handleToggleMenu={this.handleToggleMenu}
           handlepageToEditMission={this.handlepageToEditMission}
           handleMissionModal={this.handleMissionModal}
+          handleLogOut={this.handleLogOut}
         />
       </div>
     );
