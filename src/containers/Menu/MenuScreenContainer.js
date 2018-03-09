@@ -14,7 +14,7 @@ class MenuScreenContainer extends Component {
   };
 
   state = {
-    logOut: false,
+    logOut: true,
     collapsed: false,
     pageToEditMission: false,
   };
