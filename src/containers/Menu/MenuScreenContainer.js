@@ -51,16 +51,19 @@ class MenuScreenContainer extends Component {
   render() {
     return (
       <div>
-        {this.state.logOut && <Redirect to="/login" />}
         {this.state.pageToEditMission && <Redirect to="/editnextweekmission" />}
-        <MenuScreen
-          {...this.state}
-          {...this.props}
-          handleToggleMenu={this.handleToggleMenu}
-          handlepageToEditMission={this.handlepageToEditMission}
-          handleMissionModal={this.handleMissionModal}
-          handleLogOut={this.handleLogOut}
-        />
+        {this.state.logOut ? (
+          <MenuScreen
+            {...this.state}
+            {...this.props}
+            handleToggleMenu={this.handleToggleMenu}
+            handlepageToEditMission={this.handlepageToEditMission}
+            handleMissionModal={this.handleMissionModal}
+            handleLogOut={this.handleLogOut}
+          />
+        ) : (
+          <Redirect to="/login" />
+        )}
       </div>
     );
   }
