@@ -98,7 +98,7 @@ export default class LoginScreenContainer extends Component {
   };
   render() {
     window.prerenderReady = true;
-    if (window.localStorage.getItem('introdone') && this.state.redirectToMain) {
+    if (this.state.redirectToMain) {
       return <Redirect to="/main" />;
     }
     return (

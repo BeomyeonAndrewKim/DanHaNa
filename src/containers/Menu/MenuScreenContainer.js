@@ -20,10 +20,6 @@ class MenuScreenContainer extends Component {
   };
 
   componentWillMount() {
-    this.setState({
-      logOut: false,
-    });
-
     this.props.onLoadNextWeek();
   }
 
