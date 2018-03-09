@@ -54,7 +54,7 @@ class MenuScreenContainer extends Component {
   render() {
     return (
       <div>
-        {this.state.logOut && <Redirect to="/login" />}
+        {!this.state.logOut && <Redirect to="/login" />}
         {this.state.pageToEditMission && <Redirect to="/editnextweekmission" />}
         <MenuScreen
           {...this.state}
