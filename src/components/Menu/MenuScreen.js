@@ -37,7 +37,7 @@ export default class MenuScreen extends Component {
           this.props.handleMissionModal();
         }
         break;
-      case '8':
+      case '7':
         this.props.handleLogOut();
         break;
       default:
@@ -111,10 +111,6 @@ export default class MenuScreen extends Component {
               <span>통계</span>
             </Menu.Item>
             <Menu.Item key="7">
-              <Icon type="mail" />
-              <span>컨택트</span>
-            </Menu.Item>
-            <Menu.Item key="8">
               <Icon type="logout" />
               <span>로그아웃</span>
             </Menu.Item>
