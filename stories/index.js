@@ -1,4 +1,5 @@
-import 'antd/dist/antd.css';
+import '../src/less/custom-theme.css';
+import '../src/index.css';
 import './LoginScreen';
 import './MainScreen';
 import './MissionScreen';

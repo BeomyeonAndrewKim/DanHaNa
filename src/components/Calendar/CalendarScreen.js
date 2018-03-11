@@ -8,7 +8,7 @@ import { Modal, Button } from 'antd';
 import 'react-dates/lib/css/_datepicker.css';
 import CalendarHeader from './CalendarHeader';
 import './react_dates_overrides.css';
-import './CalendarScreen.css';
+import './CalendarScreen.scss';
 
 moment.updateLocale('ko', {
   week: {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Carousel, Button } from 'antd';
-import './IntroScreen.css';
+import './IntroScreen.scss';
 
 const PAGE_NUM = 3;
 

@@ -16,10 +16,9 @@ class CalendarScreenContainer extends Component {
     this.props.onTodoList();
   }
   render() {
-    const { todoList, ...rest } = this.props;
     return (
       <div>
-        <CalendarScreenwithLoading todoList={todoList} />
+        <CalendarScreenwithLoading todoList={this.props.todoList} />
       </div>
     );
   }

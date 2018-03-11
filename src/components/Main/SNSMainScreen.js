@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'antd';
-import './MainScreen.css';
+import './MainScreen.scss';
 
 export default class SNSMainScreen extends Component {
   static defaultProps = {

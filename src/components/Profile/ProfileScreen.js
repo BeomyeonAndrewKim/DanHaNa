@@ -3,7 +3,7 @@ import ProfileHeader from './ProfileHeader';
 import ProfilePhotoContainer from '../../containers/Profile/ProfilePhotoContainer';
 import ProfileNickNameContainer from '../../containers/Profile/ProfileNickNameContainer';
 import ProfileProviderContainer from '../../containers/Profile/ProfileProviderContainer';
-import './ProfileScreen.css';
+import './ProfileScreen.scss';
 
 export default class ProfileScreen extends Component {
   render() {

@@ -17,7 +17,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import moment from 'moment';
-import './DashboardScreen.css';
+import './DashboardScreen.scss';
 
 const { WeekPicker, RangePicker } = DatePicker;
 moment.locale('ko', {
@@ -146,6 +146,7 @@ export default class DashboardScreen extends Component {
         />
       );
     }
+    return null;
   };
 
   showPieChart = () => {
@@ -168,7 +169,10 @@ export default class DashboardScreen extends Component {
                 label
               >
                 {this.props.completeData.map((entry, index) => (
-                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                  <Cell
+                    key={this.props.completeData[index].value}
+                    fill={COLORS[index % COLORS.length]}
+                  />
                 ))}
               </Pie>
               <Legend />
@@ -226,6 +230,7 @@ export default class DashboardScreen extends Component {
         </div>
       );
     }
+    return null;
   };
 
   render() {

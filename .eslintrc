@@ -10,11 +10,13 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/prefer-default-export": "off",
-    "import/no-unresolved": false,
+    "import/no-unresolved": 0,
     "no-bitwise": "off",
     "react/prop-types": "off",
     "react/prefer-stateless-function": "off",
     "linebreak-style": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "import/no-extraneous-dependencies": "off",
     "no-nested-ternary": 0,
     "jsx-a11y/anchor-is-valid": [ "error", {
