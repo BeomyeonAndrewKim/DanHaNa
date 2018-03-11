@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Icon, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 import throttle from 'lodash.throttle';
-import './MainScreen.css';
+import './MainScreen.scss';
 
 export default class MainScreen extends Component {
   static defaultProps = {

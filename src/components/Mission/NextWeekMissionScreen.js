@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Icon, Input, Button, InputNumber } from 'antd';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import './MissionScreen.css';
+import './MissionScreen.scss';
 
 const { TextArea } = Input;
 

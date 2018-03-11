@@ -132,7 +132,6 @@ class MainScreenContainer extends Component {
     if (this.state.curstep === 0) {
       Modal.error({
         title: '이미 스텝이 0입니다.',
-        content: 'some messages...some messages...',
       });
     } else {
       await firebase

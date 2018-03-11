@@ -9,7 +9,6 @@ export default class ProfilePhoto extends Component {
     profileInfo: {},
   };
   render() {
-    // console.log(this.props);
     const { loading, onUploadFile, profileInfo } = this.props;
     return (
       <div className="profile__photo__wrap">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Icon, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import './MenuScreen.css';
+import './MenuScreen.scss';
 
 const MenuCloseEl = styled.div`
   position: absolute;
@@ -22,7 +22,7 @@ export default class MenuScreen extends Component {
   };
 
   handleCloseMenuLayout = e => {
-    if (e.target.className.includes('menu-close')) {
+    if (e.target.className.includes('MenuScreen__close')) {
       this.props.handleToggleMenu();
     }
   };
@@ -49,7 +49,7 @@ export default class MenuScreen extends Component {
       <div>
         {this.props.collapsed && (
           <MenuCloseEl
-            className="menu-close"
+            className="MenuScreen__close"
             onClick={this.handleCloseMenuLayout}
           />
         )}
@@ -60,21 +60,21 @@ export default class MenuScreen extends Component {
         >
           <Icon type={this.props.collapsed ? 'menu-fold' : 'menu-unfold'} />
         </Button>
-        <div className="menu-screen">
+        <div className="MenuScreen__main">
           <Menu
             mode="inline"
             theme="light"
             inlineCollapsed={!this.props.collapsed}
             onClick={this.handleMenuList}
           >
-            <Menu.Item className="close-btn" key="1">
-              <Icon className="close-btn-icon" type="close" />
+            <Menu.Item className="MenuScreen__main--closebtn" key="1">
+              <Icon type="close" />
             </Menu.Item>
-            <Menu.Item className="menu-avatar" key="2">
+            <Menu.Item className="MenuScreen__main--profile" key="2">
               <Link to="/profile" />
               <figure>
                 <img
-                  className="profileImg"
+                  className="MenuScreen__main--profile--img"
                   alt="프로필 사진"
                   src={this.props.userInfo.photoURL}
                 />

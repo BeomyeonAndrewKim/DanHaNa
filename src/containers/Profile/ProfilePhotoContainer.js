@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Modal } from 'antd';
 
 import * as firebase from 'firebase';
 import ProfilePhoto from '../../components/Profile/ProfilePhoto';
@@ -21,26 +22,19 @@ class ProfilePhotoContainer extends Component {
   };
   // 파일 사이즈 측정하기
   returnFileSize = (file, fileSize) => {
-    if (fileSize < 1024) {
-      console.log(`${fileSize}bytes`);
-    } else if (fileSize > 1024 && fileSize < 1048576) {
-      console.log(`${(fileSize / 1024).toFixed(1)}KB`);
-    } else if (fileSize > 1048576 && fileSize < 3145728) {
-      console.log(`${(fileSize / 1048576).toFixed(1)}MB`);
-    } else if (fileSize > 3145728) {
-      alert(
-        `3MB를 초과하였습니다. 현재 파일의 크기는 ${(
-          fileSize / 1048576
-        ).toFixed(1)}MB 입니다.`,
-      );
+    if (fileSize > 3145728) {
+      Modal.error({
+        title: '3MB를 초과하였습니다.',
+        content: `현재 파일의 크기는 ${(fileSize / 1048576).toFixed(
+          1,
+        )}MB 입니다.`,
+      });
       return false;
     }
     return this.fileInputFBStorage(file);
   };
 
   fileInputFBStorage = async file => {
-    console.log('이 콘솔이 보이면 파이어베이스 저장소에 파일 업로드가 됩니다!');
-
     const { profileInfo } = this.props;
     const { uid } = profileInfo;
 

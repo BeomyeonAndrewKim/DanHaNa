@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Icon } from 'antd';
 import { Animated } from 'react-animated-css';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
-import './LoginScreen.css';
+import './LoginScreen.scss';
 import logo from '../../assets/images/logo/login__logo.png';
 
 export default class LoginScreen extends Component {

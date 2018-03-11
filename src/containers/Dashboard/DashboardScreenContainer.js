@@ -122,6 +122,7 @@ class DashboardScreenContainer extends Component {
           '[]',
         );
       }
+      return null;
     });
 
   handleAnimateData = Data => {

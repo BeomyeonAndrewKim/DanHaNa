@@ -1,6 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import StoryRouter from 'storybook-router';
 import CalendarScreen from '../src/components/Calendar/CalendarScreen';
 
-storiesOf('CalendarScreen', module).add('default', () => <CalendarScreen />);
+storiesOf('CalendarScreen', module)
+  .addDecorator(StoryRouter())
+  .add('default', () => <CalendarScreen />);

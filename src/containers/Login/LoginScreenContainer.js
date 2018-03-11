@@ -25,7 +25,6 @@ export default class LoginScreenContainer extends Component {
       });
       window.localStorage.setItem('introdone', true);
     } catch (e) {
-      console.log(e);
       this.setState({
         loading: false,
       });
@@ -43,7 +42,6 @@ export default class LoginScreenContainer extends Component {
       });
       window.localStorage.setItem('introdone', true);
     } catch (e) {
-      console.log(e);
       this.setState({
         loading: false,
       });
@@ -61,7 +59,6 @@ export default class LoginScreenContainer extends Component {
       });
       window.localStorage.setItem('introdone', true);
     } catch (e) {
-      console.log(e);
       this.setState({
         loading: false,
       });
