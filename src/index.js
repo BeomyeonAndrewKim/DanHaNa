@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as firebase from 'firebase';
 import 'animate.css';
-import './less/custom-theme.css';
+import './theme/custom-theme.css';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
