@@ -82,7 +82,6 @@ $ npm run storybook // 스토리북 테스트 시
 - React Router
 - React Helmet
 - Ant Design
-- Styled Components
 - Sass
 - Storybook
 - Recharts(차트), lodash(throttle), html2canvas(스크린샷), React-dates(달력)

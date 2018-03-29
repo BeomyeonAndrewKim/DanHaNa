@@ -13,6 +13,13 @@
   position: relative;
 }
 .MenuScreen{
+  &__close{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
   &__main{
     position: absolute;
     width: 256px;

@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Icon, Button } from 'antd';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import './MenuScreen.scss';
-
-const MenuCloseEl = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 1;
-`;
 
 export default class MenuScreen extends Component {
   static defaultProps = {
@@ -48,9 +39,11 @@ export default class MenuScreen extends Component {
     return (
       <div>
         {this.props.collapsed && (
-          <MenuCloseEl
+          <div
             className="MenuScreen__close"
             onClick={this.handleCloseMenuLayout}
+            role="button"
+            tabIndex="0"
           />
         )}
         <Button

@@ -24,6 +24,25 @@ $dark-gray: rgb(117, 117, 117);
   text-align: center;
   height: 100vh;
 }
+.calendar__header{
+  width: 100%;
+  background-color: #1e2b55;
+  position: relative;
+  text-align: center;
+}
+.calendar__header__text{
+  padding: 20px 0;
+  color: #fff;
+}
+.calendar__header__icon{
+  padding: 10px;
+  position: absolute;
+  font-size: 1.5em;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+}
 .calendar__title {
   padding: 40px 0;
 }
