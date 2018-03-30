@@ -7,9 +7,11 @@ export default class MenuScreen extends Component {
   static defaultProps = {
     userInfo: {},
     todoInfo: {},
-    pageToMission: false,
     collapsed: false,
     handleLogOut: () => {},
+    handleMissionModal: () => {},
+    handlepageToEditMission: () => {},
+    handleToggleMenu: () => {},
   };
 
   handleCloseMenuLayout = e => {
@@ -36,6 +38,7 @@ export default class MenuScreen extends Component {
     }
   };
   render() {
+    console.log(this.props);
     return (
       <div>
         {this.props.collapsed && (
