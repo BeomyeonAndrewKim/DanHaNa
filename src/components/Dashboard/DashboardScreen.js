@@ -32,6 +32,11 @@ export default class DashboardScreen extends Component {
     startValue: null,
     endValue: null,
     endOpen: false,
+    monthValue: null,
+    yearValue: null,
+    completeData: null,
+    stepsDataPie: null,
+    stepsDataLine: null,
     disabledStartDate: () => {},
     onStartChange: () => {},
     handleStartOpenChange: () => {},
@@ -40,7 +45,9 @@ export default class DashboardScreen extends Component {
     handleEndOpenChange: () => {},
     handleCompleteData: () => {},
     handleCompleteStepsData: () => {},
-    handlePanelChange: () => {},
+    handleMonthPanelChange: () => {},
+    handleYearPanelChange: () => {},
+    handleCompleteStepsDataforLine: () => {},
   };
 
   state = {
@@ -276,7 +283,6 @@ export default class DashboardScreen extends Component {
               <span className="DashboardScreen__main--data--completeData" />
               <span>out of 100%</span>
             </div>
-
             {this.showPieChart()}
           </div>
         </div>

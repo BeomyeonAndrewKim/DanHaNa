@@ -236,10 +236,8 @@ class DashboardScreenContainer extends Component {
   render() {
     return (
       <DashboardScreenwithLoading
-        {...this.props}
         {...this.state}
         completeData={this.state.completeData}
-        onChange={this.onChange}
         onStartChange={this.onStartChange}
         onEndChange={this.onEndChange}
         handleStartOpenChange={this.handleStartOpenChange}

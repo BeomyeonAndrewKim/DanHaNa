@@ -187,8 +187,8 @@ class MainScreenContainer extends Component {
     return (
       <div>
         <MainScreenWithLoading
-          {...this.props}
           {...this.state}
+          loading={this.props.loading}
           checkTodo={this.checkTodo}
           rollbackTodo={this.rollbackTodo}
           handleCameraIcon={this.handleCameraIcon}
