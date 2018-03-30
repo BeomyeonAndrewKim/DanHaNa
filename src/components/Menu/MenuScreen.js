@@ -38,7 +38,6 @@ export default class MenuScreen extends Component {
     }
   };
   render() {
-    console.log(this.props);
     return (
       <div>
         {this.props.collapsed && (
