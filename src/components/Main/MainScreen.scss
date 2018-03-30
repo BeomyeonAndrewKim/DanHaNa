@@ -16,8 +16,6 @@ $translateCenter: translate(-50%, -50%);
   width: 100vw;
 }
 
-
-
 .MainScreen {
   background: #dc7036;
   background: -moz-linear-gradient(
@@ -62,7 +60,7 @@ $translateCenter: translate(-50%, -50%);
         GradientType=1
       );
     width: 100vw;
-    height: calc(100vh - 32px);
+    height: 100vh;
     &__wrapper {
       @include center();
       width: 80vw;
@@ -166,6 +164,66 @@ $translateCenter: translate(-50%, -50%);
     right: 10px;
     bottom: 10px;
   }
+  &__screenshot{
+    display:none;
+    &.active{
+      @include max();
+      display:block;
+      background-color: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      z-index:1;
+    }
+    &-closeBtn{
+      position: absolute;
+      left:75%;
+      top:15%;
+      border:none;
+      color:#ffffff;
+      font-size:1.5rem;
+      z-index:2;
+    }
+  }
+}
+
+.downloadLink {
+  @include horizonalCenter();
+  top: 75%;
+  background-color: #9b9b9b;
+  padding: 8px 20px;
+  color: #ffffff;
+  display: inline-block;
+  border: 1px solid #9b9b9b;
+}
+.screenshotCanvas {
+  margin-top: 50%;
+  margin: 0 auto;
+  transform: scale(0.8);
+}
+
+.SNSShareScreen__tomain {
+  font-size: 4rem;
+  color: #0b1229;
+}
+
+.SuccessModal{
+  text-align: center;
+  &__sns{
+    text-align: center;
+    font-size: 2rem;
+    &__facebook {
+      padding: 2rem;
+    }
+    &__twitter {
+      padding: 2rem;
+    }
+  }
+  &__mission {
+    font-size: 2rem;
+    text-align: center;
+    &__edit {
+      padding: 2rem;
+    }
+  }
 }
 
 @keyframes pulse {
@@ -184,14 +242,11 @@ $translateCenter: translate(-50%, -50%);
   }
 }
 
-$blue-dark:        #1E384C;
-$blue:             #2C7FBE;
-$blue-light:       #32BAFA;
-$green:            #02C39A;
-
-$stage-bg:           $blue-dark;
-
-
+$blue-dark:#1E384C;
+$blue:#2C7FBE;
+$blue-light:#32BAFA;
+$green:#02C39A;
+$stage-bg:$blue-dark;
 
 .waves {
     position: absolute;
@@ -264,69 +319,5 @@ svg {
     }
 }
 
-.SuccessModal{
-  text-align: center;
-  &__sns{
-    text-align: center;
-    font-size: 2rem;
-    &__facebook {
-      padding: 2rem;
-    }
-    &__twitter {
-      padding: 2rem;
-    }
-  }
-  &__mission {
-    font-size: 2rem;
-    text-align: center;
-    &__edit {
-      padding: 2rem;
-    }
-  }
-}
-.SNSShareScreen__tomain {
-  font-size: 4rem;
-  color: #0b1229;
-}
-
-.screenshot-modal {
-  @include max();
-  margin: 0;
-  top: initial;
-}
-
-.screenshot-modal-close {
-  top: 10%;
-  right: 10%;
-}
-.screenshot-modal-content {
-  @include max();
-  background-color: transparent;
-}
-
-.screenshot-modal-body {
-  @include max();
-  padding: 0;
-}
-
-.screenshot-modal-footer {
-  display: none;
-}
-
-.downloadLink {
-  @include horizonalCenter();
-  top: 75%;
-  background-color: #9b9b9b;
-  padding: 8px 20px;
-  color: #ffffff;
-  display: inline-block;
-  border: 1px solid #9b9b9b;
-}
-.screenshotCanvas {
-  margin-top: 50%;
-  margin: 0 auto;
-  position: absolute;
-  transform: scale(0.8);
-}
 
 

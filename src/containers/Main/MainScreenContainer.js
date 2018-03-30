@@ -151,13 +151,11 @@ class MainScreenContainer extends Component {
   };
 
   handleCameraIcon = async () => {
-    this.setState({
-      showModal: true,
-    });
+    this.setState({ loadingIcon: true });
     await html2canvas(document.querySelector('.MainScreen__showtodo')).then(
       canvas => {
         document
-          .querySelector('.ant-modal-body')
+          .querySelector('.MainScreen__screenshot')
           .appendChild(canvas)
           .classList.add('screenshotCanvas');
         const ScreenshotUrl = document
@@ -167,46 +165,22 @@ class MainScreenContainer extends Component {
         downloadA.classList.add('downloadLink');
         downloadA.textContent = '저장';
         const downloadLink = document
-          .querySelector('.ant-modal-body')
+          .querySelector('.MainScreen__screenshot')
           .appendChild(downloadA);
         downloadLink.href = ScreenshotUrl;
         downloadLink.download = `${this.props.todoInfo.todo}.png`;
       },
     );
-    document.querySelector('.ant-modal').classList.add('screenshot-modal');
-    document
-      .querySelector('.ant-modal-close')
-      .classList.add('screenshot-modal-close');
-    document
-      .querySelector('.ant-modal-content')
-      .classList.add('screenshot-modal-content');
-    document
-      .querySelector('.ant-modal-body')
-      .classList.add('screenshot-modal-body');
-    document
-      .querySelector('.ant-modal-footer')
-      .classList.add('screenshot-modal-footer');
+    this.setState({ loadingIcon: false });
+    document.querySelector('.MainScreen__screenshot').classList.add('active');
   };
 
   handleCloseScreenShot = () => {
-    this.setState({
-      showModal: false,
-    });
+    document
+      .querySelector('.MainScreen__screenshot')
+      .classList.remove('active');
     document.querySelector('.screenshotCanvas').remove();
     document.querySelector('.downloadLink').remove();
-    document.querySelector('.ant-modal').classList.remove('screenshot-modal');
-    document
-      .querySelector('.ant-modal-close')
-      .classList.remove('screenshot-modal-close');
-    document
-      .querySelector('.ant-modal-content')
-      .classList.remove('screenshot-modal-content');
-    document
-      .querySelector('.ant-modal-body')
-      .classList.remove('screenshot-modal-body');
-    document
-      .querySelector('.ant-modal-footer')
-      .classList.remove('screenshot-modal-footer');
   };
 
   render() {
@@ -215,13 +189,10 @@ class MainScreenContainer extends Component {
         <MainScreenWithLoading
           {...this.props}
           {...this.state}
-          handleAddToDo={this.handleAddToDo}
           checkTodo={this.checkTodo}
           rollbackTodo={this.rollbackTodo}
           handleCameraIcon={this.handleCameraIcon}
           handleCloseScreenShot={this.handleCloseScreenShot}
-          handleSaveScreenShot={this.handleSaveScreenShot}
-          MissionSuccessModal={this.MissionSuccessModal}
           handleSuccessModalOk={this.handleSuccessModalOk}
           handleSuccessModalcancel={this.handleSuccessModalcancel}
           handleFacebookIcon={this.handleFacebookIcon}

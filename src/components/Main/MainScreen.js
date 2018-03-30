@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Modal } from 'antd';
+import { Icon, Modal, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import throttle from 'lodash.throttle';
 import './MainScreen.scss';
@@ -95,69 +95,80 @@ export default class MainScreen extends Component {
     </div>
   );
 
+  showWaveSvg = () => (
+    <div>
+      <div className="waves">
+        <div className="wave wave--back">
+          <div className="water">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 350 32"
+              preserveAspectRatio="none"
+            >
+              <title>wave2</title>
+              <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+            </svg>
+          </div>
+          <div className="water">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 350 32"
+              preserveAspectRatio="none"
+            >
+              <title>wave2</title>
+              <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+            </svg>
+          </div>
+        </div>
+        <div className="wave wave--front">
+          <div className="water">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 350 32"
+              preserveAspectRatio="none"
+            >
+              <title>wave2</title>
+              <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+            </svg>
+          </div>
+          <div className="water">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 350 32"
+              preserveAspectRatio="none"
+            >
+              <title>wave2</title>
+              <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   render() {
     return (
       <div className="MainScreen">
-        <div>
-          <div className="waves">
-            <div className="wave wave--back">
-              <div className="water">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 350 32"
-                  preserveAspectRatio="none"
-                >
-                  <title>wave2</title>
-                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
-                </svg>
-              </div>
-              <div className="water">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 350 32"
-                  preserveAspectRatio="none"
-                >
-                  <title>wave2</title>
-                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
-                </svg>
-              </div>
-            </div>
-            <div className="wave wave--front">
-              <div className="water">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 350 32"
-                  preserveAspectRatio="none"
-                >
-                  <title>wave2</title>
-                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
-                </svg>
-              </div>
-              <div className="water">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 350 32"
-                  preserveAspectRatio="none"
-                >
-                  <title>wave2</title>
-                  <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
         {this.props.render()}
         {this.props.todo ? (
           <div>
+            <div className="MainScreen__screenshot">
+              <Button
+                className="MainScreen__screenshot-closeBtn"
+                onClick={this.props.handleCloseScreenShot}
+                type="ghost"
+                role="button"
+                tabIndex="0"
+              >
+                X
+              </Button>
+            </div>
             {this.showToDoScreen()}
             <Icon
+              spin={!!this.props.loadingIcon}
               type="camera-o"
               className="MainScreen__camera"
               onClick={this.props.handleCameraIcon}
-            />
-            <Modal
-              visible={this.props.showModal}
-              onCancel={this.props.handleCloseScreenShot}
             />
           </div>
         ) : (
