@@ -138,8 +138,9 @@ class EditNextWeekMissionContainer extends Component {
       <div>
         {!this.state.editTodo && <Redirect to="/nextweekmission" />}
         <WithLoadingMissionScreen
-          {...this.props}
           {...this.state}
+          nextWeek={this.props.nextWeek}
+          loading={this.props.loading}
           handleTodoChange={this.handleTodoChange}
           handleMemoChange={this.handleMemoChange}
           handleStepsChange={this.handleStepsChange}

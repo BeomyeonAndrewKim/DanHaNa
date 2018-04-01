@@ -43,8 +43,9 @@ class ShowNextWeekMissionContainer extends Component {
         {this.state.editTodo && <Redirect to="/editnextweekmission" />}
         {this.state.redirectToMain && <Redirect to="/main" />}
         <WithLoadingMissionScreen
-          {...this.props}
           {...this.state}
+          loading={this.props.loading}
+          nextWeek={this.props.nextWeek}
           handleEditTodo={this.handleEditTodo}
         />
       </div>
