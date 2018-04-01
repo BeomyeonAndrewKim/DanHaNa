@@ -149,6 +149,7 @@ export default class MainScreen extends Component {
   render() {
     return (
       <div className="MainScreen">
+        {this.showWaveSvg()}
         {this.props.render()}
         {this.props.todo ? (
           <div>
