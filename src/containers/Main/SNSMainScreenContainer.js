@@ -20,7 +20,11 @@ class SNSMainScreenContainer extends Component {
   render() {
     return (
       <div>
-        <SNSMainScreenWithLoading {...this.props} />
+        <SNSMainScreenWithLoading
+          lodaing={this.props.loading}
+          userInfo={this.props.userInfo}
+          todoInfo={this.props.todoInfo}
+        />
       </div>
     );
   }
