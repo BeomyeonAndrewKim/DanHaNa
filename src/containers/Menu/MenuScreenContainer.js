@@ -54,7 +54,9 @@ class MenuScreenContainer extends Component {
         {this.state.logOut && <Redirect to="/login" />}
         {this.state.pageToEditMission && <Redirect to="/editnextweekmission" />}
         <MenuScreen
-          {...this.props}
+          todoInfo={this.props.todoInfo}
+          userInfo={this.props.userInfo}
+          nextWeek={this.props.nextWeek}
           collapsed={this.state.collapsed}
           handleToggleMenu={this.handleToggleMenu}
           handlepageToEditMission={this.handlepageToEditMission}
