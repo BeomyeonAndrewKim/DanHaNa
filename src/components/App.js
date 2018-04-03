@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { Helmet } from 'react-helmet';
+import ReactGA from 'react-ga';
 import reducers from '../ducks/index';
 import LoginScreenContainer from '../containers/Login/LoginScreenContainer';
 import IntroScreen from '../components/Intro/IntroScreen';
@@ -21,6 +22,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
+ReactGA.initialize('UA-112057755-3');
+ReactGA.pageview(window.location.pathname + window.location.search);
 export default class extends Component {
   render() {
     return (
