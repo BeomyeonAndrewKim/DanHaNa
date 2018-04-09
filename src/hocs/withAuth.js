@@ -39,7 +39,7 @@ export default function withAuth(WrappedComponent) {
     }
     render() {
       if (this.state.currentUser) {
-        return <WrappedComponent />;
+        return <WrappedComponent match={this.props.match} />;
       } else if (this.state.loading) {
         return <LoadingIndicator />;
       }
