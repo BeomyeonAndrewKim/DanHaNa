@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import * as moment from 'moment';
 import * as firebase from 'firebase';
 import SNSMainScreen from '../../components/Main/SNSMainScreen';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
 
 const SNSMainScreenWithLoading = withLoadingIndicator(SNSMainScreen);
 
-const THIS_WEEK = moment()
-  .isoWeekday(1)
-  .format('YYYY-[W]ww');
 export default class SNSMainScreenContainer extends Component {
   static defaultProps = {
     loading: false,
@@ -28,7 +24,7 @@ export default class SNSMainScreenContainer extends Component {
       .once('value');
     const userObj = snapshot.val();
     const userInfo = userObj.profileInfo;
-    const todoInfo = userObj.todos[THIS_WEEK];
+    const todoInfo = userObj.todos[this.props.match.params.week];
     this.setState({
       userInfo,
       todoInfo,
