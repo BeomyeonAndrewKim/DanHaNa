@@ -102,7 +102,7 @@ class MainScreenContainer extends Component {
   };
   handleTwitterIcon = () => {
     window.open(
-      `https://twitter.com/intent/tweet?text=TEXT&url=https//danhana.netlify.com/snsshare/${
+      `https://twitter.com/intent/tweet?text=TEXT&url=https://danhana.netlify.com/snsshare/${
         this.props.userInfo.uid
       }/${THIS_WEEK}`,
     );
