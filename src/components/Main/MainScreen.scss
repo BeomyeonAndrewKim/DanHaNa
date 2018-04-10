@@ -11,10 +11,6 @@ $translateCenter: translate(-50%, -50%);
   left: 50%;
   transform: translateX(-50%);
 }
-@mixin max() {
-  height: 100vh;
-  width: 100vw;
-}
 
 .MainScreen {
   background: #dc7036;
@@ -26,7 +22,6 @@ $translateCenter: translate(-50%, -50%);
       endColorstr="#c45b2d",
       GradientType=1
     );
-  width: 100vw;
   height: 100vh;
   display: blcok;
   position: relative;
@@ -34,7 +29,6 @@ $translateCenter: translate(-50%, -50%);
   &__circle {
     position: absolute;
     bottom: 0;
-    width: 100vw;
     background-color: #1e2b55;
   }
   &__showtodo {
@@ -47,11 +41,10 @@ $translateCenter: translate(-50%, -50%);
         endColorstr="#c45b2d",
         GradientType=1
       );
-    width: 100vw;
     height: 100vh;
     &__wrapper {
       @include center();
-      width: 80vw;
+      width: 90%;
       margin: 0 auto;
     }
   }
@@ -87,7 +80,7 @@ $translateCenter: translate(-50%, -50%);
       @include center();
     }
     &__wrapper {
-      width: 80vw;
+      width: 100%;
       height: 30vh;
       border: 7px solid#0b1229;
       background-color: #ffffff;
@@ -155,7 +148,7 @@ $translateCenter: translate(-50%, -50%);
   &__screenshot {
     display: none;
     &.active {
-      @include max();
+      height: 100vh;
       display: block;
       background-color: rgba(0, 0, 0, 0.7);
       position: absolute;

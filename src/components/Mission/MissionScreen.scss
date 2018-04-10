@@ -1,134 +1,123 @@
-@mixin title(){
-  font-size:1rem;
+@mixin title() {
+  font-size: 1rem;
   padding: 1rem 0;
 }
-@mixin body(){
-  padding:1rem 0;
-  border: 0; 
-  border-bottom: 1px solid #000000; 
+@mixin body() {
+  padding: 1rem 0;
+  border: 0;
+  border-bottom: 1px solid #000000;
   background-color: transparent;
   border-radius: 0;
 }
 
-.MissionScreen{
-  height:100vh;
+.MissionScreen {
+  height: 100vh;
   background: #f7c1a4;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: linear-gradient(
-    135deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
+  background: -moz-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: -webkit-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: linear-gradient(135deg, #dc7036 50%, #c45b2d 50%);
   filter: progid:DXImageTransform.Microsoft.gradient(
-    startColorstr='#dc7036',
-    endColorstr='#c45b2d',
-    GradientType=1
-  );
-  &__header{
+      startColorstr="#dc7036",
+      endColorstr="#c45b2d",
+      GradientType=1
+    );
+  &__header {
     text-align: center;
     height: 50px;
     background-color: #1e2b55;
-    color:white;
+    color: white;
     display: block;
     font-size: 1rem;
     line-height: 50px;
-    &__icon{
+    position: relative;
+    &__icon {
       position: absolute;
       left: 5px;
-      font-size:1.5rem;
-      line-height:50px
+      font-size: 1.5rem;
+      line-height: 50px;
     }
   }
-  &__week{
-    width:85vw;
-    margin:1rem auto;
-    padding:1rem 0;
-    background-color:#ffffff;
+  &__week {
+    width: 90%;
+    margin: 1rem auto;
+    padding: 1rem 0;
+    background-color: #ffffff;
     box-shadow: 5px 5px #1e2b55;
     line-height: 1rem;
     text-align: center;
-    &__wrapper{
+    &__wrapper {
       display: inline-block;
-      width:60vw;
-      margin:0 auto;
+      width: 100%;
+      margin: 0 auto;
     }
-    &__dash{
+    &__dash {
       display: inline-block;
       transform: translateY(-150%);
-      font-size:2rem;
+      font-size: 2rem;
       padding: 0 1rem;
     }
-    &__first{
-      width:20vw;
-      color:#1e2b55;
+    &__first {
+      width: 25%;
+      color: #1e2b55;
       display: inline-block;
       text-align: center;
-      font-weight:lighter;
-      border:1px solid #1e2b55;
-      padding:0.5rem 0;
+      font-weight: lighter;
+      border: 1px solid #1e2b55;
+      padding: 0.5rem 0;
     }
-    &__last{
-      width:20vw;
-      color:#1e2b55;
+    &__last {
+      width: 25%;
+      color: #1e2b55;
       display: inline-block;
       text-align: center;
-      font-weight:lighter;
-      border:1px solid #1e2b55;
-      padding:0.5rem 0;
+      font-weight: lighter;
+      border: 1px solid #1e2b55;
+      padding: 0.5rem 0;
     }
   }
-  &__main{
+  &__main {
     margin: 0 auto;
     margin-top: 1rem;
-    padding:1rem;
-    width:85vw;
+    padding: 1rem;
+    width: 90%;
     background-color: #ffffff;
     box-shadow: 5px 5px #1e2b55;
-    &__todo{
+    &__todo {
       margin-bottom: 1rem;
-      &__title{
-        @include title()
+      &__title {
+        @include title();
       }
-      &__body{
+      &__body {
         @include body();
-        &:focus{
-          border:0 !important;
+        &:focus {
+          border: 0 !important;
         }
       }
     }
-    &__memo{
-      margin-bottom:1rem;
-      &__title{
-        @include title()
+    &__memo {
+      margin-bottom: 1rem;
+      &__title {
+        @include title();
       }
-      &__body{
+      &__body {
         border-radius: 0;
       }
     }
-    &__steps{
-      margin-bottom:1rem;
-      &__title{
-        @include title()
+    &__steps {
+      margin-bottom: 1rem;
+      &__title {
+        @include title();
       }
-      &__body{
+      &__body {
         border-radius: 0;
       }
     }
-    &__limit{
-      font-size:0.8rem;
+    &__limit {
+      font-size: 0.8rem;
       opacity: 0.8;
     }
-    &__fixcount{
-      font-size:0.8rem;
+    &__fixcount {
+      font-size: 0.8rem;
       display: inline-block;
       margin-left: 6rem;
     }

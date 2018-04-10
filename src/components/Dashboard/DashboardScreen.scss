@@ -1,102 +1,86 @@
-@mixin max(){
-  width:100vw;
-  height:100vh;
-}
-
-.DashboardScreen{
+.DashboardScreen {
   background: #dc7036;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: linear-gradient(
-    135deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
+  background: -moz-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: -webkit-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: linear-gradient(135deg, #dc7036 50%, #c45b2d 50%);
   filter: progid:DXImageTransform.Microsoft.gradient(
-    startColorstr='#dc7036',
-    endColorstr='#c45b2d',
-    GradientType=1
-  );
-  @include max();
-  &__header{
+      startColorstr="#dc7036",
+      endColorstr="#c45b2d",
+      GradientType=1
+    );
+  height: 100vh;
+  &__header {
     text-align: center;
     height: 50px;
     background-color: #1e2b55;
-    color:#ffffff;
+    color: #ffffff;
     display: block;
     font-size: 1rem;
     line-height: 50px;
-    &__icon{
+    position: relative;
+    &__icon {
       position: absolute;
       left: 5px;
-      font-size:25px;
-      line-height:50px
+      font-size: 25px;
+      line-height: 50px;
     }
   }
-  &__main{
+  &__main {
     margin: 0 auto;
-    height:100vh;
-    &--dropdown{
-      border:1px solid #1e2b55;
+    height: 100vh;
+    &--dropdown {
+      border: 1px solid #1e2b55;
     }
-    &__calendar{
-      width:85vw;
-      margin:0 auto;
-      margin-top:1rem;
+    &__calendar {
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 1rem;
       background-color: #ffffff;
       box-shadow: 5px 5px #1e2b55;
       display: block;
-      &--weekpicker{
-        width:inherit;
+      &--weekpicker {
+        width: 100%;
       }
-      &__btn{
-        width:85vw;
+      &__btn {
+        width: 100%;
       }
     }
-    &--data{
-      width:85vw;
-      margin:1rem auto;
+    &--data {
+      width: 90%;
+      margin: 1rem auto;
       background-color: #ffffff;
       box-shadow: 5px 5px #1e2b55;
       text-align: center;
-      &--wrapper{
+      &--wrapper {
         display: none;
       }
-      &--pie{
-        margin:0 auto;
+      &--pie {
+        margin: 0 auto;
       }
-      &--title{
+      &--title {
         font-weight: bold;
         margin: 1rem auto;
         line-height: 2.5rem;
-        font-size:1.2rem;
+        font-size: 1.2rem;
       }
-      &__btn{
-        width:85vw;
+      &__btn {
+        width: 100%;
       }
-      &--completeData{
-        display:block;
-        font-size:8rem;
-        color:#1e2b55;
+      &--completeData {
+        display: block;
+        font-size: 8rem;
+        color: #1e2b55;
       }
     }
   }
 }
 
-.ant-dropdown-link{
-  color:black;
+.ant-dropdown-link {
+  color: black;
 }
-.ant-calendar-range{
-  width:85vw;
+.ant-calendar-range {
+  width: 100%;
 }
-.ant-calendar-picker{
-  width:inherit;
+.ant-calendar-picker {
+  width: inherit;
 }

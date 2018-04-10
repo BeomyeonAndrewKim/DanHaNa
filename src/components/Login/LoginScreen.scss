@@ -19,26 +19,14 @@ $twitter-bg: #0099d1;
 
 .login {
   background: #dc7036;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: linear-gradient(
-    135deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
+  background: -moz-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: -webkit-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: linear-gradient(135deg, #dc7036 50%, #c45b2d 50%);
   filter: progid:DXImageTransform.Microsoft.gradient(
-    startColorstr='#dc7036',
-    endColorstr='#c45b2d',
-    GradientType=1
-  );
+      startColorstr="#dc7036",
+      endColorstr="#c45b2d",
+      GradientType=1
+    );
   height: 100vh;
 }
 .login__logo {
@@ -64,7 +52,7 @@ $twitter-bg: #0099d1;
   top: 22%;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 500px;
+  max-width: 400px;
   width: 100%;
   font-size: 2.7rem;
   font-weight: 200;

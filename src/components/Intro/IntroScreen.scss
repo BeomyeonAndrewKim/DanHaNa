@@ -6,35 +6,23 @@
 
 .IntroScreen {
   background: #dc7036;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: linear-gradient(
-    135deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
+  background: -moz-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: -webkit-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: linear-gradient(135deg, #dc7036 50%, #c45b2d 50%);
   filter: progid:DXImageTransform.Microsoft.gradient(
-    startColorstr='#dc7036',
-    endColorstr='#c45b2d',
-    GradientType=1
-  );
+      startColorstr="#dc7036",
+      endColorstr="#c45b2d",
+      GradientType=1
+    );
   &__btn {
     height: 5vh;
-    width: 100vw;
+    width: 100%;
     border-radius: initial;
     background-color: #1e2b55;
     color: #ffffff;
     &--login {
       height: 5vh;
-      width: 100vw;
+      width: 100%;
       border-radius: initial;
       background-color: #1e2b55;
       color: #ffffff;

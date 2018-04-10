@@ -7,31 +7,19 @@ $bright-orange: #e8945f;
 
 .profile {
   background: #dc7036;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
-  background: linear-gradient(
-    135deg,
-    #dc7036 50%,
-    #c45b2d 50%
-  ); 
+  background: -moz-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: -webkit-linear-gradient(-45deg, #dc7036 50%, #c45b2d 50%);
+  background: linear-gradient(135deg, #dc7036 50%, #c45b2d 50%);
   filter: progid:DXImageTransform.Microsoft.gradient(
-    startColorstr='#dc7036',
-    endColorstr='#c45b2d',
-    GradientType=1
-  );
+      startColorstr="#dc7036",
+      endColorstr="#c45b2d",
+      GradientType=1
+    );
   text-align: center;
   height: 100vh;
 }
 .profile__text {
-  width: 85vw;
+  width: 90%;
   margin: auto;
   box-shadow: 5px 5px;
 }
