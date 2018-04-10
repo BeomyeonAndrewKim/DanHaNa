@@ -57,7 +57,10 @@ export default class extends Component {
               path="/calendar"
               component={withAuth(CalendarScreenContainer)}
             />
-            <Route path="/snsshare/:uid" component={SNSMainScreenContainer} />
+            <Route
+              path="/snsshare/:uid/:week"
+              component={SNSMainScreenContainer}
+            />
           </div>
         </BrowserRouter>
       </Provider>
