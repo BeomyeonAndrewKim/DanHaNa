@@ -97,14 +97,14 @@ class MainScreenContainer extends Component {
     window.open(
       `http://www.facebook.com/sharer/sharer.php?u=https://danhana.netlify.com/snsshare/${
         this.props.userInfo.uid
-      }`,
+      }/${THIS_WEEK}`,
     );
   };
   handleTwitterIcon = () => {
     window.open(
       `https://twitter.com/intent/tweet?text=TEXT&url=https//danhana.netlify.com/snsshare/${
         this.props.userInfo.uid
-      }`,
+      }/${THIS_WEEK}`,
     );
   };
 
