@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import ProfileNickName from '../../components/Profile/ProfileNickName';
 import { fetchProfileInfo } from '../../ducks/profile';
 

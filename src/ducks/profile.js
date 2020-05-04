@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 export const GET_PROFILEINFO_REQUEST = 'profile/GET_PROFILEINFO_REQUEST';
 export const GET_PROFILEINFO_SUCCESS = 'profile/GET_PROFILEINFO_SUCCESS';

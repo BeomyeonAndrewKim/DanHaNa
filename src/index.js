@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'animate.css';
 import './theme/custom-theme.css';
 import './index.css';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Modal } from 'antd';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import moment from 'moment';
 import NextWeekMissonScreen from '../../components/Mission/NextWeekMissionScreen';
 import { fetchNextWeek } from '../../ducks/mission';

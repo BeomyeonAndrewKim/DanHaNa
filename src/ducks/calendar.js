@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 export const GET_TODOLIST_REQUEST = 'profile/GET_TODOLIST_REQUEST';
 export const GET_TODOLIST_SUCCESS = 'profile/GET_TODOLIST_SUCCESS';

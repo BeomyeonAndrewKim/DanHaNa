@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import { Modal } from 'antd';
 import SNSMainScreen from '../../components/Main/SNSMainScreen';
 import withLoadingIndicator from '../../hocs/withLoadingIndicator';
