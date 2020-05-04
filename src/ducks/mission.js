@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import * as moment from 'moment';
 
 const LOADING = 'mission/LOADING';

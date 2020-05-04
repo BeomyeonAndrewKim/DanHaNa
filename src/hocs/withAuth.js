@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 
 import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator';
 

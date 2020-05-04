@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal } from 'antd';
 
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import ProfilePhoto from '../../components/Profile/ProfilePhoto';
 import { fetchProfileInfo } from '../../ducks/profile';
 
